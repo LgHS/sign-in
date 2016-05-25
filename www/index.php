@@ -3,6 +3,7 @@
 		"Sign in for some Hackerspace magic.",
 		"One sign-in page to rule them all.",
 		"Join us now. Share the software. You'll be free."
+		":doge: to the moon."
 	];
 ?><!doctype html>
 <html lang="en-US">
