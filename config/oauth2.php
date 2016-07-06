@@ -28,7 +28,11 @@ return [
     */
 
     'grant_types' => [
-
+        'authorization_code' => [
+            'class' => '\League\OAuth2\Server\Grant\AuthCodeGrant',
+            'access_token_ttl' => 3600,
+            'auth_token_ttl'   => 3600
+        ]
     ],
 
     /*
@@ -147,6 +151,6 @@ return [
     |
     */
 
-    'http_headers_only' => false,
+    'http_headers_only' => true,
 
 ];

@@ -53,7 +53,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
+            'name' => 'required|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -124,28 +125,11 @@ class AuthController extends Controller
             $this->throwValidationException(
                 $request, $validator
             );
+            return redirect($this->redirectPath());
         }
 
         $this->create($request->all());
         
         return view('auth.succses');
-    }
-
-    public function valid($token)
-    {
-        $user = User::where('token_valid', $token)->firstOrFail();
-
-        if($user) {
-            if($user->is_valid) $msg = "Ce comte est déjà activé";
-            else {
-
-                $user->is_valid = True;
-                $user->save();
-                $msg = "Votre comte vien d'etre validé";
-            }
-        }
-        else $msg = "Cette cles n'est associer à aucun conte";
-
-        return view('auth.valid.msg', [ 'msg' => $msg ]);
     }
 }
