@@ -146,7 +146,6 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
@@ -157,6 +156,12 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        Barryvdh\Debugbar\ServiceProvider::class,
+        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
     ],
 
@@ -203,6 +208,10 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
 
     ],
 
