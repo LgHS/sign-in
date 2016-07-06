@@ -162,6 +162,7 @@ return [
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
 
     ],
 
@@ -212,6 +213,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
+        'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
 
     ],
 

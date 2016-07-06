@@ -12,7 +12,8 @@
         "caouecs/laravel-lang": "~3.0",
         "webpatser/laravel-uuid": "2.*",
         "overtrue/laravel-lang": "~3.0",
-        "barryvdh/laravel-ide-helper": "^2.2"
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "pragmarx/google2fa": "^0.7.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
