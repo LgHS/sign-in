@@ -1,82 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}">
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <h2>
+        <a href="{{ url('/') }}" title="Acceuil"> <img src="/dist/svg/logo.svg" alt="Liege Hackerspace"></a>
+    </h2>
+    <form id="sign-in-form" method="POST" action="{{ url('/register') }}">
+        {{ csrf_field() }}
+        @if ($errors->has('name'))
+            <p>{{ $errors->first('name') }}</p>
+        @endif
+        @if ($errors->has('email'))
+            <p>{{ $errors->first('email') }}</p>
+        @endif
+        @if ($errors->has('password'))
+            <p>{{ $errors->first('password') }}</p>
+        @endif
+        @if ($errors->has('password_confirmation'))
+            <p>{{ $errors->first('password_confirmation') }}</p>
+        @endif
+        <p>
+            <label for="sign-in_name" class="hide">Nom d'utilisateur</label>
+            <input type="text" id="name" name="name" placeholder="Nom d'utilisateur">
+        </p>
+            <label for="sign-in_email" class="hide">Email</label>
+            <input type="email" id="email" name="email" placeholder="Email">
+        </p>
+        <p>
+            <label for="sign-in_password" class="hide">Mots de passe</label>
+            <input type="password" id="password" name="password" placeholder="Mots de passe">
+        </p>
+        <p>
+            <label for="sign-in_password_confirmation" class="hide">Confiemr le mots de passe</label>
+            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confiemr le mots de passe">
+        </p>
+        <p class="form-submit">
+            <button type="submit" class="btn">S'enregister</button>
+        </p>
+    </form>
 @endsection
