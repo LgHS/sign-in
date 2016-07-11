@@ -83,7 +83,7 @@ class AuthController extends Controller
 
         Mail::send(['auth.valid.mail-html','auth.valid.mail-txt'], $data, function ($message) use ($user) {
             $message->to($user->email);
-            $message->subject("[LgHS] Completer votre inscription");
+            $message->subject("[LgHS] Complétez votre inscription");
         });
 
         return $user;

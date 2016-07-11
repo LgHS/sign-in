@@ -1,0 +1,26 @@
+html {
+  font-size: $font-size-base;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: $brand-primary;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.hide {
+  @extend %visuallyhidden;
+}
+
+*:focus {
+  outline: none !important;
+}

@@ -1,27 +1,34 @@
-@extends('layouts.app')
+@extends('layouts.auth')
+
+@section('page_title')
+    Connectez-vous
+@endsection
+
+@section('title')
+    Connectez-vous pour administrer votre compte LgHS. <br>
+    <small>Pas encore de compte ? <a href="{{ url('/register') }}" title="Créez votre compte">Créez en un</a>.</small>
+@endsection
 
 @section('content')
-    <h2>
-        <a href="{{ url('/') }}" title="Acceuil"> <img src="/dist/svg/logo.svg" alt="Liege Hackerspace"></a>
-    </h2>
     <form id="sign-in-form" method="POST" action="{{ url('/login') }}">
         {{ csrf_field() }}
         @if ($errors->has('name'))
-            <p>{{ $errors->first('name') }}</p>
+            <p class="alert alert-danger">{{ $errors->first('name') }}</p>
         @endif
         @if ($errors->has('password'))
-            <p>{{ $errors->first('password') }}</p>
+            <p class="alert alert-danger">{{ $errors->first('password') }}</p>
         @endif
-        <p>
+
+        <div class="form-group">
             <label for="sign-in_name" class="hide">Nom d'utilisateur</label>
-            <input type="text" id="name" name="name" placeholder="Nom d'utilisateur">
-        </p>
-        <p>
-            <label for="sign-in_password" class="hide">Mots de passe</label>
-            <input type="password" id="password" name="password" placeholder="Mots de passe">
-        </p>
+            <input type="text" id="name" name="name" placeholder="Nom d'utilisateur" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="sign-in_password" class="hide">Mot de passe</label>
+            <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control">
+        </div>
         <p class="form-submit">
-            <button type="submit" class="btn">Se connecter</button>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
         </p>
         <p class="form-help">
             <a href="{{ url('/password/reset') }}" title="Recover your account">
@@ -30,7 +37,7 @@
         </p>
         <p class="bottom-cta">
             <a href="{{ url('/register') }}" title="Register an account">
-                Pas de comte ? S'enregistrer
+                Pas de compte ? Créez-en un.
             </a>
         </p>
     </form>

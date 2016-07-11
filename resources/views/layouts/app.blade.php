@@ -9,48 +9,99 @@
 
     <link rel="stylesheet" href="{{ asset('/dist/css/main.css') }}">
 </head>
-<body>
-<header id="page-header">
-    <h1>Sign in for some Hackerspace magic</h1>
-</header>
+<body class="app">
+    <div class="container">
+        <header id="page-header">
+            <a href="{{ url('/') }}" title="Accueil">
+                <img src="/dist/svg/logo.svg" alt="Liege Hackerspace">
+            </a>
+        </header>
 
-<main id="content">
-    @yield('content')
-</main>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#main-navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ url('/') }}">LgHS</a>
+            </div>
 
-<footer id="page-footer">
-    <p>
-        MAIL: ping[at]lghs.be
-    </p>
-    <p>
-        IRC: #LgHS @ Freenode
-    </p>
-    <ul>
-        <li>
-            <a href="https://github.com/LgHS" title="Our Github repos">
-                <i class="fa fa-github"></i>
-                Github
-            </a>
-        </li>
-        <li>
-            <a href="https://www.facebook.com/liegehackerspace/" title="Our Facebook page">
-                <i class="fa fa-facebook"></i>
-                Facebook
-            </a>
-        </li>
-        <li>
-            <a href="https://twitter.com/LgHackerSpace" title="Our Twitter feed">
-                <i class="fa fa-twitter"></i>
-                Twitter
-            </a>
-        </li>
-        <li>
-            <a href="https://chat.lghs.be" title="Our Chat">
-                <i class="fa fa-comment"></i>
-                Chat
-            </a>
-        </li>
-    </ul>
-</footer>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Accueil</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="{{ url('/logout') }}" title="Déconnectez-vous">
+                            <i class="fa fa-sign-out"></i>
+                            Déconnexion
+                            ({{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}})
+                        </a>
+                    </li>
+                    {{--<li class="dropdown">--}}
+                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--}}
+                            {{--<i class="fa fa-user"></i>--}}
+                            {{--{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}--}}
+
+                            {{--<span class="caret"></span>--}}
+                        {{--</a>--}}
+                        {{--<ul class="dropdown-menu">--}}
+                            {{--<li>--}}
+                                {{--<a href="{{ url('/logout') }}">--}}
+                                    {{--<i class="fa fa-sign-out"></i>--}}
+                                    {{--Déconnexion--}}
+                                {{--</a>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</li>--}}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <main id="content">
+            <div class="container">
+                @yield('content')
+            </div>
+        </main>
+
+        <footer id="page-footer">
+            <p>
+                MAIL: ping[at]lghs.be
+            </p>
+            <p>
+                IRC: #LgHS @ Freenode
+            </p>
+            <ul>
+                <li>
+                    <a href="https://github.com/LgHS" title="Our Github repos">
+                        <i class="fa fa-github"></i>
+                        Github
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/liegehackerspace/" title="Our Facebook page">
+                        <i class="fa fa-facebook"></i>
+                        Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/LgHackerSpace" title="Our Twitter feed">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a>
+                </li>
+                <li>
+                    <a href="https://chat.lghs.be" title="Our Chat">
+                        <i class="fa fa-comment"></i>
+                        Chat
+                    </a>
+                </li>
+            </ul>
+        </footer>
+    </div>
 </body>
 </html>

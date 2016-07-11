@@ -1,23 +1,28 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-    <h2>
-        <a href="{{ url('/') }}" title="Acceuil"> <img src="/dist/svg/logo.svg" alt="Liege Hackerspace"></a>
-    </h2>
     <form id="sign-in-form" method="POST" action="{{ url('/valid/resend') }}">
         {{ csrf_field() }}
-            <p>Votre comte n'est pas encore valider, veyer cliquer sur le lien dans l'email</p>
-            <p>Si vous ne trouver pas l'email regarder dans le dossier SPAM</p>
+        <p>
+            <strong>
+                Votre compte n'est pas encore validé, veuillez cliquer sur le lien dans l'email
+                que vous avez reçu.
+            </strong>
+        </p>
+        <p>
+            Si vous ne voyez rien, vérifiez votre dossier spam. Sinon vous pouvez retenter l'envoi
+            d'un e-mail :
+        </p>
         @if ($errors->has('email'))
             <p>{{ $errors->first('email') }}</p>
         @endif
-        <p>
-            <label for="sign-in_name" class="hide">Email</label>
-            <input type="text" id="name" name="name" placeholder="Nom d'utilisateur">
-        </p>
+        <div class="form-group">
+            <label for="sign-in_name" class="hide">Nom d'utilisateur</label>
+            <input type="text" id="name" name="name" placeholder="Nom d'utilisateur" class="form-control">
+        </div>
 
         <p class="form-submit">
-            <button type="submit" class="btn">Renvoyer le lien de validation</button>
+            <button type="submit" class="btn btn-primary">Renvoyer le lien de validation</button>
         </p>
     </form>
 @endsection

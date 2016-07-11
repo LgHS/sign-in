@@ -1,0 +1,71 @@
+.auth-pages {
+  header#page-header {
+    margin-top: 30px;
+
+    h1 {
+      @include font-size(24px);
+      line-height: 1.4;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 200;
+    }
+  }
+
+  main#content {
+    margin: 30px auto 20px;
+    max-width: 400px;
+    width: 80%;
+
+    .panel {
+      h2 {
+        @include opacity(0.7);
+
+        width: 300px;
+        max-width: 80%;
+        margin: 0 auto 20px;
+
+        a {
+          display: block;
+        }
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
+
+  form {
+    .form-group {
+      margin-bottom: .2rem;
+    }
+
+    .form-submit {
+      margin-top: .5rem;
+
+      .btn {
+        width: 100%;
+      }
+    }
+
+    .form-help {
+      margin-top: .5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      @include font-size(12px);
+    }
+
+    .bottom-cta {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 1rem;
+      @include font-size(18px);
+    }
+  }
+
+  .message {
+    text-align: center;
+    padding: 50px 0;
+  }
+}

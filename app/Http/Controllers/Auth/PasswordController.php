@@ -20,6 +20,8 @@ class PasswordController extends Controller
 
     use ResetsPasswords;
 
+    protected $subject = "[LgHS] Votre lien de réinitialisation";
+
     /**
      * Create a new password controller instance.
      *

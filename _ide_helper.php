@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.2.39 on 2016-07-06.
+ * Generated for Laravel 5.2.39 on 2016-07-09.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -1630,17 +1630,6 @@ namespace {
         /**
          * Determine if the current user is authenticated.
          *
-         * @return \App\User 
-         * @throws \Illuminate\Auth\AuthenticationException
-         * @static 
-         */
-        public static function authenticate(){
-            return \Illuminate\Auth\SessionGuard::authenticate();
-        }
-        
-        /**
-         * Determine if the current user is authenticated.
-         *
          * @return bool 
          * @static 
          */
@@ -1656,6 +1645,17 @@ namespace {
          */
         public static function guest(){
             return \Illuminate\Auth\SessionGuard::guest();
+        }
+        
+        /**
+         * Determine if the current user is authenticated.
+         *
+         * @return \App\User 
+         * @throws \Illuminate\Auth\AuthenticationException
+         * @static 
+         */
+        public static function authenticate(){
+            return \Illuminate\Auth\SessionGuard::authenticate();
         }
         
     }
@@ -2514,47 +2514,6 @@ namespace {
          */
         public static function getQueuedCookies(){
             return \Illuminate\Cookie\CookieJar::getQueuedCookies();
-        }
-        
-    }
-
-
-    class Crypt extends \Illuminate\Support\Facades\Crypt{
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */
-        public static function supported($key, $cipher){
-            return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param string $value
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */
-        public static function encrypt($value){
-            return \Illuminate\Encryption\Encrypter::encrypt($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param string $payload
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */
-        public static function decrypt($payload){
-            return \Illuminate\Encryption\Encrypter::decrypt($payload);
         }
         
     }
@@ -6646,125 +6605,6 @@ namespace {
          */
         public static function isDownForMaintenance(){
             return \Illuminate\Queue\QueueManager::isDownForMaintenance();
-        }
-        
-        /**
-         * Push a new job onto the queue.
-         *
-         * @param string $job
-         * @param mixed $data
-         * @param string $queue
-         * @return mixed 
-         * @throws \Exception|\Throwable
-         * @static 
-         */
-        public static function push($job, $data = '', $queue = null){
-            return \Illuminate\Queue\SyncQueue::push($job, $data, $queue);
-        }
-        
-        /**
-         * Push a raw payload onto the queue.
-         *
-         * @param string $payload
-         * @param string $queue
-         * @param array $options
-         * @return mixed 
-         * @static 
-         */
-        public static function pushRaw($payload, $queue = null, $options = array()){
-            return \Illuminate\Queue\SyncQueue::pushRaw($payload, $queue, $options);
-        }
-        
-        /**
-         * Push a new job onto the queue after a delay.
-         *
-         * @param \DateTime|int $delay
-         * @param string $job
-         * @param mixed $data
-         * @param string $queue
-         * @return mixed 
-         * @static 
-         */
-        public static function later($delay, $job, $data = '', $queue = null){
-            return \Illuminate\Queue\SyncQueue::later($delay, $job, $data, $queue);
-        }
-        
-        /**
-         * Pop the next job off of the queue.
-         *
-         * @param string $queue
-         * @return \Illuminate\Contracts\Queue\Job|null 
-         * @static 
-         */
-        public static function pop($queue = null){
-            return \Illuminate\Queue\SyncQueue::pop($queue);
-        }
-        
-        /**
-         * Push a new job onto the queue.
-         *
-         * @param string $queue
-         * @param string $job
-         * @param mixed $data
-         * @return mixed 
-         * @static 
-         */
-        public static function pushOn($queue, $job, $data = ''){
-            //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::pushOn($queue, $job, $data);
-        }
-        
-        /**
-         * Push a new job onto the queue after a delay.
-         *
-         * @param string $queue
-         * @param \DateTime|int $delay
-         * @param string $job
-         * @param mixed $data
-         * @return mixed 
-         * @static 
-         */
-        public static function laterOn($queue, $delay, $job, $data = ''){
-            //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::laterOn($queue, $delay, $job, $data);
-        }
-        
-        /**
-         * Push an array of jobs onto the queue.
-         *
-         * @param array $jobs
-         * @param mixed $data
-         * @param string $queue
-         * @return mixed 
-         * @static 
-         */
-        public static function bulk($jobs, $data = '', $queue = null){
-            //Method inherited from \Illuminate\Queue\Queue            
-            return \Illuminate\Queue\SyncQueue::bulk($jobs, $data, $queue);
-        }
-        
-        /**
-         * Set the IoC container instance.
-         *
-         * @param \Illuminate\Container\Container $container
-         * @return void 
-         * @static 
-         */
-        public static function setContainer($container){
-            //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\SyncQueue::setContainer($container);
-        }
-        
-        /**
-         * Set the encrypter instance.
-         *
-         * @param \Illuminate\Contracts\Encryption\Encrypter $crypt
-         * @return void 
-         * @static 
-         */
-        public static function setEncrypter($crypt){
-            //Method inherited from \Illuminate\Queue\Queue            
-            \Illuminate\Queue\SyncQueue::setEncrypter($crypt);
         }
         
     }
@@ -11966,6 +11806,159 @@ namespace {
 
 
     class Uuid extends \Webpatser\Uuid\Uuid{
+        
+    }
+
+
+    class Google2FA extends \PragmaRX\Google2FA\Vendor\Laravel\Facade{
+        
+        /**
+         * Generate a digit secret key in base32 format.
+         *
+         * @param int $length
+         * @return string 
+         * @static 
+         */
+        public static function generateSecretKey($length = 16, $prefix = ''){
+            return \PragmaRX\Google2FA\Google2FA::generateSecretKey($length, $prefix);
+        }
+        
+        /**
+         * Returns the current Unix Timestamp devided by the KEY_REGENERATION
+         * period.
+         *
+         * @return integer 
+         * @static 
+         */
+        public static function getTimestamp(){
+            return \PragmaRX\Google2FA\Google2FA::getTimestamp();
+        }
+        
+        /**
+         * Decodes a base32 string into a binary string.
+         *
+         * @param string $b32
+         * @throws InvalidCharactersException
+         * @return integer 
+         * @static 
+         */
+        public static function base32Decode($b32){
+            return \PragmaRX\Google2FA\Google2FA::base32Decode($b32);
+        }
+        
+        /**
+         * Takes the secret key and the timestamp and returns the one time
+         * password.
+         *
+         * @param string $key - Secret key in binary form.
+         * @param integer $counter - Timestamp as returned by getTimestamp.
+         * @throws SecretKeyTooShortException
+         * @return string 
+         * @static 
+         */
+        public static function oathHotp($key, $counter){
+            return \PragmaRX\Google2FA\Google2FA::oathHotp($key, $counter);
+        }
+        
+        /**
+         * Get the current one time password for a key.
+         *
+         * @param string $initalizationKey
+         * @return string 
+         * @throws InvalidCharactersException
+         * @throws SecretKeyTooShortException
+         * @static 
+         */
+        public static function getCurrentOtp($initalizationKey){
+            return \PragmaRX\Google2FA\Google2FA::getCurrentOtp($initalizationKey);
+        }
+        
+        /**
+         * Verifies a user inputted key against the current timestamp. Checks $window
+         * keys either side of the timestamp.
+         *
+         * @param string $b32seed
+         * @param string $key - User specified key
+         * @param integer $window
+         * @param boolean $useTimeStamp
+         * @return boolean 
+         * @static 
+         */
+        public static function verifyKey($b32seed, $key, $window = 4, $useTimeStamp = true){
+            return \PragmaRX\Google2FA\Google2FA::verifyKey($b32seed, $key, $window, $useTimeStamp);
+        }
+        
+        /**
+         * Extracts the OTP from the SHA1 hash.
+         *
+         * @param string $hash
+         * @return integer 
+         * @static 
+         */
+        public static function oathTruncate($hash){
+            return \PragmaRX\Google2FA\Google2FA::oathTruncate($hash);
+        }
+        
+        /**
+         * Remove invalid chars from a base 32 string.
+         *
+         * @param $string
+         * @return mixed 
+         * @static 
+         */
+        public static function removeInvalidChars($string){
+            return \PragmaRX\Google2FA\Google2FA::removeInvalidChars($string);
+        }
+        
+        /**
+         * Creates a Google QR code url.
+         *
+         * @param $company
+         * @param $holder
+         * @param $secret
+         * @return string 
+         * @static 
+         */
+        public static function getQRCodeGoogleUrl($company, $holder, $secret){
+            return \PragmaRX\Google2FA\Google2FA::getQRCodeGoogleUrl($company, $holder, $secret);
+        }
+        
+        /**
+         * Generates a QR code data url to display inline.
+         *
+         * @param $company
+         * @param $holder
+         * @param $secret
+         * @return string 
+         * @static 
+         */
+        public static function getQRCodeInline($company, $holder, $secret, $size = 100){
+            return \PragmaRX\Google2FA\Google2FA::getQRCodeInline($company, $holder, $secret, $size);
+        }
+        
+        /**
+         * Creates a QR code url.
+         *
+         * @param $company
+         * @param $holder
+         * @param $secret
+         * @return string 
+         * @static 
+         */
+        public static function getQRCodeUrl($company, $holder, $secret){
+            return \PragmaRX\Google2FA\Google2FA::getQRCodeUrl($company, $holder, $secret);
+        }
+        
+        /**
+         * Encode a string to Base32.
+         *
+         * @param $string
+         * @return mixed 
+         * @static 
+         */
+        public static function toBase32($string){
+            return \PragmaRX\Google2FA\Google2FA::toBase32($string);
+        }
         
     }
 

@@ -1,5 +1,6 @@
-Bienveu sur LgHS
-Pour finir votre inscription merci de cliquer sur le lien ci-dessous.
+Bienvenue sur LgHS !
+
+Cliquez sur le lien ci-dessous pour compléter votre inscription.
 
 
 {{ url('/valid/' . $token) }}
