@@ -6,7 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class HomeController extends Controller
+class AdminController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,20 +18,13 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         return view('app.home');
     }
-
-    public function profils()
-    {
-        return view('app.home');
-    }
-
-    public function apps()
-    {
-        return view('app.home');
-    }
-
 }

@@ -12,7 +12,7 @@
 */
 
 Route::auth();
-Route::get('/', 'HomeController@index');
+
 Route::get('/valid/{token}', 'ValidController@index')->where('token', '[0-9A-Za-z]{60}');
 Route::get('/api/me', 'ApiController@me');
 
@@ -52,3 +52,11 @@ Route::post('oauth/authorize', ['as' => 'oauth.authorize.post', 'middleware' => 
 Route::post('oauth/access_token', function() {
     return Response::json(Authorizer::issueAccessToken());
 });
+
+Route::get('/', 'HomeController@index')->name('app.home');
+Route::get('/profils', 'HomeController@profils')->name('app.profils');
+Route::get('/aplications', 'HomeController@apps')->name('app.apps');
+Route::get('/totp', 'TotpController@index')->name('totp.home');
+Route::get('/admin', 'AdminController@index')->name('admin.home');
+Route::get('/dev', 'DevController@index')->name('dev.home');
+

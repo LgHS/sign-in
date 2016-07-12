@@ -163,6 +163,7 @@ return [
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
+        Watson\Active\ActiveServiceProvider::class,
 
     ],
 
@@ -214,6 +215,7 @@ return [
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
+        'Active' => Watson\Active\Facades\Active::class,
 
     ],
 
