@@ -13,7 +13,6 @@
 
 Route::auth();
 
-Route::get('/valid/{token}', 'ValidController@index')->where('token', '[0-9A-Za-z]{60}');
 Route::get('/api/me', 'ApiController@me');
 
 Route::get('oauth/authorize', ['as' => 'oauth.authorize.get', 'middleware' => ['check-authorization-params', 'auth'], function() {
@@ -59,4 +58,5 @@ Route::get('/aplications', 'HomeController@apps')->name('app.apps');
 Route::get('/totp', 'TotpController@index')->name('totp.home');
 Route::get('/admin', 'AdminController@index')->name('admin.home');
 Route::get('/dev', 'DevController@index')->name('dev.home');
+Route::get('/valid/{token}', 'ValidController@index')->where('token', '[0-9A-Za-z]{60}')->name('valid');
 
