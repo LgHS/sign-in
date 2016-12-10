@@ -6,7 +6,7 @@
         @hasSection('page_title')
             @yield('page_title') | Liege Hackerspace
         @else
-            Sign in ! | Liege Hackerspace
+            Bienvenue | Liege Hackerspace
         @endif
     </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -39,11 +39,11 @@
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{{ active('app.home') }}"><a href="{{ route('app.home') }}" >Accueil</a></li>
-                    <li class="{{ active('app.profils') }}"><a href="{{ route('app.profils') }}" >Profil</a></li>
-                    <li class="{{ active('totp.home') }}"><a href="{{ route('totp.home') }}" >Double auth</a></li>
-                    <li class="{{ active('app.apps') }}"><a href="{{ route('app.apps') }}" >Application</a></li>
-                    <li class="{{ active('dev.home') }}"><a href="{{ route('dev.home') }}" >Dev</a></li>
-                    <li class="{{ active('admin.home') }}"><a href="{{ route('admin.home') }}" >Admin</a></li>
+                    {{--<li class="{{ active('app.profils') }}"><a href="{{ route('app.profils') }}" >Profil</a></li>--}}
+                    {{--<li class="{{ active('totp.home') }}"><a href="{{ route('totp.home') }}" >Double auth</a></li>--}}
+                    {{--<li class="{{ active('app.apps') }}"><a href="{{ route('app.apps') }}" >Application</a></li>--}}
+                    {{--<li class="{{ active('dev.home') }}"><a href="{{ route('dev.home') }}" >Dev</a></li>--}}
+                    {{--<li class="{{ active('admin.home') }}"><a href="{{ route('admin.home') }}" >Admin</a></li>--}}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>

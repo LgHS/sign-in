@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-07-12.
+    * Generated on 2016-12-10.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -56,7 +56,7 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
-            'active' instanceof \HieuLe\Active\Active,
+            'active' instanceof \Watson\Active\Active,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -186,7 +186,7 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
-            'active' instanceof \HieuLe\Active\Active,
+            'active' instanceof \Watson\Active\Active,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -316,7 +316,7 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
-            'active' instanceof \HieuLe\Active\Active,
+            'active' instanceof \Watson\Active\Active,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -446,7 +446,7 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
-            'active' instanceof \HieuLe\Active\Active,
+            'active' instanceof \Watson\Active\Active,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,

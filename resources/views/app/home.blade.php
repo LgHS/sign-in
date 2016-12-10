@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>Hello world {{ Request::route()->getName() }}</h3>
+    <h3>Hello world !</h3>
 
     <p>
         Il n'y a encore rien à faire ici. En attendant, vous pouvez utiliser votre compte LgHS
