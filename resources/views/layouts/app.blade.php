@@ -39,11 +39,14 @@
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{{ active('app.home') }}"><a href="{{ route('app.home') }}" >Accueil</a></li>
-                    {{--<li class="{{ active('app.profils') }}"><a href="{{ route('app.profils') }}" >Profil</a></li>--}}
-                    {{--<li class="{{ active('totp.home') }}"><a href="{{ route('totp.home') }}" >Double auth</a></li>--}}
-                    {{--<li class="{{ active('app.apps') }}"><a href="{{ route('app.apps') }}" >Application</a></li>--}}
-                    {{--<li class="{{ active('dev.home') }}"><a href="{{ route('dev.home') }}" >Dev</a></li>--}}
-                    {{--<li class="{{ active('admin.home') }}"><a href="{{ route('admin.home') }}" >Admin</a></li>--}}
+                    @permission('manage-members')
+                        <li class="{{ active('members.index') }}">
+                            <a href="/members">Membres</a>
+                        </li>
+                        <li class="{{ active('members.add') }}">
+                            <a href="/members/add">Ajouter un membre</a>
+                        </li>
+                    @endpermission
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -53,22 +56,6 @@
                             ({{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}})
                         </a>
                     </li>
-                    {{--<li class="dropdown">--}}
-                        {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">--}}
-                            {{--<i class="fa fa-user"></i>--}}
-                            {{--{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}--}}
-
-                            {{--<span class="caret"></span>--}}
-                        {{--</a>--}}
-                        {{--<ul class="dropdown-menu">--}}
-                            {{--<li>--}}
-                                {{--<a href="{{ url('/logout') }}">--}}
-                                    {{--<i class="fa fa-sign-out"></i>--}}
-                                    {{--Déconnexion--}}
-                                {{--</a>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</li>--}}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

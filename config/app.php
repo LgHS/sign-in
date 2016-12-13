@@ -164,6 +164,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Watson\Active\ActiveServiceProvider::class,
+        Zizaco\Entrust\EntrustServiceProvider::class,
 
     ],
 
@@ -216,7 +217,7 @@ return [
         'Uuid' => Webpatser\Uuid\Uuid::class,
         'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
         'Active' => Watson\Active\Facades\Active::class,
-
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];

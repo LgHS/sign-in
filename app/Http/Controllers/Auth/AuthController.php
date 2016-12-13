@@ -34,6 +34,9 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+
+    protected $username = 'username';
+
     /**
      * Create a new authentication controller instance.
      *
@@ -53,7 +56,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255|unique:users',
+            'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ]);
@@ -70,14 +73,14 @@ class AuthController extends Controller
         $token = str_random(60);
         $user =  User::create([
             'uuid' => Uuid::generate(),
-            'name' => $data['name'],
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'token_valid' => $token
         ]);
 
         $data = [
-            'name' => $user->name,
+            'username' => $user->name,
             'token' => $token
         ];
 
@@ -87,16 +90,6 @@ class AuthController extends Controller
         });
 
         return $user;
-    }
-
-    /**
-     * Get the login username to be used by the controller.
-     *
-     * @return string
-     */
-    public function loginUsername()
-    {
-        return property_exists($this, 'username') ? $this->username : 'name';
     }
 
 
@@ -111,6 +104,10 @@ class AuthController extends Controller
 
     }
 
+    public function showRegistrationForm() {
+        return redirect('login');
+    }
+
     /**
      * Handle a registration request for the application.
      *
@@ -119,17 +116,17 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-            return redirect($this->redirectPath());
-        }
-
-        $this->create($request->all());
-        
-        return view('auth.succses');
+//        $validator = $this->validator($request->all());
+//
+//        if ($validator->fails()) {
+//            $this->throwValidationException(
+//                $request, $validator
+//            );
+//            return redirect($this->redirectPath());
+//        }
+//
+//        $this->create($request->all());
+//
+//        return view('auth.succses');
     }
 }

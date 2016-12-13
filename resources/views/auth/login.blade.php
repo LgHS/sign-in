@@ -6,7 +6,7 @@
 
 @section('title')
     Connectez-vous pour administrer votre compte LgHS. <br>
-    <small>Pas encore de compte ? <a href="{{ url('/register') }}" title="Créez votre compte">Créez en un</a>.</small>
+    <small>Membre mais pas encore de compte ? <a href="mailto:admin@lghs.be" title="Contactez-nous">Contactez-nous</a>.</small>
 @endsection
 
 @section('content')
@@ -20,24 +20,24 @@
         @endif
 
         <div class="form-group">
-            <label for="sign-in_name" class="hide">Nom d'utilisateur</label>
-            <input type="text" id="name" name="name" placeholder="Nom d'utilisateur" class="form-control">
+            <label for="username" class="hide">Nom d'utilisateur</label>
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" class="form-control">
         </div>
         <div class="form-group">
             <label for="sign-in_password" class="hide">Mot de passe</label>
             <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control">
         </div>
         <p class="form-submit">
-            <button type="submit" class="btn btn-primary">Se connecter</button>
+            <button type="submit" class="btn btn-primary">Connectez-vous</button>
         </p>
         <p class="form-help">
-            <a href="{{ url('/password/reset') }}" title="Recover your account">
+            <a href="{{ url('/password/reset') }}" title="Réinitialiser votre mot de passe">
                 Mots de passe perdu ?
             </a>
         </p>
         <p class="bottom-cta">
-            <a href="{{ url('/register') }}" title="Register an account">
-                Pas de compte ? Créez-en un.
+            <a href="mailto:admin@lghs.be" title="Contactez-nous">
+                Membre mais pas de compte ? Contactez-nous.
             </a>
         </p>
     </form>

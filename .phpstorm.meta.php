@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-12-10.
+    * Generated on 2016-12-13.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -57,6 +57,9 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
             'active' instanceof \Watson\Active\Active,
+            'entrust' instanceof \Zizaco\Entrust\Entrust,
+            'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -136,7 +139,6 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'PragmaRX\Google2FA\Contracts\Google2FA' instanceof \PragmaRX\Google2FA\Google2FA,
         ],
         \Illuminate\Contracts\Container\Container::make('') => [
@@ -187,6 +189,9 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
             'active' instanceof \Watson\Active\Active,
+            'entrust' instanceof \Zizaco\Entrust\Entrust,
+            'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -266,7 +271,6 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'PragmaRX\Google2FA\Contracts\Google2FA' instanceof \PragmaRX\Google2FA\Google2FA,
         ],
         \App::make('') => [
@@ -317,6 +321,9 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
             'active' instanceof \Watson\Active\Active,
+            'entrust' instanceof \Zizaco\Entrust\Entrust,
+            'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -396,7 +403,6 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'PragmaRX\Google2FA\Contracts\Google2FA' instanceof \PragmaRX\Google2FA\Google2FA,
         ],
         \app('') => [
@@ -447,6 +453,9 @@ namespace PHPSTORM_META {
             'LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthClientOwnerMiddleware,
             'LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware' instanceof \LucaDegasperi\OAuth2Server\Middleware\OAuthUserOwnerMiddleware,
             'active' instanceof \Watson\Active\Active,
+            'entrust' instanceof \Zizaco\Entrust\Entrust,
+            'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'Illuminate\Broadcasting\BroadcastManager' instanceof \Illuminate\Broadcasting\BroadcastManager,
             'Illuminate\Bus\Dispatcher' instanceof \Illuminate\Bus\Dispatcher,
             'cache' instanceof \Illuminate\Cache\CacheManager,
@@ -526,7 +535,6 @@ namespace PHPSTORM_META {
             'command.ide-helper.generate' instanceof \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand,
             'command.ide-helper.models' instanceof \Barryvdh\LaravelIdeHelper\Console\ModelsCommand,
             'command.ide-helper.meta' instanceof \Barryvdh\LaravelIdeHelper\Console\MetaCommand,
-            'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'PragmaRX\Google2FA\Contracts\Google2FA' instanceof \PragmaRX\Google2FA\Google2FA,
         ],
     ];

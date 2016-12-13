@@ -14,7 +14,8 @@
         "overtrue/laravel-lang": "~3.0",
         "barryvdh/laravel-ide-helper": "^2.2",
         "pragmarx/google2fa": "^0.7.1",
-        "watson/active": "^2.0"
+        "watson/active": "^2.0",
+        "zizaco/entrust": "5.2.x-dev"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
