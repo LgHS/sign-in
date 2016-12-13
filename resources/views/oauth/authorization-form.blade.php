@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    L'application "{{$client->getName()}}" aimerai utiliser votre identification pour vous connecter sur sa platform.
+    L'application "{{$client->getName()}}" aimerait utiliser votre identification pour vous connecter sur sa platforme.
 @endsection
 
 @section('content')
