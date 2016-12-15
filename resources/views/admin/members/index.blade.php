@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('page_title')
+    Liste des membres
+@endsection
+
 @section('content')
     <h3>Liste des membres</h3>
 
@@ -37,9 +41,25 @@
                         {{$member->firstName}} {{$member->lastName}}
                     </td>
                     <td>
-                        <a href="/members/{{$member->id}}/edit">
+                        <a href="/members/{{$member->id}}/edit" class="btn btn-sm btn-primary">
                             <i class="fa fa-edit"></i>
                         </a>
+
+                        <form action="/members/{{$member->id}}/sendResetMail" method="post">
+                            {{csrf_field()}}
+
+                            <button type="submit" class="btn btn-sm">
+                                <i class="fa fa-mail-forward"></i>
+                            </button>
+                        </form>
+
+                        <form action="/members/{{$member->id}}" class="display: inline;">
+                            {{method_field('DELETE')}}
+                            {{csrf_field()}}
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

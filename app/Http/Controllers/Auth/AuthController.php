@@ -33,6 +33,7 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $redirectPath = '/';
 
 
     protected $username = 'username';
@@ -53,8 +54,7 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         return Validator::make($data, [
             'username' => 'required|max:255|unique:users',
             'email' => 'required|email|max:255|unique:users',
@@ -70,38 +70,37 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $token = str_random(60);
-        $user =  User::create([
-            'uuid' => Uuid::generate(),
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'token_valid' => $token
-        ]);
-
-        $data = [
-            'username' => $user->name,
-            'token' => $token
-        ];
-
-        Mail::send(['auth.valid.mail-html','auth.valid.mail-txt'], $data, function ($message) use ($user) {
-            $message->to($user->email);
-            $message->subject("[LgHS] Complétez votre inscription");
-        });
-
-        return $user;
+//        $token = str_random(60);
+//        $user =  User::create([
+//            'uuid' => Uuid::generate(),
+//            'username' => $data['username'],
+//            'email' => $data['email'],
+//            'password' => bcrypt($data['password']),
+//            'token_valid' => $token
+//        ]);
+//
+//        $data = [
+//            'username' => $user->name,
+//            'token' => $token
+//        ];
+//
+//        Mail::send(['auth.valid.mail-html','auth.valid.mail-txt'], $data, function ($message) use ($user) {
+//            $message->to($user->email);
+//            $message->subject("[LgHS] Complétez votre inscription");
+//        });
+//
+//        return $user;
     }
 
 
     public function authenticated(Request $request, User $user)
     {
-        if ($user->is_valid) {
+//        if ($user->is_active) {
             return redirect()->intended($this->redirectPath());
-        } else {
-            $this->logout();
-            return view('auth.valid.resend');
-        }
-
+//        } else {
+//            $this->logout();
+//            return view('auth.valid.resend');
+//        }
     }
 
     public function showRegistrationForm() {

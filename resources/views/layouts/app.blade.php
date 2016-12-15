@@ -16,6 +16,12 @@
     <link rel="stylesheet" href="{{ asset('/dist/css/main.css') }}">
 </head>
 <body class="app">
+    @if (session('message'))
+        <div class="alert alert-{{session('status') ? session('status') : 'default'}}">
+            {{ session('message') }}
+        </div>
+    @endif
+
     <div class="container">
         <header id="page-header">
             <a href="{{ url('/') }}" title="Accueil">

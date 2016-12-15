@@ -165,7 +165,8 @@ return [
         PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Watson\Active\ActiveServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-
+        Collective\Html\HtmlServiceProvider::class,
+        Watson\BootstrapForm\BootstrapFormServiceProvider::class,
     ],
 
     /*
@@ -218,6 +219,9 @@ return [
         'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
         'Active' => Watson\Active\Facades\Active::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
     ],
 
 ];
