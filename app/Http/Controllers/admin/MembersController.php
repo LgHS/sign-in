@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Validator;
 use Webpatser\Uuid\Uuid;
 
 class MembersController extends Controller
@@ -38,7 +39,8 @@ class MembersController extends Controller
 			'email' => 'required|email|max:255|unique:users',
 			'lastName' => 'required',
 			'firstName' => 'required',
-			'date_of_birth' => 'required',
+			'date_of_birth' => 'required|date_format:d/m/Y',
+			'member_since' => 'required|date_format:d/m/Y',
 			'gender' => 'required',
 			'address' => 'required',
 			'postcode' => 'required',
@@ -78,12 +80,13 @@ class MembersController extends Controller
 	}
 
 	public function update(Request $request, User $member) {
-		$this->validate($request, [
+		$validator = Validator::make($request->all(), [
 			'username' => 'required|max:255|unique:users,username,' . $member->id,
 			'email' => 'required|email|max:255|unique:users,email,' . $member->id,
 			'lastName' => 'required',
 			'firstName' => 'required',
 			'date_of_birth' => 'required',
+			'member_since' => 'required|date_format:d/m/Y',
 			'gender' => 'required',
 			'address' => 'required',
 			'postcode' => 'required',
@@ -92,6 +95,10 @@ class MembersController extends Controller
 			'phone' => 'required',
 			'roles' => 'required',
 		]);
+
+		if($validator->fails()) {
+			return back()->withErrors($validator)->withInput();
+		}
 
 		$request->merge(array(
 			'date_of_birth' => Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'))->toDateTimeString(),

@@ -1,17 +1,46 @@
 @extends('layouts.app')
 
 @section('page_title')
-    Authorisation pour
+    Mon profil
 @endsection
 
 @section('content')
-    <h3>Hello world {{ Route::currentRouteName() }}/h3>
+    <h3>Mon compte</h3>
 
-    <p>
-        Il n'y a encore rien à faire ici. En attendant, vous pouvez utiliser votre compte LgHS
-        pour vous connecter à notre <a href="http://wiki.lghs.be">wiki</a> et au <a href="https://chat.lghs.be">chat</a>.
-    </p>
-    <p>
-        Vous aurez bientôt la possibilité de gérer votre compte à partir de cette interface.
-    </p>
+    {!! BootForm::open(['model' => $member ?: null, 'update' => 'profile.update']) !!}
+
+    {!! BootForm::text('username', 'Nom d\'utilisateur', null) !!}
+    {!! BootForm::email('email', 'Adresse e-mail', null) !!}
+
+    {!! BootForm::password('old_password', 'Mot de passe actuel', array()) !!}
+    {!! BootForm::password('new_password', 'Nouveau mot de passe', array(
+    'help_text' => trans('validation.secure'))) !!}
+
+    <hr>
+
+    <h3>Mon profil</h3>
+    <div class="row">
+        <div class="col-sm-6">
+            {!! BootForm::text('firstName', 'Prénom') !!}
+        </div>
+        <div class="col-sm-6">
+            {!! BootForm::text('lastName', 'Nom') !!}
+        </div>
+    </div>
+    {!! BootForm::text('date_of_birth', 'Date de naissance', null, ['help_text' => 'dd/mm/YYYY']) !!}
+    {!! BootForm::text('address', 'Adresse') !!}
+    <div class="row">
+        <div class="col-sm-4">
+            {!! BootForm::text('postcode', 'Code postal') !!}
+        </div>
+        <div class="col-sm-8">
+            {!! BootForm::text('city', 'Ville') !!}
+        </div>
+    </div>
+    {!! BootForm::text('country', 'Pays', $member ? null : 'Belgium') !!}
+    {!! BootForm::text('phone', 'Numéro de téléphone') !!}
+
+    {!! BootForm::submit('Modifier mon profil') !!}
+
+    {!! BootForm::close() !!}
 @endsection

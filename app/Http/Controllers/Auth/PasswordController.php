@@ -40,4 +40,12 @@ class PasswordController extends Controller
             'email' => $request->get('email')
         ]);
     }
+
+    protected function getResetValidationRules() {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed|min:8|secure',
+        ];
+    }
 }

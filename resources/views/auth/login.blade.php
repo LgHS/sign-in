@@ -12,8 +12,8 @@
 @section('content')
     <form id="sign-in-form" method="POST" action="{{ url('/login') }}">
         {{ csrf_field() }}
-        @if ($errors->has('name'))
-            <p class="alert alert-danger">{{ $errors->first('name') }}</p>
+        @if ($errors->has('username'))
+            <p class="alert alert-danger">{{ $errors->first('username') }}</p>
         @endif
         @if ($errors->has('password'))
             <p class="alert alert-danger">{{ $errors->first('password') }}</p>
@@ -21,7 +21,7 @@
 
         <div class="form-group">
             <label for="username" class="hide">Nom d'utilisateur</label>
-            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" class="form-control">
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" value="{{old('username')}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="sign-in_password" class="hide">Mot de passe</label>

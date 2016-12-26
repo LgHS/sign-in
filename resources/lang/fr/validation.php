@@ -13,6 +13,11 @@ return [
     |
     */
 
+    // custom
+    'secure'               => 'Le mot de passe doit être de 8 caractères minimum et contenir une '.
+                              'lettre (a-z A-Z), un chiffre (0-9) et un caractère spécial.',
+
+    // App
     'accepted'             => 'Le champ :attribute doit être accepté.',
     'active_url'           => "Le champ :attribute n'est pas une URL valide.",
     'after'                => 'Le champ :attribute doit être une date postérieure au :date.',
@@ -140,6 +145,7 @@ return [
         'time'                  => 'Heure',
         'available'             => 'Disponible',
         'size'                  => 'Taille',
+        'date_of_birth'         => 'Date de naissance',
     ],
 
 ];

@@ -45,6 +45,13 @@
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{{ active('app.home') }}"><a href="{{ route('app.home') }}" >Accueil</a></li>
+                    @permission('manage-account')
+                    <li class="{{ active('profile.index') }}">
+                        <a href="/profile">
+                            Mon profil
+                        </a>
+                    </li>
+                    @endpermission
                     @permission('manage-members')
                         <li class="{{ active('members.index') }}">
                             <a href="/members">Membres</a>

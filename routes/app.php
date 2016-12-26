@@ -59,7 +59,7 @@ Route::post('oauth/access_token', function() {
 Route::get('/', 'HomeController@index')->name('app.home');
 //Route::get('/valid/{token}', 'ValidController@index')->where('token', '[0-9A-Za-z]{60}')->name('valid');
 Route::get('/password/init/{token}', 'Auth\PasswordController@initPassword')->name('password-init');
-//Route::get('/profils', 'HomeController@profils')->name('app.profils');
+Route::get('/profile', 'Admin\MembersController@edit')->name('members.edit');
 //Route::get('/aplications', 'HomeController@apps')->name('app.apps');
 //Route::get('/totp', 'TotpController@index')->name('totp.home');
 //Route::get('/admin', 'AdminController@index')->name('admin.home');
@@ -74,4 +74,9 @@ Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members
     Route::put('{member}', 'Admin\MembersController@update')->name('members.update');
     Route::delete('{member}', 'Admin\MembersController@delete')->name('members.delete');
     Route::post('{member}/sendResetMail', 'Admin\MembersController@resendMail');
+});
+
+Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account']], function() {
+   Route::get('', 'ProfileController@index')->name('profile.index');
+    Route::put('', 'ProfileController@update')->name('profile.update');
 });
