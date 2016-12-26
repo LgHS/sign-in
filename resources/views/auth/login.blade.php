@@ -27,6 +27,12 @@
             <label for="sign-in_password" class="hide">Mot de passe</label>
             <input type="password" id="password" name="password" placeholder="Mot de passe" class="form-control">
         </div>
+        <div class="checkbox">
+            <label for="remember">
+                <input type="checkbox" id="remember" name="remember" checked>
+                Rester connecté
+            </label>
+        </div>
         <p class="form-submit">
             <button type="submit" class="btn btn-primary">Connectez-vous</button>
         </p>
