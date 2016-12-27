@@ -31,7 +31,7 @@ Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account
 
 //Route::get('/oauthtest', function () {
 //    $query = http_build_query([
-//        'client_id' => 4,
+//        'client_id' => 1,
 //        'redirect_uri' => 'http://localhost/callback',
 //        'response_type' => 'code',
 //        'scope' => '',

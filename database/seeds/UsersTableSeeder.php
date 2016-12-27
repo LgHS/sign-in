@@ -15,10 +15,14 @@ class UsersTableSeeder extends Seeder
     {
         $adminRole = Role::where('name', 'admin')->first();
 
+        if(!env('ADMIN_USERNAME') || !env('ADMIN_EMAIL') || !env('ADMIN_PASSWORD')) {
+            throw new Exception('Please define ADMIN_USERNAME, ADMIN_EMAIL and ADMIN_PASSWORD in your .env file');
+        }
+
         $user = new User();
-        $user->username = 'admin';
-        $user->email = 'admin@lghs.be';
-        $user->password = Hash::make('admin');
+        $user->username = env('ADMIN_USERNAME');
+        $user->email = env('ADMIN_EMAIL');
+        $user->password = Hash::make(env('ADMIN_PASSWORD'));
         $user->is_active = true;
         $user->uuid = Uuid::generate();
         $user->save();
