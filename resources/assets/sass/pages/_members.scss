@@ -1,0 +1,19 @@
+.members-index {
+  .actions {
+    width: 150px;
+
+    a, form {
+      display: inline;
+    }
+
+    .btn {
+      padding: 5px 10px;
+      display: inline-block;
+      margin-left: 3px;
+    }
+  }
+
+  td.actions {
+    text-align: right;
+  }
+}

@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ asset('/dist/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body class="auth-pages">
     <header id="page-header">
@@ -25,7 +25,7 @@
 
         <div class="panel panel-default">
             <h2>
-                <a href="{{ url('/') }}" title="Acceuil"> <img src="/dist/svg/logo.svg" alt="Liege Hackerspace"></a>
+                <a href="{{ url('/') }}" title="Accueil"> <img src=" asset('svg/logo.svg') " alt="Liege Hackerspace"></a>
             </h2>
             <div class="panel-body">
                 @yield('content')

@@ -13,9 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{{ asset('/dist/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
-<body class="app">
+<body class="app {{str_replace('.', '-', Route::currentRouteName())}}">
     @if (session('message'))
         <div class="alert alert-{{session('status') ? session('status') : 'default'}}">
             {{ session('message') }}
@@ -25,7 +25,7 @@
     <div class="container">
         <header id="page-header">
             <a href="{{ url('/') }}" title="Accueil">
-                <img src="/dist/svg/logo.svg" alt="Liege Hackerspace">
+                <img src="{{ asset('svg/logo.svg') }}" alt="Liege Hackerspace">
             </a>
         </header>
 

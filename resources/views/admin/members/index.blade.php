@@ -22,7 +22,7 @@
                 <th>
                     Nom
                 </th>
-                <th>Actions</th>
+                <th class="actions">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@
                     <td>
                         {{$member->firstName}} {{$member->lastName}}
                     </td>
-                    <td>
+                    <td class="actions">
                         <a href="/members/{{$member->id}}/edit" class="btn btn-sm btn-primary">
                             <i class="fa fa-edit"></i>
                         </a>
