@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
@@ -15,6 +16,7 @@ class User extends Authenticatable
     use EntrustUserTrait; // add this trait to your user model
     use FormAccessible;
     use Notifiable;
+    use HasApiTokens;
 
     protected $fillable = [
         'date_of_birth', 'lastName',

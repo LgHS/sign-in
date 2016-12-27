@@ -45,20 +45,27 @@
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="{{ active('app.home') }}"><a href="{{ route('app.home') }}" >Accueil</a></li>
-                    @permission('manage-account')
+                    @permission(('manage-account'))
                     <li class="{{ active('profile.index') }}">
                         <a href="/profile">
                             Mon profil
                         </a>
                     </li>
                     @endpermission
-                    @permission('manage-members')
+
+                    @permission(('manage-members'))
                         <li class="{{ active('members.index') }}">
                             <a href="/members">Membres</a>
                         </li>
                         <li class="{{ active('members.add') }}">
                             <a href="/members/add">Ajouter un membre</a>
                         </li>
+                    @endpermission
+
+                    @permission(('manage-oauth-clients'))
+                    <li class="{{ active('oauth.clients') }}">
+                        <a href="{{ route('clients') }}">Clients oauth</a>
+                    </li>
                     @endpermission
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -114,5 +121,10 @@
             </ul>
         </footer>
     </div>
+
+    <script>
+        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+    </script>
+    <script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
 </body>
 </html>

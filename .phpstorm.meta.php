@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-12-26.
+    * Generated on 2016-12-27.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -15,6 +15,8 @@ namespace PHPSTORM_META {
             'router' instanceof \Illuminate\Routing\Router,
             'url' instanceof \Illuminate\Routing\UrlGenerator,
             'redirect' instanceof \Illuminate\Routing\Redirector,
+            'Psr\Http\Message\ServerRequestInterface' instanceof \Zend\Diactoros\ServerRequest,
+            'Psr\Http\Message\ResponseInterface' instanceof \Zend\Diactoros\Response,
             'Illuminate\Contracts\Routing\ResponseFactory' instanceof \Illuminate\Routing\ResponseFactory,
             'Illuminate\Contracts\Http\Kernel' instanceof \App\Http\Kernel,
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
@@ -37,6 +39,7 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'Illuminate\Notifications\ChannelManager' instanceof \Illuminate\Notifications\ChannelManager,
             'debugbar' instanceof \Barryvdh\Debugbar\LaravelDebugbar,
             'command.debugbar.clear' instanceof \Barryvdh\Debugbar\Console\ClearCommand,
             'active' instanceof \Watson\Active\Active,
@@ -135,6 +138,8 @@ namespace PHPSTORM_META {
             'router' instanceof \Illuminate\Routing\Router,
             'url' instanceof \Illuminate\Routing\UrlGenerator,
             'redirect' instanceof \Illuminate\Routing\Redirector,
+            'Psr\Http\Message\ServerRequestInterface' instanceof \Zend\Diactoros\ServerRequest,
+            'Psr\Http\Message\ResponseInterface' instanceof \Zend\Diactoros\Response,
             'Illuminate\Contracts\Routing\ResponseFactory' instanceof \Illuminate\Routing\ResponseFactory,
             'Illuminate\Contracts\Http\Kernel' instanceof \App\Http\Kernel,
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
@@ -157,6 +162,7 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'Illuminate\Notifications\ChannelManager' instanceof \Illuminate\Notifications\ChannelManager,
             'debugbar' instanceof \Barryvdh\Debugbar\LaravelDebugbar,
             'command.debugbar.clear' instanceof \Barryvdh\Debugbar\Console\ClearCommand,
             'active' instanceof \Watson\Active\Active,
@@ -255,6 +261,8 @@ namespace PHPSTORM_META {
             'router' instanceof \Illuminate\Routing\Router,
             'url' instanceof \Illuminate\Routing\UrlGenerator,
             'redirect' instanceof \Illuminate\Routing\Redirector,
+            'Psr\Http\Message\ServerRequestInterface' instanceof \Zend\Diactoros\ServerRequest,
+            'Psr\Http\Message\ResponseInterface' instanceof \Zend\Diactoros\Response,
             'Illuminate\Contracts\Routing\ResponseFactory' instanceof \Illuminate\Routing\ResponseFactory,
             'Illuminate\Contracts\Http\Kernel' instanceof \App\Http\Kernel,
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
@@ -277,6 +285,7 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'Illuminate\Notifications\ChannelManager' instanceof \Illuminate\Notifications\ChannelManager,
             'debugbar' instanceof \Barryvdh\Debugbar\LaravelDebugbar,
             'command.debugbar.clear' instanceof \Barryvdh\Debugbar\Console\ClearCommand,
             'active' instanceof \Watson\Active\Active,
@@ -375,6 +384,8 @@ namespace PHPSTORM_META {
             'router' instanceof \Illuminate\Routing\Router,
             'url' instanceof \Illuminate\Routing\UrlGenerator,
             'redirect' instanceof \Illuminate\Routing\Redirector,
+            'Psr\Http\Message\ServerRequestInterface' instanceof \Zend\Diactoros\ServerRequest,
+            'Psr\Http\Message\ResponseInterface' instanceof \Zend\Diactoros\Response,
             'Illuminate\Contracts\Routing\ResponseFactory' instanceof \Illuminate\Routing\ResponseFactory,
             'Illuminate\Contracts\Http\Kernel' instanceof \App\Http\Kernel,
             'Illuminate\Contracts\Console\Kernel' instanceof \App\Console\Kernel,
@@ -397,6 +408,7 @@ namespace PHPSTORM_META {
             'view.engine.resolver' instanceof \Illuminate\View\Engines\EngineResolver,
             'view.finder' instanceof \Illuminate\View\FileViewFinder,
             'view' instanceof \Illuminate\View\Factory,
+            'Illuminate\Notifications\ChannelManager' instanceof \Illuminate\Notifications\ChannelManager,
             'debugbar' instanceof \Barryvdh\Debugbar\LaravelDebugbar,
             'command.debugbar.clear' instanceof \Barryvdh\Debugbar\Console\ClearCommand,
             'active' instanceof \Watson\Active\Active,

@@ -21,8 +21,12 @@ class PermissionsTableSeeder extends Seeder
         $manageMembers->name = 'manage-members';
         $manageMembers->save();
 
+        $manageOauthClients = new Permission();
+        $manageOauthClients->name = 'manage-oauth-clients';
+        $manageOauthClients->save();
+
         $adminRole = Role::where('name', 'admin')->first();
-        $adminRole->attachPermissions([$manageAccount, $manageMembers]);
+        $adminRole->attachPermissions([$manageAccount, $manageMembers, $manageOauthClients]);
 
         $memberHonorary = Role::where('name', 'member_honorary')->first();
         $memberActive = Role::where('name', 'member_active')->first();

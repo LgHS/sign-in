@@ -20,8 +20,8 @@
         @endif
 
         <div class="form-group">
-            <label for="username" class="hide">Nom d'utilisateur</label>
-            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur" value="{{old('username')}}" class="form-control">
+            <label for="username" class="hide">Nom d'utilisateur ou adresse e-mail</label>
+            <input type="text" id="username" name="username" placeholder="Nom d'utilisateur ou adresse e-mail" value="{{old('username')}}" class="form-control">
         </div>
         <div class="form-group">
             <label for="sign-in_password" class="hide">Mot de passe</label>
