@@ -2,6 +2,8 @@
 
 return [
 
+    'name' => 'Liege Hackerspace',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -148,6 +150,7 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Illuminate\Notifications\NotificationServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -159,11 +162,11 @@ return [
         App\Providers\ValidatorServiceProvider::class,
 
         Barryvdh\Debugbar\ServiceProvider::class,
-        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
-        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
+//        LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
+//        LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
         Overtrue\LaravelLang\TranslationServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
+//        PragmaRX\Google2FA\Vendor\Laravel\ServiceProvider::class,
         Watson\Active\ActiveServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
@@ -215,14 +218,15 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+//        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
         'Uuid' => Webpatser\Uuid\Uuid::class,
-        'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
+//        'Google2FA' => 'PragmaRX\Google2FA\Vendor\Laravel\Facade',
         'Active' => Watson\Active\Facades\Active::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
+        'Notification' => Illuminate\Support\Facades\Notification::class,
     ],
 
 ];

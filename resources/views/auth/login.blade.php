@@ -34,7 +34,7 @@
             </label>
         </div>
         <p class="form-submit">
-            <button type="submit" class="btn btn-primary">Connectez-vous</button>
+            <button type="submit" class="btn btn-primary">Connexion</button>
         </p>
         <p class="form-help">
             <a href="{{ url('/password/reset') }}" title="Réinitialiser votre mot de passe">

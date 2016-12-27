@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Role;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Password;
@@ -142,13 +143,13 @@ class MembersController extends Controller
 
 
 
-	private function _sendInitMail($user) {
-		view()->composer('auth.emails.password', function($view) {
-			$view->with(['register'=>true]);
-		});
-
-		return Password::sendResetLink(['email'=>$user->email], function($message) {
-			$message->subject('[LgHS] Complétez votre inscription');
-		});
+	private function _sendInitMail(User $member) {
+		$token = Password::createToken($member);
+		if($token) {
+			$member->sendPasswordInitNotification($token);
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
