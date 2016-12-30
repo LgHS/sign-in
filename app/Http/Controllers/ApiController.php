@@ -13,14 +13,14 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api');
+        $this->middleware('auth');
     }
     public function me()
     {
         $user = Auth::user();
         $data = [
             "uuid" => $user->uuid,
-            "name" => $user->firstName . ' ' . $user->lastName,
+            "name" => $user->username,
             "email" => $user->email
         ];
 
