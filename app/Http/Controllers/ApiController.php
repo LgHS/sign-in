@@ -21,7 +21,8 @@ class ApiController extends Controller
         $data = [
             "id" => $user->id,
             "uuid" => $user->uuid,
-            "name" => $user->username,
+            "name" => $user->firstName . ' ' . $user->lastName,
+            "username" => $user->username,
             "email" => $user->email
         ];
 
