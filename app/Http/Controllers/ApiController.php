@@ -19,6 +19,7 @@ class ApiController extends Controller
     {
         $user = Auth::user();
         $data = [
+            "id" => $user->id,
             "uuid" => $user->uuid,
             "name" => $user->username,
             "email" => $user->email
