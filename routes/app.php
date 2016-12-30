@@ -28,6 +28,7 @@ Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account
     Route::put('', 'ProfileController@update')->name('profile.update');
 });
 
+Route::get('/api/me', 'ApiController@me')->name('api.me');
 
 //Route::get('/oauthtest', function () {
 //    $query = http_build_query([
