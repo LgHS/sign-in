@@ -53,10 +53,10 @@
                             </button>
                         </form>
 
-                        <form action="/members/{{$member->id}}" class="display: inline;">
+                        <form method="post" action="/members/{{$member->id}}">
                             {{method_field('DELETE')}}
                             {{csrf_field()}}
-                            <button type="submit" class="btn btn-sm btn-danger">
+                            <button type="submit" class="btn btn-sm btn-danger" confirm>
                                 <i class="fa fa-trash"></i>
                             </button>
                         </form>

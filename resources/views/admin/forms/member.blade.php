@@ -10,7 +10,7 @@
         {!! BootForm::text('lastName', 'Nom') !!}
     </div>
 </div>
-{!! BootForm::radios('gender', 'Sexe', ['Homme', 'Femme'], null, true) !!}
+{{--{!! BootForm::radios('gender', 'Sexe', ['Homme', 'Femme'], null, true) !!}--}}
 {!! BootForm::text('date_of_birth', 'Date de naissance', null, ['help_text' => 'dd/mm/YYYY']) !!}
 {!! BootForm::text('address', 'Adresse') !!}
 <div class="row">
@@ -24,13 +24,14 @@
 {!! BootForm::text('country', 'Pays', $member ? null : 'Belgium') !!}
 {!! BootForm::text('phone', 'Numéro de téléphone') !!}
 {!! BootForm::text('member_since', 'Date d\'adhésion', $member ? null : Carbon\Carbon::today()->format('d/m/Y')) !!}
-{!! BootForm::radios('roles[]', 'Statut',  [
-    '1' => 'Administrateur',
-    '2' => 'Membre actif',
-    '3' => 'Membre effectif',
-    '5' => 'Membre d\'honneur',
-    '4' => 'Ancien membre',
-], $member ? $member->roles[0]->id : 'member_active', true) !!}
+{{--{{dd($member->roles[0]->name)}}--}}
+{!! BootForm::radios('member_roles[]', 'Statut',  [
+    'admin' => 'Administrateur',
+    'member_active' => 'Membre actif',
+    'member_effective' => 'Membre effectif',
+    'member_honorary' => 'Membre d\'honneur',
+    'member_old' => 'Ancien membre',
+], $member ? $member->roles[0]->name : 'member_active', true) !!}
 {!! BootForm::checkbox('is_public', 'Profil public', '1', $member ? null : false) !!}
 {!! BootForm::checkbox('is_active', 'Compte actif', '1', $member ? null : true) !!}
 

@@ -16,6 +16,22 @@ use Webpatser\Uuid\Uuid;
 
 class MembersController extends Controller
 {
+	protected $rules = [
+		'username' => 'required|max:255|unique:users',
+		'email' => 'required|email|max:255|unique:users',
+		'lastName' => '',
+		'firstName' => '',
+		'date_of_birth' => 'date_format:d/m/Y',
+		'member_since' => 'date_format:d/m/Y',
+		'gender' => '',
+		'address' => '',
+		'postcode' => '',
+		'city' => '',
+		'country' => '',
+		'phone' => '',
+		'member_roles' => 'required',
+	];
+
 	public function __construct()
 	{
 	}
@@ -35,21 +51,7 @@ class MembersController extends Controller
 	}
 
 	public function store(Request $request) {
-		$this->validate($request, [
-			'username' => 'required|max:255|unique:users',
-			'email' => 'required|email|max:255|unique:users',
-			'lastName' => 'required',
-			'firstName' => 'required',
-			'date_of_birth' => 'required|date_format:d/m/Y',
-			'member_since' => 'required|date_format:d/m/Y',
-			'gender' => 'required',
-			'address' => 'required',
-			'postcode' => 'required',
-			'city' => 'required',
-			'country' => 'required',
-			'phone' => 'required',
-			'roles' => 'required',
-		]);
+		$this->validate($request, $this->rules);
 
 		$user = new User();
 
@@ -57,7 +59,7 @@ class MembersController extends Controller
 		$user->email = $request->get('email');
 		$user->lastName = $request->get('lastName');
 		$user->firstName = $request->get('firstName');
-		$user->date_of_birth = Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'))->toDateTimeString();
+		$user->date_of_birth = $user->date_of_birth ? Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'))->toDateTimeString() : null;
 		$user->gender = $request->get('gender');
 		$user->address = $request->get('address');
 		$user->postcode = $request->get('postcode');
@@ -66,11 +68,11 @@ class MembersController extends Controller
 		$user->phone = $request->get('phone');
 		$user->is_public = $request->get('is_public');
 		$user->is_active = $request->get('is_active');
-		$user->member_since = Carbon::createFromFormat('d/m/Y', $request->get('member_since'))->toDateTimeString();
+		$user->member_since = $user->member_since ? Carbon::createFromFormat('d/m/Y', $request->get('member_since'))->toDateTimeString() : null;
 		$user->uuid = Uuid::generate();
 
 		$user->save();
-		$user->attachRole(Role::where('id', $request->get('roles')[0])->first());
+		$user->attachRole(Role::where('name', $request->get('member_roles')[0])->first());
 
         $this->_sendInitMail($user);
 
@@ -81,29 +83,14 @@ class MembersController extends Controller
 	}
 
 	public function update(Request $request, User $member) {
-		$validator = Validator::make($request->all(), [
+		$this->validate($request, array_merge($this->rules, [
 			'username' => 'required|max:255|unique:users,username,' . $member->id,
 			'email' => 'required|email|max:255|unique:users,email,' . $member->id,
-			'lastName' => 'required',
-			'firstName' => 'required',
-			'date_of_birth' => 'required',
-			'member_since' => 'required|date_format:d/m/Y',
-			'gender' => 'required',
-			'address' => 'required',
-			'postcode' => 'required',
-			'city' => 'required',
-			'country' => 'required',
-			'phone' => 'required',
-			'roles' => 'required',
-		]);
-
-		if($validator->fails()) {
-			return back()->withErrors($validator)->withInput();
-		}
+		]));
 
 		$request->merge(array(
-			'date_of_birth' => Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'))->toDateTimeString(),
-			'member_since' => Carbon::createFromFormat('d/m/Y', $request->get('member_since'))->toDateTimeString()
+			'date_of_birth' => $request->get('date_of_birth') ? Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'))->toDateTimeString() : null,
+			'member_since' => $request->get('member_since') ? Carbon::createFromFormat('d/m/Y', $request->get('member_since'))->toDateTimeString() : null,
 		));
 
 		if($request->get('username') != $member->username) {
@@ -115,7 +102,7 @@ class MembersController extends Controller
 
 		$member->update($request->all());
 		$member->detachRoles($member->roles);
-		$member->attachRole(Role::where('id', $request->get('roles')[0])->first());
+		$member->attachRole(Role::where('name', $request->get('member_roles')[0])->first());
 
 		return back()->with([
 			'message' => 'Membre updaté ! On est en forme je vois ?',
@@ -123,8 +110,12 @@ class MembersController extends Controller
 		]);
 	}
 
-	public function delete() {
-
+	public function delete(User $member) {
+		$member->delete();
+		return back()->with([
+			'message' => 'Membre supprimé.',
+			'status' => 'success'
+		]);
 	}
 
 	public function resendMail(User $member) {

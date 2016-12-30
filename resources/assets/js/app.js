@@ -15,6 +15,19 @@ Vue.component(
   require('./components/passport/PersonalAccessTokens.vue')
 );
 
+
+$('[confirm]').on('click', function(e) {
+  var message = $(this).attr('confirm');
+  if(!message) {
+    message = 'Certo cabron ?';
+  }
+
+  if(!confirm(message)) {
+    e.preventDefault();
+    return false;
+  }
+});
+
 const app = new Vue({
   el: '#app'
 });

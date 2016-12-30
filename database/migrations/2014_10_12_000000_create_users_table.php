@@ -16,26 +16,25 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->uuid('uuid');
             $table->string('username')->unique();
-            $table->string('gender');
-            $table->string('lastName');
-            $table->string('firstName');
+            $table->string('gender')->nullable();
+            $table->string('lastName')->nullable();
+            $table->string('firstName')->nullable();
             $table->dateTime('date_of_birth')->nullable();
-            $table->text('address');
-            $table->string('postcode');
-            $table->string('city');
-            $table->string('country')->default('Belgium');
-            $table->string('phone');
+            $table->text('address')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('city')->nullable();
+            $table->string('country')->nullable();
+            $table->string('phone')->nullable();
             $table->dateTime('member_since')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('rfid', 60);
-//            $table->string('token_valid', 60);
+            $table->string('rfid', 60)->nullable();
             $table->boolean('is_public')->nullable();
-//            $table->boolean('is_valid')->default(false);
             $table->boolean('is_active')->nullable();
             $table->string('totp')->default(null);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

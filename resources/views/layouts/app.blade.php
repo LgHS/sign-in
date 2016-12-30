@@ -44,7 +44,6 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="{{ active('app.home') }}"><a href="{{ route('app.home') }}" >Accueil</a></li>
                     @permission(('manage-account'))
                     <li class="{{ active('profile.index') }}">
                         <a href="/profile">

@@ -25,7 +25,7 @@
 
         <div class="panel panel-default">
             <h2>
-                <a href="{{ url('/') }}" title="Accueil"> <img src=" asset('svg/logo.svg') " alt="Liege Hackerspace"></a>
+                <a href="{{ url('/') }}" title="Accueil"> <img src="{{ asset('svg/logo.svg') }}" alt="Liege Hackerspace"></a>
             </h2>
             <div class="panel-body">
                 @yield('content')
