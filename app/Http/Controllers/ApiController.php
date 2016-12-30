@@ -13,17 +13,17 @@ class ApiController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('oauth');
+        $this->middleware('auth:api');
     }
     public function me()
     {
-//        $user = User::findOrFail(Authorizer::getResourceOwnerId());
-//        $data = [
-//            "uuid" => $user->uuid,
-//            "name" => $user->name,
-//            "email" => $user->email
-//        ];
-//
-//        return  $data;
+        $user = Auth::user();
+        $data = [
+            "uuid" => $user->uuid,
+            "name" => $user->firstName . ' ' . $user->lastName,
+            "email" => $user->email
+        ];
+
+        return  $data;
     }
 }
