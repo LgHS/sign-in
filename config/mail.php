@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'login@lghs.be', 'name' => null],
+    'from' => ['address' => env('EMAIL_ADDRESS', null), env('EMAIL_NAME', null)],
 
     /*
     |--------------------------------------------------------------------------
