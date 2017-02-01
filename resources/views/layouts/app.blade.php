@@ -50,6 +50,9 @@
                             Mon profil
                         </a>
                     </li>
+                    <li class="{{ active('services') }}">
+                        <a href="{{ route('services') }}">Mes Services</a>
+                    </li>
                     @endpermission
 
                     @permission(('manage-members'))
@@ -59,12 +62,6 @@
                         <li class="{{ active('members.add') }}">
                             <a href="/members/add">Ajouter un membre</a>
                         </li>
-                    @endpermission
-
-                    @permission(('manage-oauth-clients'))
-                    <li class="{{ active('oauth.clients') }}">
-                        <a href="{{ route('clients') }}">Clients oauth</a>
-                    </li>
                     @endpermission
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

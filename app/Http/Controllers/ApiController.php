@@ -23,7 +23,7 @@ class ApiController extends Controller
             "uuid" => $user->uuid,
             "name" => $user->firstName . ' ' . $user->lastName,
             "username" => $user->username,
-            "email" => $user->email
+            "email" => $user->email,
         ];
 
         return  $data;

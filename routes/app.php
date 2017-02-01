@@ -8,9 +8,9 @@ Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/', 'HomeController@index')->name('app.home');
 Route::get('/password/init/{token}', 'Auth\ResetPasswordController@initPassword')->name('password-init');
 
-Route::get('/clients', function() {
-   return view('app.clients');
-})->middleware(['permission:manage-oauth-clients'])->name('clients');
+Route::get('/services', function() {
+   return view('app.services');
+})->middleware(['permission:manage-account'])->name('services');
 
 
 Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members']], function() {
