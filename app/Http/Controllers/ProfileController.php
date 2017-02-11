@@ -31,7 +31,7 @@ class ProfileController extends Controller {
 		$validator = Validator::make($request->all(), [
 			'username' => 'required|max:255|unique:users,username,' . $member->id,
 			'email' => 'required|email|max:255|unique:users,email,' . $member->id,
-			'new_password' => 'min:8|secure',
+			'new_password' => 'min:8',
 			'lastName' => 'required',
 			'firstName' => 'required',
 			'date_of_birth' => 'required|date_format:d/m/Y',
