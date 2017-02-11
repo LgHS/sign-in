@@ -14,7 +14,7 @@ return [
     */
 
     // custom
-    'secure'               => 'Le mot de passe doit être de 8 caractères.',
+    'secure'               => 'Le mot de passe doit être de 8 caractères minimum.',
 
     // App
     'accepted'             => 'Le champ :attribute doit être accepté.',
