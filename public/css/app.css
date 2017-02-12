@@ -10797,6 +10797,20 @@ form .help-block {
   padding: 15px 0 0;
 }
 
+.service-list {
+  text-align: center;
+}
+
+.service-list .service-list--item {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.service-list .row {
+  margin-bottom: 20px;
+}
+
 html {
   font-size: 16px;
 }
