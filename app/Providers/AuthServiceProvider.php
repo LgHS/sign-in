@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::tokensCan([
-            'openid' => 'Open ID',
+            'openid' => 'Nécessaire pour Rocket.Chat mais pas utilisé',
         ]);
 
         Passport::routes();
