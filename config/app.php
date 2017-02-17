@@ -172,6 +172,13 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Watson\BootstrapForm\BootstrapFormServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+
+        /**
+         * Laravel Generator
+         */
+        Laracasts\Flash\FlashServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
     ],
 
     /*
@@ -228,6 +235,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
+        'Flash'     => Laracasts\Flash\Flash::class,
     ],
 
 ];
