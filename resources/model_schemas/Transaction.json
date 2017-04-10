@@ -1,0 +1,126 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "user_id",
+        "dbType": "integer:unsigned:foreign,users,id",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": true,
+        "inForm": true,
+        "inIndex": false,
+        "relation": "mt1,User,user_id,id"
+    },
+    {
+        "name": "transaction_type_id",
+        "dbType": "integer:unsigned:foreign,transaction_types,id",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": true,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "mt1,TransactionType,transaction_type_id,id"
+    },
+    {
+        "name": "amount",
+        "dbType": "float",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": true,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "payment_type_id",
+        "dbType": "integer:unsigned:foreign,payment_types,id",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": true,
+        "inForm": true,
+        "inIndex": true,
+        "relation": "mt1,PaymentType,payment_type_id,id"
+    },
+    {
+        "name": "started_at",
+        "dbType": "timestamp",
+        "htmlType": "date",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "registered_at",
+        "dbType": "timestamp",
+        "htmlType": "date",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "duration",
+        "dbType": "integer:unsigned",
+        "htmlType": "number",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "comments",
+        "dbType": "longText",
+        "htmlType": "textarea",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "name": "created_at",
+        "dbType": "timestamp",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "timestamp",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]

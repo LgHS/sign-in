@@ -30,13 +30,12 @@ Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account
 
 Route::get('/api/me', 'ApiController@me')->name('api.me');
 
-//Route::get('/oauthtest', function () {
-//    $query = http_build_query([
-//        'client_id' => 1,
-//        'redirect_uri' => 'http://localhost/callback',
-//        'response_type' => 'code',
-//        'scope' => '',
-//    ]);
-//
-//    return redirect('/oauth/authorize?'.$query);
-//});
+
+Route::get('admin/paymentTypes', ['as'=> 'admin.paymentTypes.index', 'uses' => 'PaymentTypeController@index']);
+Route::post('admin/paymentTypes', ['as'=> 'admin.paymentTypes.store', 'uses' => 'PaymentTypeController@store']);
+Route::get('admin/paymentTypes/create', ['as'=> 'admin.paymentTypes.create', 'uses' => 'PaymentTypeController@create']);
+Route::put('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
+Route::patch('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
+Route::delete('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.destroy', 'uses' => 'PaymentTypeController@destroy']);
+Route::get('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.show', 'uses' => 'PaymentTypeController@show']);
+Route::get('admin/paymentTypes/{paymentTypes}/edit', ['as'=> 'admin.paymentTypes.edit', 'uses' => 'PaymentTypeController@edit']);

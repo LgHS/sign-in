@@ -6,7 +6,6 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-//use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class ApiController extends Controller
 {

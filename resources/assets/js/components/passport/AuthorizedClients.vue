@@ -11,15 +11,13 @@
 <template>
     <div>
         <div v-if="tokens.length > 0">
-            <div class="panel panel-default">
-                <div class="panel-heading">Authorized Applications</div>
-
-                <div class="panel-body">
+            <div class="">
+                <div class="">
                     <!-- Authorized Tokens -->
                     <table class="table table-borderless m-b-none">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Nom</th>
                                 <th>Scopes</th>
                                 <th></th>
                             </tr>
@@ -42,7 +40,7 @@
                                 <!-- Revoke Button -->
                                 <td style="vertical-align: middle;">
                                     <a class="action-link text-danger" @click="revoke(token)">
-                                        Revoke
+                                        Supprimer
                                     </a>
                                 </td>
                             </tr>

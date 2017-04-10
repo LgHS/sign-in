@@ -15031,6 +15031,99 @@ namespace Watson\BootstrapForm\Facades {
     }         
 }
     
+namespace Laracasts\Flash {
+
+    class Flash {
+        
+        /**
+         * Flash an information message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function info($message)
+        {
+            return \Laracasts\Flash\FlashNotifier::info($message);
+        }
+        
+        /**
+         * Flash a success message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function success($message)
+        {
+            return \Laracasts\Flash\FlashNotifier::success($message);
+        }
+        
+        /**
+         * Flash an error message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function error($message)
+        {
+            return \Laracasts\Flash\FlashNotifier::error($message);
+        }
+        
+        /**
+         * Flash a warning message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function warning($message)
+        {
+            return \Laracasts\Flash\FlashNotifier::warning($message);
+        }
+        
+        /**
+         * Flash an overlay modal.
+         *
+         * @param string $message
+         * @param string $title
+         * @param string $level
+         * @return $this 
+         * @static 
+         */
+        public static function overlay($message, $title = 'Notice', $level = 'info')
+        {
+            return \Laracasts\Flash\FlashNotifier::overlay($message, $title, $level);
+        }
+        
+        /**
+         * Flash a general message.
+         *
+         * @param string $message
+         * @param string $level
+         * @return $this 
+         * @static 
+         */
+        public static function message($message, $level = 'info')
+        {
+            return \Laracasts\Flash\FlashNotifier::message($message, $level);
+        }
+        
+        /**
+         * Add an "important" flash to the session.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function important()
+        {
+            return \Laracasts\Flash\FlashNotifier::important();
+        }
+        
+    }         
+}
+    
     
 namespace {
 
@@ -15107,6 +15200,8 @@ namespace {
     class Html extends \Collective\Html\HtmlFacade {}
     
     class BootForm extends \Watson\BootstrapForm\Facades\BootstrapForm {}
+    
+    class Flash extends \Laracasts\Flash\Flash {}
     
 }
 

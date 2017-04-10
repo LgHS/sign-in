@@ -6,6 +6,10 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class InitPasswordNotification extends ResetPassword {
+	public function via($notifiable) {
+		return ['mail', 'database'];
+	}
+
 	public function toMail($notifiable) {
 		return (new MailMessage)
 //			->view('emails.welcome', array(
@@ -20,5 +24,9 @@ class InitPasswordNotification extends ResetPassword {
 			->line('Pour compléter ton inscription, clique sur le lien ci-dessous afin de choisir un mot de passe ' .
 			       '(Attention ce lien expire dans 24 heures):')
 			->action('Choisir un mot de passe', url('password/init', $this->token));
+	}
+
+	public function toArray($notifiable) {
+		return [];
 	}
 }

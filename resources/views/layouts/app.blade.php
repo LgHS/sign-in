@@ -54,17 +54,13 @@
                         <a href="{{ route('services') }}">Mes Services</a>
                     </li>
                     @endpermission
-
-                    @permission(('manage-members'))
-                        <li class="{{ active('members.index') }}">
-                            <a href="/members">Membres</a>
-                        </li>
-                        <li class="{{ active('members.add') }}">
-                            <a href="/members/add">Ajouter un membre</a>
-                        </li>
-                    @endpermission
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    @permission(('manage-members'))
+                        <li class="{{ active('admin.index') }}">
+                            <a href="{{ route('admin.index') }}">Admin</a>
+                        </li>
+                    @endpermission
                     <li>
                         <a href="{{ url('/logout') }}" title="Déconnectez-vous">
                             <i class="fa fa-sign-out"></i>
