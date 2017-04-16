@@ -60,12 +60,8 @@ class TransactionsTest extends TestCase {
 
 	public function testAnnualTransactionIsLast() {
 		$annualTransactionType = TransactionType::where('name', 'Cotisation annuelle')->first();
-		/** @var Transaction $annualLastTransaction */
 		$annualLastTransaction = $this->user->getLastTransaction($annualTransactionType);
-		//echo "\n\ntransaction: "; var_dump($annualLastTransaction);
-		echo "\n\nannual id: " . $this->annualTransaction->id;
-		echo "\nlast annual id: " . $annualLastTransaction->id;
-		echo "\nlast annual type: " . $annualLastTransaction->transactionType->name;
+
 		$this->assertTrue($this->annualTransaction->is($annualLastTransaction));
 	}
 }
