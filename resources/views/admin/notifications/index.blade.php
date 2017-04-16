@@ -30,7 +30,7 @@
                         @elseif($notification->type == \App\Notifications\ResetPasswordNotification::class)
                             a fait une demande de reset du mot de passe
                         @elseif($notification->type == \App\Notifications\ReminderNotification::class)
-                            a reçu un rappel
+                            a reçu un rappel pour la transaction <i>{{isset($notification->data['transaction_type']) ? $notification->data['transaction_type'] : ''}}</i>
                         @endif
                     </p>
                 @endforeach

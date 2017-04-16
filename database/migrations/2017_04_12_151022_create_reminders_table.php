@@ -16,6 +16,7 @@ class CreateRemindersTable extends Migration
         Schema::create('reminders', function (Blueprint $table) {
 	        $table->increments('id');
 	        $table->integer('transaction_type_id')->unsigned();
+	        $table->string('title', 100);
 	        $table->string('name', 100);
 	        $table->longText('text');
 	        $table->integer('days');

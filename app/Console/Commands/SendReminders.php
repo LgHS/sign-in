@@ -41,7 +41,7 @@ class SendReminders extends Command
 			foreach(Reminder::all() as $reminder) {
 				if($user->has('transactions')) {
 					if($reminder->shouldSendTo($user)) {
-						$user->notify(new ReminderNotification($reminder->text, $reminder->days));
+						$user->notify(new ReminderNotification($reminder));
 						$counter ++;
 					}
 				}

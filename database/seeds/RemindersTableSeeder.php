@@ -26,50 +26,56 @@ class RemindersTableSeeder extends Seeder {
 		$monthly = TransactionType::where('name', 'Abonnement mensuel')->first();
 
 		// Monthly last day
-		$reminder = new Reminder();
-		$reminder->name = "Monthly last day";
-		$reminder->text = "<b>Last day for monthly</b>";
-		$reminder->days = 0;
+		$reminder        = new Reminder();
+		$reminder->title = "Dernier jour de ton abonnement mensuel";
+		$reminder->name  = "Monthly last day";
+		$reminder->text  = "Ton abonnement arrive à échéance aujourd'hui. N'oublie pas de renouveller la prochaine fois que tu viens !";
+		$reminder->days  = 0;
 		$reminder->transactionType()->associate($monthly);
 		$reminder->save();
 
 		// Monthly late
-		$reminder = new Reminder();
+		/*$reminder = new Reminder();
+		$reminder->title = "Rappel: abonnement expiré";
 		$reminder->name = "Monthly late";
-		$reminder->text = "Late since %days% days";
+		$reminder->text = "Ton abonnement est expiré depuis %days% jours.";
 		$reminder->days = 7;
 		$reminder->transactionType()->associate($monthly);
-		$reminder->save();
+		$reminder->save();*/
 
 		// Annual before
-		$reminder = new Reminder();
-		$reminder->name = "Annual before";
-		$reminder->text = "Only 7 days";
-		$reminder->days = -7;
+		$reminder        = new Reminder();
+		$reminder->title = "Expiration de ta cotisation annuelle";
+		$reminder->name  = "Annual before";
+		$reminder->text  = "Ta cotisation annuelle expire dans %days% jours. N'oublie pas de renouveller.";
+		$reminder->days  = -7;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();
 
 		// Annual last day
-		$reminder = new Reminder();
-		$reminder->name = "Annual last day";
-		$reminder->text = "Last day for annual";
-		$reminder->days = 0;
+		$reminder        = new Reminder();
+		$reminder->title = "Dernier jour de ta cotisation annuelle";
+		$reminder->name  = "Annual last day";
+		$reminder->text  = "Ta cotisation annuelle arrive à échéance aujourd'hui. N'oublie pas de renouveller !";
+		$reminder->days  = 0;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();
 
 		// Annual 7 days late
-		$reminder = new Reminder();
-		$reminder->name = "Annual after";
-		$reminder->text = "Late since %days% days";
-		$reminder->days = 7;
+		$reminder        = new Reminder();
+		$reminder->title = "Rappel: cotisation annuelle";
+		$reminder->name  = "Annual after";
+		$reminder->text  = "Ta cotisation annuelle est expirée depuis %days% jours. Si tu ne souhaites pas renouveller, ton affiliation sera automatiquement résiliée dans trois semaines.";
+		$reminder->days  = 7;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();
 
 		// Annual cancelling
-		$reminder = new Reminder();
-		$reminder->name = "Annual cancelling";
-		$reminder->text = "30 days, cancelling annual";
-		$reminder->days = 30;
+		$reminder        = new Reminder();
+		$reminder->title = "Résiliation de ton affiliation";
+		$reminder->name  = "Annual cancelling";
+		$reminder->text  = "Cela fait 30 jours que ta cotisation annuelle est expirée, tu es maintenant considéré comme un ancien membre et n'a plus accès à nos différents services. Si tu considères que c'est une erreur, contacte-nous. Sinon so long, reste en contact !";
+		$reminder->days  = 30;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();
 	}
