@@ -25,6 +25,6 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule) {
 		$schedule->command('reminders:send')
-		         ->dailyAt('10:00');
+		         ->dailyAt('12:00');
 	}
 }

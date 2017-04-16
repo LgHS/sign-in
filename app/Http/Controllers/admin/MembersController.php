@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\TransactionType;
+use App\Notifications\ReminderNotification;
+use App\Reminder;
 use App\Role;
 use App\User;
 use Carbon\Carbon;
+use Flash;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -76,10 +80,8 @@ class MembersController extends Controller
 
         $this->_sendInitMail($user);
 
-		return redirect('members')->with([
-			'message' => 'Membre ajouté ! Bravo beau gosse !',
-			'status' => 'success'
-		]);
+        Flash::success('Membre ajouté ! Bravo beau gosse !');
+        return back();
 	}
 
 	public function update(Request $request, User $member) {
@@ -104,35 +106,47 @@ class MembersController extends Controller
 		$member->detachRoles($member->roles);
 		$member->attachRole(Role::where('name', $request->get('member_roles')[0])->first());
 
-		return back()->with([
-			'message' => 'Membre updaté ! On est en forme je vois ?',
-			'status' => 'success'
-		]);
+		Flash::success('Membre updaté ! On est en forme je vois ?');
+		return back();
 	}
 
 	public function delete(User $member) {
 		$member->delete();
-		return back()->with([
-			'message' => 'Membre supprimé.',
-			'status' => 'success'
-		]);
+		Flash::success('Membre supprimé.');
+		return back();
 	}
 
 	public function resendMail(User $member) {
 		if($this->_sendInitMail($member)) {
-			return back()->with([
-				'message' => 'Mail envoyé ! Yay !',
-				'status' => 'success'
-			]);
+			Flash::success('Mail envoyé ! Yay !');
 		} else {
-			return back()->with([
-				'message' => 'Il y a eu une erreur, le mail n\'est pas parti :(',
-				'status' => 'danger'
-			]);
+			Flash::error('Il y a eu une erreur, le mail n\'est pas parti :(');
 		}
+		return back();
 	}
 
+	public function sendReminder(User $member) {
+		// TODO put this somewhere in DB
+		$transactionType = TransactionType::where('name', 'Abonnement mensuel')->first();
+		$lastTransaction = $member->getLastTransaction($transactionType);
 
+		if(!$lastTransaction) {
+			Flash::error('Pas de transaction trouvée');
+			return back();
+		}
+
+		$days = Carbon::now()->diffInDays($lastTransaction->endDate);
+		$reminder = new Reminder([
+			'transaction_type_id' => $transactionType->id,
+			'title' => 'Rappel: abonnement expiré',
+			'text' => 'Ton abonnement est expiré depuis %days% jours. N\'oublie pas de renouveller !',
+			'days' => $days
+		]);
+		$member->notify(new ReminderNotification($reminder));
+
+		Flash::success('Mail envoyé ! Yay !');
+		return back();
+	}
 
 	private function _sendInitMail(User $member) {
 		$token = Password::createToken($member);

@@ -69,7 +69,14 @@
 
                                         <button type="submit" class="btn btn-xs">
                                             <i class="fa fa-mail-forward"></i>
-                                            Renvoyer le mail
+                                            Renvoyer mail reset
+                                        </button>
+                                    </form>
+
+                                    <form action="/members/{{$member->id}}/sendReminder" method="post" class="form-inline">
+                                        <button type="submit" class="btn btn-xs" confirm>
+                                            <i class="fa fa-clock-o"></i>
+                                            Envoyer rappel abo
                                         </button>
                                     </form>
                                 </td>

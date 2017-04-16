@@ -97,6 +97,10 @@ class User extends Authenticatable {
 	}
 
 	public function getLastTransaction(TransactionType $transactionType) {
+		if( ! $this->has('transactions')) {
+			return null;
+		}
+
 		return $this->transactions()
 		            ->where('transaction_type_id', $transactionType->id)
 		            ->orderBy('started_at', 'desc')

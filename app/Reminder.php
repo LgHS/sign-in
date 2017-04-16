@@ -12,6 +12,8 @@ class Reminder extends Model
 	public $fillable = [
 		'transaction_type_id',
 		'name',
+		'title',
+		'days',
 		'text'
 	];
 

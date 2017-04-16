@@ -20,7 +20,7 @@
                     <p>
                         <strong>
                             {{$notification->created_at->format('d/m/Y')}}
-                            {{$notification->created_at->format('H:m')}}
+                            {{$notification->created_at->format('H:i')}}
                         </strong>
 
                         {{$notification->notifiable->fullName}}

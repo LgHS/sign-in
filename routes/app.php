@@ -21,6 +21,7 @@ Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members
     Route::put('{member}', 'Admin\MembersController@update')->name('members.update');
     Route::delete('{member}', 'Admin\MembersController@delete')->name('members.delete');
     Route::post('{member}/sendResetMail', 'Admin\MembersController@resendMail');
+    Route::post('{member}/sendReminder', 'Admin\MembersController@sendReminder');
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account']], function() {
