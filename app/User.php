@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Transaction;
+use App\Models\TransactionType;
 use App\Notifications\InitPasswordNotification;
 use App\Notifications\ResetPasswordNotification;
 use Carbon\Carbon;
@@ -37,7 +38,8 @@ class User extends Authenticatable {
 		'phone',
 		'member_since',
 		'is_public',
-		'is_active'
+		'is_active',
+		'transactions'
 	];
 
 	protected $hidden = [
@@ -90,6 +92,19 @@ class User extends Authenticatable {
 		};
 
 		return $due_dates;
+	}
+
+	public function getLastTransaction(TransactionType $transactionType) {
+		return Transaction::with([
+				'transactionType' => function($query) use ($transactionType) {
+					$query->where('id', $transactionType);
+				},
+				'user' => function($query) {
+					$query->where('id', $this->id);
+				}
+			])
+			->orderBy('started_at', 'desc')
+			->first();
 	}
 
 	public function formDateOfBirthAttribute($value) {

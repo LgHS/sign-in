@@ -28,21 +28,21 @@
     "bootstrap-sass": "^3.3.6"
   },
   "devDependencies": {
+    "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.11.1",
     "font-awesome": "^4.5.0",
-    "imagemin-cli": "^2.1.0",
-    "node-sass": "^3.4.2",
-    "onchange": "^2.0.0",
-    "parallelshell": "^2.0.0",
-    "svgo": "^0.6.1",
-
-    "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
+    "gulp-phpunit": "^0.22.2",
+    "imagemin-cli": "^2.1.0",
     "jquery": "^2.0.0",
     "laravel-elixir": "^6.0.0-14",
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",
     "lodash": "^4.16.2",
+    "node-sass": "^3.4.2",
+    "onchange": "^2.0.0",
+    "parallelshell": "^2.0.0",
+    "svgo": "^0.6.1",
     "vue": "^2.0.1",
     "vue-resource": "^1.0.3"
   }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -58,6 +59,13 @@ class Transaction extends Model
         'registered_at' => 'required',
         'duration' => 'required'
     ];
+
+	/**
+	 * @return Carbon Transaction end date
+	 */
+    public function getEndDateAttribute() {
+    	return $this->started_at->addMonths($this->duration);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

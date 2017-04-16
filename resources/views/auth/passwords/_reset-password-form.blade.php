@@ -25,10 +25,6 @@
             <span class="help-block">
                     {{ $errors->first('password') }}
                 </span>
-        @else
-            <span class="help-block">
-                {{ trans('validation.secure') }}
-            </span>
         @endif
     </div>
 
@@ -39,8 +35,12 @@
 
         @if ($errors->has('password_confirmation'))
             <span class="help-block">
-                    {{ $errors->first('password_confirmation') }}
-                </span>
+                {{ $errors->first('password_confirmation') }}
+            </span>
+        @else
+            <span class="help-block">
+                {{ trans('validation.secure') }}
+            </span>
         @endif
     </div>
 
