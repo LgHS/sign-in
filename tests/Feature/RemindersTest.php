@@ -63,6 +63,7 @@ class RemindersTest extends TestCase {
 		$monthly->save();
 
 		$this->assertTrue(Reminder::where('name', 'Monthly last day')->first()->shouldSendTo($user));
+		$this->assertFalse(Reminder::where('name', 'Annual last day')->first()->shouldSendTo($user));
 	}
 
 	/**

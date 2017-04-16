@@ -11,6 +11,7 @@ use Collective\Html\Eloquent\FormAccessible;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Passport\HasApiTokens;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
@@ -64,6 +65,7 @@ class User extends Authenticatable {
 				$isLate = true;
 			}
 		}
+
 		return $isLate;
 	}
 
@@ -81,12 +83,12 @@ class User extends Authenticatable {
 
 			// if there's no due date set for this type of transaction
 			if( ! isset($due_dates[ $transaction->transactionType->id ])) {
-				$due_dates[$transaction->transactionType->id] = $due_date;
+				$due_dates[ $transaction->transactionType->id ] = $due_date;
 			} else {
 				$old_due_date = $due_dates[ $transaction->transactionType->id ]['date'];
 				// we check if transaction is more recent then previously registered
 				if($old_due_date->lt($due_date['date'])) {
-					$due_dates[$transaction->transactionType->id] = $due_date;
+					$due_dates[ $transaction->transactionType->id ] = $due_date;
 				}
 			}
 		};
@@ -95,16 +97,14 @@ class User extends Authenticatable {
 	}
 
 	public function getLastTransaction(TransactionType $transactionType) {
-		return Transaction::with([
-				'transactionType' => function($query) use ($transactionType) {
-					$query->where('id', $transactionType);
-				},
-				'user' => function($query) {
-					$query->where('id', $this->id);
-				}
-			])
-			->orderBy('started_at', 'desc')
-			->first();
+		return $this->transactions()
+		            ->where('transaction_type_id', $transactionType->id)
+		            ->orderBy('started_at', 'desc')
+		            ->first();
+	}
+
+	public function transactions() {
+		return $this->hasMany(Transaction::class);
 	}
 
 	public function formDateOfBirthAttribute($value) {
@@ -127,17 +127,14 @@ class User extends Authenticatable {
 		$this->notify(new ResetPasswordNotification($token));
 	}
 
+	// https://github.com/Zizaco/entrust/issues/480
+
 	public function sendPasswordInitNotification($token) {
 		$this->notify(new InitPasswordNotification($token));
 	}
 
-	// https://github.com/Zizaco/entrust/issues/480
 	public function restore() {
 		$this->sfRestore();
 		Cache::tags(Config::get('entrust.role_user_table'))->flush();
-	}
-
-	public function transactions() {
-		return $this->hasMany(Transaction::class);
 	}
 }

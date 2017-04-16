@@ -36,7 +36,7 @@ class RemindersTableSeeder extends Seeder {
 		// Monthly late
 		$reminder = new Reminder();
 		$reminder->name = "Monthly late";
-		$reminder->text = "Late since {{{days}}} days";
+		$reminder->text = "Late since %days% days";
 		$reminder->days = 7;
 		$reminder->transactionType()->associate($monthly);
 		$reminder->save();
@@ -60,7 +60,7 @@ class RemindersTableSeeder extends Seeder {
 		// Annual 7 days late
 		$reminder = new Reminder();
 		$reminder->name = "Annual after";
-		$reminder->text = "Late since {{{days}}} days";
+		$reminder->text = "Late since %days% days";
 		$reminder->days = 7;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();

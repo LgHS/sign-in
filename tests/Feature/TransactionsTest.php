@@ -20,6 +20,7 @@ class TransactionsTest extends TestCase {
 	private $transactionType;
 	private $firstTransaction;
 	private $secondTransaction;
+	private $annualTransaction;
 
 	public function setUp() {
 		parent::setUp();
@@ -40,6 +41,13 @@ class TransactionsTest extends TestCase {
 		]);
 		$this->secondTransaction->user()->associate($this->user);
 		$this->secondTransaction->save();
+
+
+		$this->annualTransaction = factory(Transaction::class)->states('annual')->make([
+			'started_at' => Carbon::now()->subMonths(8)->toDateTimeString()
+		]);
+		$this->annualTransaction->user()->associate($this->user);
+		$this->annualTransaction->save();
 	}
 
 	public function testFirstTransactionIsNotLast() {
@@ -48,5 +56,16 @@ class TransactionsTest extends TestCase {
 
 	public function testSecondTransactionIsLast() {
 		$this->assertTrue($this->secondTransaction->is($this->user->getLastTransaction($this->transactionType)));
+	}
+
+	public function testAnnualTransactionIsLast() {
+		$annualTransactionType = TransactionType::where('name', 'Cotisation annuelle')->first();
+		/** @var Transaction $annualLastTransaction */
+		$annualLastTransaction = $this->user->getLastTransaction($annualTransactionType);
+		//echo "\n\ntransaction: "; var_dump($annualLastTransaction);
+		echo "\n\nannual id: " . $this->annualTransaction->id;
+		echo "\nlast annual id: " . $annualLastTransaction->id;
+		echo "\nlast annual type: " . $annualLastTransaction->transactionType->name;
+		$this->assertTrue($this->annualTransaction->is($annualLastTransaction));
 	}
 }

@@ -32,7 +32,7 @@ $factory->define(Transaction::class, function(Faker\Generator $faker) {
 		},
 		'transaction_type_id' => function() {
 			// monthly
-			return TransactionType::find(2)->first()->id;
+			return TransactionType::where('name', 'Abonnement mensuel')->first()->id;
 		},
 		'registered_at' => Carbon::now()->toDateTimeString(),
 		'amount' => 20,
@@ -46,7 +46,7 @@ $factory->state(Transaction::class, 'annual', function() {
 		'duration' => 12,
 		'transaction_type_id' => function() {
 			// annual
-			return TransactionType::find(1)->first()->id;
+			return TransactionType::where('name', 'Cotisation annuelle')->first()->id;
 		}
 	];
 });

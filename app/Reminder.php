@@ -23,14 +23,12 @@ class Reminder extends Model
 		return $this->belongsTo(\App\Models\TransactionType::class, 'transaction_type_id', 'id');
 	}
 
-	public function shouldSendTo(User $user, $dump = false) {
+	public function shouldSendTo(User $user) {
 		$lastTransaction = $user->getLastTransaction($this->transactionType);
-		if($dump) {
-			echo "transaction start: "; var_dump($lastTransaction->started_at);
-			echo "transaction end: "; var_dump($lastTransaction->endDate);
-			echo "days: "; var_dump($this->days);
-			echo "is today: "; var_dump($lastTransaction->endDate->addDays($this->days));
+		if(!$lastTransaction) {
+			return false;
 		}
+
 		return $lastTransaction->endDate->addDays($this->days)->isToday();
 	}
 
