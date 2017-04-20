@@ -18,8 +18,7 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Validator;
 use Webpatser\Uuid\Uuid;
 
-class MembersController extends Controller
-{
+class MembersController extends Controller {
 	protected $rules = [
 		'username' => 'required|max:255|unique:users',
 		'email' => 'required|email|max:255|unique:users',
@@ -36,17 +35,19 @@ class MembersController extends Controller
 		'member_roles' => 'required',
 	];
 
-	public function __construct()
-	{
+	public function __construct() {
 	}
 
 	public function index() {
-		$members = User::all();
-		return view('admin.members.index', compact('members'));
+		$members          = User::all();
+		$transactionTypes = TransactionType::all();
+
+		return view('admin.members.index', compact('members', 'transactionTypes'));
 	}
 
 	public function edit($member_id) {
 		$member = User::with('roles')->where('id', $member_id)->first();
+
 		return view('admin.members.edit', compact('member'));
 	}
 
@@ -59,29 +60,41 @@ class MembersController extends Controller
 
 		$user = new User();
 
-		$user->username = $request->get('username');
-		$user->email = $request->get('email');
-		$user->lastName = $request->get('lastName');
-		$user->firstName = $request->get('firstName');
+		$user->username      = $request->get('username');
+		$user->email         = $request->get('email');
+		$user->lastName      = $request->get('lastName');
+		$user->firstName     = $request->get('firstName');
 		$user->date_of_birth = $user->date_of_birth ? Carbon::createFromFormat('d/m/Y', $request->get('date_of_birth'))->toDateTimeString() : null;
-		$user->gender = $request->get('gender');
-		$user->address = $request->get('address');
-		$user->postcode = $request->get('postcode');
-		$user->city = $request->get('city');
-		$user->country = $request->get('country');
-		$user->phone = $request->get('phone');
-		$user->is_public = $request->get('is_public');
-		$user->is_active = $request->get('is_active');
-		$user->member_since = $user->member_since ? Carbon::createFromFormat('d/m/Y', $request->get('member_since'))->toDateTimeString() : null;
-		$user->uuid = Uuid::generate();
+		$user->gender        = $request->get('gender');
+		$user->address       = $request->get('address');
+		$user->postcode      = $request->get('postcode');
+		$user->city          = $request->get('city');
+		$user->country       = $request->get('country');
+		$user->phone         = $request->get('phone');
+		$user->is_public     = $request->get('is_public');
+		$user->is_active     = $request->get('is_active');
+		$user->member_since  = $user->member_since ? Carbon::createFromFormat('d/m/Y', $request->get('member_since'))->toDateTimeString() : null;
+		$user->uuid          = Uuid::generate();
 
 		$user->save();
 		$user->attachRole(Role::where('name', $request->get('member_roles')[0])->first());
 
-        $this->_sendInitMail($user);
+		$this->_sendInitMail($user);
 
-        Flash::success('Membre ajouté ! Bravo beau gosse !');
-        return back();
+		Flash::success('Membre ajouté ! Bravo beau gosse !');
+
+		return back();
+	}
+
+	private function _sendInitMail(User $member) {
+		$token = Password::createToken($member);
+		if($token) {
+			$member->sendPasswordInitNotification($token);
+
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public function update(Request $request, User $member) {
@@ -107,12 +120,14 @@ class MembersController extends Controller
 		$member->attachRole(Role::where('name', $request->get('member_roles')[0])->first());
 
 		Flash::success('Membre updaté ! On est en forme je vois ?');
+
 		return back();
 	}
 
 	public function delete(User $member) {
 		$member->delete();
 		Flash::success('Membre supprimé.');
+
 		return back();
 	}
 
@@ -122,39 +137,45 @@ class MembersController extends Controller
 		} else {
 			Flash::error('Il y a eu une erreur, le mail n\'est pas parti :(');
 		}
+
 		return back();
 	}
 
-	public function sendReminder(User $member) {
-		// TODO put this somewhere in DB
-		$transactionType = TransactionType::where('name', 'Abonnement mensuel')->first();
+	public function sendReminder(User $member, TransactionType $transactionType) {
 		$lastTransaction = $member->getLastTransaction($transactionType);
 
-		if(!$lastTransaction) {
+		if( ! $lastTransaction) {
 			Flash::error('Pas de transaction trouvée');
+
 			return back();
 		}
 
-		$days = Carbon::now()->diffInDays($lastTransaction->endDate);
-		$reminder = new Reminder([
-			'transaction_type_id' => $transactionType->id,
-			'title' => 'Rappel: abonnement expiré',
-			'text' => 'Ton abonnement est expiré depuis %days% jours. N\'oublie pas de renouveller !',
-			'days' => $days
-		]);
-		$member->notify(new ReminderNotification($reminder));
+		$days     = Carbon::now()->diffInDays($lastTransaction->endDate);
+		$reminder = null;
 
-		Flash::success('Mail envoyé ! Yay !');
-		return back();
-	}
-
-	private function _sendInitMail(User $member) {
-		$token = Password::createToken($member);
-		if($token) {
-			$member->sendPasswordInitNotification($token);
-			return true;
+		if($transactionType->name === "Cotisation annuelle") {
+			$reminder = new Reminder([
+				'transaction_type_id' => $transactionType->id,
+				'title' => 'Rappel: cotisation annuelle',
+				'text' => 'Ta cotisation annuelle est expirée depuis %days% jours. N\'oublie pas de renouveller !',
+				'days' => $days
+			]);
 		} else {
-			return false;
+			$reminder = new Reminder([
+				'transaction_type_id' => $transactionType->id,
+				'title' => 'Rappel: abonnement expiré',
+				'text' => 'Ton abonnement est expiré depuis %days% jours. N\'oublie pas de renouveller !',
+				'days' => $days
+			]);
 		}
+
+		if($reminder) {
+			$member->notify(new ReminderNotification($reminder));
+			Flash::success('Mail envoyé ! Yay !');
+		} else {
+			Flash::error('Pas de rappel pour cette transaction');
+		}
+
+		return back();
 	}
 }

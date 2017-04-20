@@ -69,16 +69,20 @@
 
                                         <button type="submit" class="btn btn-xs">
                                             <i class="fa fa-mail-forward"></i>
-                                            Renvoyer mail reset
+                                            Mail reset
                                         </button>
                                     </form>
 
-                                    <form action="/members/{{$member->id}}/sendReminder" method="post" class="form-inline">
-                                        <button type="submit" class="btn btn-xs" confirm>
-                                            <i class="fa fa-clock-o"></i>
-                                            Envoyer rappel abo
-                                        </button>
-                                    </form>
+                                    @foreach($transactionTypes as $transactionType)
+                                        <form class="form-inline" style="display: inline;"
+                                              action="/members/{{$member->id}}/sendReminder/{{$transactionType->id}}" method="post">
+                                            {{csrf_field()}}
+                                            <button type="submit" class="btn btn-xs" confirm>
+                                                <i class="fa fa-mail-forward"></i>
+                                                {{$transactionType->name}}
+                                            </button>
+                                        </form>
+                                    @endforeach
                                 </td>
                                 <td class="">
                                     <form class="form-inline" method="post" action="/members/{{$member->id}}">
