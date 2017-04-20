@@ -180,6 +180,8 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         \InfyOm\Generator\InfyOmGeneratorServiceProvider::class,
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
+
+	    Spatie\Backup\BackupServiceProvider::class,
     ],
 
     /*
@@ -236,7 +238,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
-        'Flash'     => Laracasts\Flash\Flash::class,
     ],
 
 ];
