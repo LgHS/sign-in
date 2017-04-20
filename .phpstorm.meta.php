@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2016-12-27.
+    * Generated on 2017-04-20.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -45,6 +45,8 @@ namespace PHPSTORM_META {
             'active' instanceof \Watson\Active\Active,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
             'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -168,6 +170,8 @@ namespace PHPSTORM_META {
             'active' instanceof \Watson\Active\Active,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
             'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -291,6 +295,8 @@ namespace PHPSTORM_META {
             'active' instanceof \Watson\Active\Active,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
             'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -414,6 +420,8 @@ namespace PHPSTORM_META {
             'active' instanceof \Watson\Active\Active,
             'entrust' instanceof \Zizaco\Entrust\Entrust,
             'command.entrust.migration' instanceof \Zizaco\Entrust\MigrationCommand,
+            'League\OAuth2\Server\AuthorizationServer' instanceof \League\OAuth2\Server\AuthorizationServer,
+            'League\OAuth2\Server\ResourceServer' instanceof \League\OAuth2\Server\ResourceServer,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,

@@ -172,6 +172,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Watson\BootstrapForm\BootstrapFormServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
+	    Spatie\Backup\BackupServiceProvider::class,
     ],
 
     /*
