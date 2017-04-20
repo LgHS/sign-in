@@ -238,6 +238,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
+        'Flash'     => Laracasts\Flash\Flash::class,
     ],
 
 ];

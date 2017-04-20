@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-04-11.
+    * Generated on 2017-04-20.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -67,6 +67,11 @@ namespace PHPSTORM_META {
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
             'infyom.vuejs' instanceof \InfyOm\Generator\Commands\VueJs\VueJsGeneratorCommand,
             'infyom.publish.vuejs' instanceof \InfyOm\Generator\Commands\Publish\VueJsLayoutPublishCommand,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -212,6 +217,11 @@ namespace PHPSTORM_META {
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
             'infyom.vuejs' instanceof \InfyOm\Generator\Commands\VueJs\VueJsGeneratorCommand,
             'infyom.publish.vuejs' instanceof \InfyOm\Generator\Commands\Publish\VueJsLayoutPublishCommand,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -357,6 +367,11 @@ namespace PHPSTORM_META {
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
             'infyom.vuejs' instanceof \InfyOm\Generator\Commands\VueJs\VueJsGeneratorCommand,
             'infyom.publish.vuejs' instanceof \InfyOm\Generator\Commands\Publish\VueJsLayoutPublishCommand,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -502,6 +517,11 @@ namespace PHPSTORM_META {
             'infyom.rollback' instanceof \InfyOm\Generator\Commands\RollbackGeneratorCommand,
             'infyom.vuejs' instanceof \InfyOm\Generator\Commands\VueJs\VueJsGeneratorCommand,
             'infyom.publish.vuejs' instanceof \InfyOm\Generator\Commands\Publish\VueJsLayoutPublishCommand,
+            'command.backup:run' instanceof \Spatie\Backup\Commands\BackupCommand,
+            'command.backup:clean' instanceof \Spatie\Backup\Commands\CleanupCommand,
+            'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
+            'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
+            'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
