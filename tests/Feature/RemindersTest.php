@@ -69,7 +69,7 @@ class RemindersTest extends TestCase {
 	/**
 	 * Monthly late
 	 */
-	/*public function testMonthlyLate() {
+	public function testMonthlyLate() {
 		$user = factory(User::class)->create();
 		$monthly = factory(Transaction::class)->make([
 			'started_at' => Carbon::now()->subMonth()->subDays(7)->toDateTimeString()
@@ -78,7 +78,7 @@ class RemindersTest extends TestCase {
 		$monthly->save();
 
 		$this->assertTrue(Reminder::where('name', '=', 'Monthly late')->first()->shouldSendTo($user));
-	}*/
+	}
 
 	/**
 	 * Annual before
@@ -127,12 +127,12 @@ class RemindersTest extends TestCase {
 	 */
 	public function testAnnualCancelling() {
 		$user = factory(User::class)->create();
+		// TODO work out why we have to substract one more day
 		$annual = factory(Transaction::class)->states('annual')->make([
-			'started_at' => Carbon::now()->subYear()->subDays(30)->toDateTimeString()
+			'started_at' => Carbon::now()->subYear()->subDays(61)->toDateTimeString()
 		]);
 		$annual->user()->associate($user);
 		$annual->save();
-
 
 		$this->assertTrue(Reminder::where('name', 'Annual cancelling')->first()->shouldSendTo($user));
 	}

@@ -182,6 +182,8 @@ return [
         \InfyOm\AdminLTETemplates\AdminLTETemplatesServiceProvider::class,
 
 	    Spatie\Backup\BackupServiceProvider::class,
+
+	    Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -239,6 +241,7 @@ return [
         'BootForm' => Watson\BootstrapForm\Facades\BootstrapForm::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+	    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

@@ -1,6 +1,9 @@
 # Passport
 *.key
 
+# Import files
+storage/imports/*
+
 # IDEs
 .idea
 

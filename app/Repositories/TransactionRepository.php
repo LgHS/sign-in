@@ -21,7 +21,13 @@ class TransactionRepository extends BaseRepository
         'comments'
     ];
 
-    /**
+    public function boot() {
+	    parent::boot();
+
+	    //$this->pushCriteria(new );
+    }
+
+	/**
      * Configure the Model
      **/
     public function model()

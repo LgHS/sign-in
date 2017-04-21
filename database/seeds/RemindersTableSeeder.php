@@ -35,13 +35,13 @@ class RemindersTableSeeder extends Seeder {
 		$reminder->save();
 
 		// Monthly late
-		/*$reminder = new Reminder();
+		$reminder = new Reminder();
 		$reminder->title = "Rappel: abonnement expiré";
 		$reminder->name = "Monthly late";
 		$reminder->text = "Ton abonnement est expiré depuis %days% jours.";
 		$reminder->days = 7;
 		$reminder->transactionType()->associate($monthly);
-		$reminder->save();*/
+		$reminder->save();
 
 		// Annual before
 		$reminder        = new Reminder();
@@ -65,8 +65,17 @@ class RemindersTableSeeder extends Seeder {
 		$reminder        = new Reminder();
 		$reminder->title = "Rappel: cotisation annuelle";
 		$reminder->name  = "Annual after";
-		$reminder->text  = "Ta cotisation annuelle est expirée depuis %days% jours. Si tu ne souhaites pas renouveller, ton affiliation sera automatiquement résiliée dans trois semaines.";
+		$reminder->text  = "Ta cotisation annuelle est expirée depuis %days% jours. N'oublie pas de renouveller !";
 		$reminder->days  = 7;
+		$reminder->transactionType()->associate($annual);
+		$reminder->save();
+
+		// Annual 30 days late
+		$reminder        = new Reminder();
+		$reminder->title = "Rappel: cotisation annuelle";
+		$reminder->name  = "Annual after 30";
+		$reminder->text  = "Ta cotisation annuelle est expirée depuis %days% jours. Si tu ne souhaites pas renouveller, ton affiliation sera automatiquement résiliée dans un mois.";
+		$reminder->days  = 30;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();
 
@@ -74,8 +83,8 @@ class RemindersTableSeeder extends Seeder {
 		$reminder        = new Reminder();
 		$reminder->title = "Résiliation de ton affiliation";
 		$reminder->name  = "Annual cancelling";
-		$reminder->text  = "Cela fait 30 jours que ta cotisation annuelle est expirée, tu es maintenant considéré comme un ancien membre et n'a plus accès à nos différents services. Si tu considères que c'est une erreur, contacte-nous. Sinon so long, reste en contact !";
-		$reminder->days  = 30;
+		$reminder->text  = "Cela fait deux mois que ta cotisation annuelle est expirée, tu es maintenant considéré comme un ancien membre et n'a plus accès à nos différents services. Si c'est une erreur, contacte-nous. Sinon so long, reste en contact !";
+		$reminder->days  = 60;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();
 	}

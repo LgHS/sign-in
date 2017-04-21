@@ -19,7 +19,8 @@
         "laravel/passport": "^1.0",
         "spatie/laravel-backup": "^3.10",
         "infyomlabs/laravel-generator": "5.3.x-dev",
-        "infyomlabs/adminlte-templates": "5.3.x-dev"
+        "infyomlabs/adminlte-templates": "5.3.x-dev",
+        "maatwebsite/excel": "^2.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
