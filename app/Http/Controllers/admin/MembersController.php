@@ -157,7 +157,10 @@ class MembersController extends Controller {
 			$reminder = new Reminder([
 				'transaction_type_id' => $transactionType->id,
 				'title' => 'Rappel: cotisation annuelle',
-				'text' => 'Ta cotisation annuelle est expirée depuis %days% jours. N\'oublie pas de renouveller !',
+				//'text' => 'Ta cotisation annuelle est expirée depuis %days% jours. N\'oublie pas de renouveller !',
+				// Exceptional text for new membership system :
+				'text' => "Tu n'as pas payé ta cotisation annuelle de 5€. Tu peux le faire par virement bancaire ou en 
+				liquide sur place. Si tu as des questions n'hésite pas à en parler à un admin !",
 				'days' => $days
 			]);
 		} else {
