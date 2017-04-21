@@ -36,7 +36,6 @@ class OrderByCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-    	$model = $model->orderBy($this->orderByCriteria, $this->sortByCriteria);
-        return $model;
+    	return $model->orderBy($this->orderByCriteria, $this->sortByCriteria);
     }
 }
