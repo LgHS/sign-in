@@ -126,6 +126,7 @@ class TransactionController extends AppBaseController
             return redirect(route('admin.transactions.index'));
         }
 
+
         $transaction = $this->transactionRepository->update($request->all(), $id);
 
         Flash::success('Transaction updated successfully.');

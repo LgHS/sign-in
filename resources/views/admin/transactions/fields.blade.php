@@ -36,13 +36,13 @@
     <!-- Started At Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('started_at', 'Date de départ:') !!}
-        {!! Form::date('started_at', isset($transaction) ? $transaction->started_at->format('Y-m-d') : Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control']) !!}
+        {!! Form::date('started_at', isset($transaction) ? $transaction->started_at : Carbon\Carbon::now(), ['class' => 'form-control']) !!}
     </div>
 
     <!-- Registered At Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('registered_at', 'Date de l\'enregistrement:') !!}
-        {!! Form::date('registered_at', isset($transaction) ? $transaction->registered_at->format('Y-m-d') : Carbon\Carbon::now()->format('Y-m-d'), ['class' => 'form-control']) !!}
+        {!! Form::date('registered_at', isset($transaction) ? $transaction->registered_at : Carbon\Carbon::now(), ['class' => 'form-control']) !!}
     </div>
 </div>
 

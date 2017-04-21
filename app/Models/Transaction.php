@@ -90,4 +90,12 @@ class Transaction extends Model
     {
         return $this->belongsTo(\App\Models\PaymentType::class, 'payment_type_id', 'id');
     }
+
+    /*public function formStartedAtAttribute($value) {
+	    if( ! $value) {
+		    return '';
+	    }
+
+	    return Carbon::parse($value)->format('d/m/Y');
+    }*/
 }

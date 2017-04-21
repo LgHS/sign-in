@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Criteria\OrderByCriteria;
 use App\Models\Transaction;
 use InfyOm\Generator\Common\BaseRepository;
 
@@ -22,9 +23,7 @@ class TransactionRepository extends BaseRepository
     ];
 
     public function boot() {
-	    parent::boot();
-
-	    //$this->pushCriteria(new );
+	    $this->with(['user', 'transactionType'])->pushCriteria(new OrderByCriteria('id', 'DESC'));
     }
 
 	/**
