@@ -36,22 +36,27 @@ class SendReminders extends Command
 	 * Execute the console command.
 	 */
 	public function handle() {
-		$counter = 0;
+		$usersReminded = [];
 		foreach(User::all() as $user) {
 			foreach(Reminder::all() as $reminder) {
 				if($user->has('transactions')) {
 					if($reminder->shouldSendTo($user)) {
 						$user->notify(new ReminderNotification($reminder));
-						$counter ++;
+						$usersReminded[] = $user->fullName;
 					}
 				}
 			}
 		}
 
-		if($counter) {
-			$this->info($counter . " reminders sent");
+		$message = "Daily Reminders: ";
+
+		if(count($usersReminded)) {
+			$usersString = implode(', ', $usersReminded);
+			$message .= "reminders sent to " . $usersString;
 		} else {
-			$this->info("No reminder to send");
+			$message .= "No reminder to send";
 		}
+		$this->info($message);
+		\Log::info($message);
 	}
 }
