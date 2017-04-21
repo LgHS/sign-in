@@ -38,7 +38,7 @@ class RemindersTableSeeder extends Seeder {
 		$reminder = new Reminder();
 		$reminder->title = "Rappel: abonnement expiré";
 		$reminder->name = "Monthly late";
-		$reminder->text = "Ton abonnement est expiré depuis %days% jours.";
+		$reminder->text = "Ton abonnement est expiré depuis %days% jours. N'oublie pas de renouveller !";
 		$reminder->days = 7;
 		$reminder->transactionType()->associate($monthly);
 		$reminder->save();
@@ -47,7 +47,7 @@ class RemindersTableSeeder extends Seeder {
 		$reminder        = new Reminder();
 		$reminder->title = "Expiration de ta cotisation annuelle";
 		$reminder->name  = "Annual before";
-		$reminder->text  = "Ta cotisation annuelle expire dans %days% jours. N'oublie pas de renouveller.";
+		$reminder->text  = "Ta cotisation annuelle expire dans %days% jours. N'oublie pas de renouveller !";
 		$reminder->days  = -7;
 		$reminder->transactionType()->associate($annual);
 		$reminder->save();

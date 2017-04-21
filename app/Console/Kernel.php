@@ -42,9 +42,11 @@ class Kernel extends ConsoleKernel {
 				->dailyAt('02:00')
 				->appendOutputTo('./storage/logs/scheduler.log');
 
-		$schedule->command('backup:clean')
-				->timezone('Europe/Brussels')
-				->at('20:00')
-				->appendOutputTo('./storage/logs/scheduler.log');
+		Log::info('Scheduler was here');
+
+		//$schedule->command('backup:clean')
+		//		->timezone('Europe/Brussels')
+		//		->at('20:00')
+		//		->appendOutputTo('./storage/logs/scheduler.log');
 	}
 }
