@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel {
 	/**
@@ -26,8 +27,24 @@ class Kernel extends ConsoleKernel {
 	 * @return void
 	 */
 	protected function schedule(Schedule $schedule) {
-		$schedule->command('reminders:send')->dailyAt('12:00');
-		$schedule->command('backup:clean')->dailyAt('01:00');
-		$schedule->command('backup:run')->dailyAt('02:00');
+		$schedule->command('reminders:send')
+		         ->timezone('Europe/Brussels')
+		         ->dailyAt('12:00')
+		         ->appendOutputTo('./storage/logs/scheduler.log');
+
+		$schedule->command('backup:clean')
+				->timezone('Europe/Brussels')
+				->dailyAt('01:00')
+				->appendOutputTo('./storage/logs/scheduler.log');
+
+		$schedule->command('backup:run')
+				->timezone('Europe/Brussels')
+				->dailyAt('02:00')
+				->appendOutputTo('./storage/logs/scheduler.log');
+
+		$schedule->command('backup:clean')
+				->timezone('Europe/Brussels')
+				->at('20:00')
+				->appendOutputTo('./storage/logs/scheduler.log');
 	}
 }

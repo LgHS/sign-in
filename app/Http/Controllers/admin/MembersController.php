@@ -146,7 +146,11 @@ class MembersController extends Controller {
 
 		if( ! $lastTransaction) {
 			Flash::error('Pas de transaction trouvée');
+			return back();
+		}
 
+		if(!$member->isLate($transactionType)) {
+			Flash::error($member->fullName . ' n\'est pas en retard pour la transaction ' . $transactionType->name. ' :)');
 			return back();
 		}
 
@@ -156,9 +160,10 @@ class MembersController extends Controller {
 		if($transactionType->name === "Cotisation annuelle") {
 			$reminder = new Reminder([
 				'transaction_type_id' => $transactionType->id,
-				'title' => 'Rappel: cotisation annuelle',
+				//'title' => 'Rappel: cotisation annuelle',
 				//'text' => 'Ta cotisation annuelle est expirée depuis %days% jours. N\'oublie pas de renouveller !',
 				// Exceptional text for new membership system :
+				'title' => 'Cotisation annuelle',
 				'text' => "Tu n'as pas payé ta cotisation annuelle de 5€. Tu peux le faire par virement bancaire ou en 
 				liquide sur place. Si tu as des questions n'hésite pas à en parler à un admin !",
 				'days' => $days

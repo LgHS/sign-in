@@ -69,10 +69,8 @@ class User extends Authenticatable {
 		return $isLate;
 	}
 
-	public function getDueDatesAttribute() {
+	/*public function getDueDatesAttribute() {
 		$due_dates = [];
-		/** @var Transaction $transaction */
-		//var_dump($this->transactions); exit;
 		foreach($this->transactions as $transaction) {
 			$due_date = array(
 				'name' => $transaction->transactionType->name,
@@ -94,7 +92,7 @@ class User extends Authenticatable {
 		};
 
 		return $due_dates;
-	}
+	}*/
 
 	public function getLastTransaction(TransactionType $transactionType) {
 		if( ! $this->has('transactions')) {
@@ -105,6 +103,20 @@ class User extends Authenticatable {
 		            ->where('transaction_type_id', $transactionType->id)
 		            ->orderBy('started_at', 'desc')
 		            ->first();
+	}
+
+	public function getRemainingDays(TransactionType $transactionType) {
+		$lastTransaction = $this->getLastTransaction($transactionType);
+
+		if(!$lastTransaction) {
+			return null;
+		}
+
+		return Carbon::today()->diffInDays($lastTransaction->endDate, false);
+	}
+
+	public function isLate(TransactionType $transactionType) {
+		return $this->getRemainingDays($transactionType) < 0;
 	}
 
 	public function transactions() {

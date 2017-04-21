@@ -30,8 +30,6 @@ class Reminder extends Model
 		if(!$lastTransaction) {
 			return false;
 		}
-		echo "\ntest:\n".($lastTransaction->started_at) . "\n";
-		echo ($lastTransaction->endDate->addDays($this->days)) . "\n";
 		return $lastTransaction->endDate->addDays($this->days)->isToday();
 	}
 

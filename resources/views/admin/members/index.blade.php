@@ -24,13 +24,19 @@
                     <thead>
                         <tr>
                             <th>
+                                ID
+                            </th>
+                            <th>
                                 Nom
                             </th>
                             <th>
                                 Statut
                             </th>
                             <th>
-                                Etat cotisations
+                                Abonnement mensuel
+                            </th>
+                            <th>
+                                Cotisation annuelle
                             </th>
                             <th class="actions">Actions</th>
                         </tr>
@@ -39,29 +45,31 @@
                         @foreach($members as $member)
                             <tr>
                                 <td>
-                                    {{$member->fullName}}
-                                </td>
-                                <td>
-                                    {{$member->statut}}
-                                </td>
-                                <td>
-                                    @foreach($member->dueDates as $dueDate)
-                                        <span class="label label-{{$dueDate['difference'] >= 0 ? 'success' : 'danger'}}">
-                                            {{$dueDate['name']}}:
-                                            @if($dueDate['difference'] > 0)
-                                                {{$dueDate['difference']}} jours restants
-                                            @elseif($dueDate['difference'] == 0)
-                                                Dernier jour !
-                                            @else
-                                                En retard de {{abs($dueDate['difference'])}} jours
-                                            @endif
-                                        </span>
-                                        &nbsp;
-                                    @endforeach
+                                    {{$member->id}}
                                 </td>
                                 <td>
                                     {{$member->fullName}}
                                 </td>
+                                <td>
+                                    {{$member->roles()->first()->display_name}}
+                                </td>
+                                @foreach($transactionTypes as $transactionType)
+                                    @php ($daysRemaining = $member->getRemainingDays($transactionType))
+                                    <td>
+                                        @if($daysRemaining)
+                                            <span class="label label-{{$daysRemaining >= 0 ? 'success' : 'danger' }}">
+                                                {{$transactionType->name}}
+                                                @if($daysRemaining > 0)
+                                                    {{$daysRemaining}} jours restants
+                                                @elseif($daysRemaining == 0)
+                                                    Dernier jour !
+                                                @else
+                                                    En retard de {{abs($daysRemaining)}} jours
+                                                @endif
+                                            </span>
+                                        @endif
+                                    </td>
+                                @endforeach
                                 <td>
                                     <form class="form-inline" style="display: inline;"
                                           action="/members/{{$member->id}}/sendResetMail" method="post">
@@ -74,14 +82,16 @@
                                     </form>
 
                                     @foreach($transactionTypes as $transactionType)
-                                        <form class="form-inline" style="display: inline;"
-                                              action="/members/{{$member->id}}/sendReminder/{{$transactionType->id}}" method="post">
-                                            {{csrf_field()}}
-                                            <button type="submit" class="btn btn-xs" confirm>
-                                                <i class="fa fa-mail-forward"></i>
-                                                {{$transactionType->name}}
-                                            </button>
-                                        </form>
+                                        @if($member->isLate($transactionType))
+                                            <form class="form-inline" style="display: inline;"
+                                                  action="/members/{{$member->id}}/sendReminder/{{$transactionType->id}}" method="post">
+                                                {{csrf_field()}}
+                                                <button type="submit" class="btn btn-xs" confirm>
+                                                    <i class="fa fa-mail-forward"></i>
+                                                    {{$transactionType->name}}
+                                                </button>
+                                            </form>
+                                        @endif
                                     @endforeach
                                 </td>
                                 <td class="">
