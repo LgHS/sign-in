@@ -24,7 +24,7 @@ class TransactionRepository extends BaseRepository
 
     public function boot() {
 	    $this
-		    ->with(['user', 'transactionType'])
+		    //->with(['user', 'transactionType'])
 		    ->pushCriteria(new OrderByCriteria('started_at', 'DESC'));
     }
 
