@@ -46,7 +46,8 @@ class ReminderNotification extends Notification {
 	public function toMail($notifiable) {
 		return (new MailMessage)
 			->subject($this->reminder->title)
-			->line(str_replace("%days%", abs($this->reminder->days), $this->reminder->text));
+			->line(str_replace("%days%", abs($this->reminder->days), $this->reminder->text))
+			->line("Tu peux payer par virement bancaire sur le compte BE59 5230 8080 5826 ou sur place en espèces ou par carte.");
 	}
 
 	/**

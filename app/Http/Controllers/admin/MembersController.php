@@ -164,8 +164,7 @@ class MembersController extends Controller {
 				//'text' => 'Ta cotisation annuelle est expirée depuis %days% jours. N\'oublie pas de renouveller !',
 				// Exceptional text for new membership system :
 				'title' => 'Cotisation annuelle',
-				'text' => "Tu n'as pas payé ta cotisation annuelle de 5€. Tu peux le faire par virement bancaire ou en 
-				liquide sur place. Si tu as des questions n'hésite pas à en parler à un admin !",
+				'text' => "Tu n'as pas payé ta cotisation annuelle de 5€. Si tu as des questions n'hésite pas à en parler à un admin !",
 				'days' => $days
 			]);
 		} else {
