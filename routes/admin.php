@@ -1,19 +1,18 @@
 <?php
-Route::get('admin', 'AdminController@index')->name('admin.index');
-Route::get('admin/services', 'AdminController@services')->name('admin.services');
-Route::get('admin/notifications', 'NotificationsController@index')->name('admin.notifications.index');
+Route::group(['prefix' => 'admin', 'middleware' => ['permission:manage-members']], function() {
+    Route::get('', 'AdminController@index')->name('admin.index');
+    Route::get('services', 'AdminController@services')->name('admin.services');
+    Route::get('notifications', 'NotificationsController@index')->name('admin.notifications.index');
 
-Route::get('admin/paymentTypes', ['as'=> 'admin.paymentTypes.index', 'uses' => 'PaymentTypeController@index']);
-Route::post('admin/paymentTypes', ['as'=> 'admin.paymentTypes.store', 'uses' => 'PaymentTypeController@store']);
-Route::get('admin/paymentTypes/create', ['as'=> 'admin.paymentTypes.create', 'uses' => 'PaymentTypeController@create']);
-Route::put('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
-Route::patch('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
-Route::delete('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.destroy', 'uses' => 'PaymentTypeController@destroy']);
-Route::get('admin/paymentTypes/{paymentTypes}', ['as'=> 'admin.paymentTypes.show', 'uses' => 'PaymentTypeController@show']);
-Route::get('admin/paymentTypes/{paymentTypes}/edit', ['as'=> 'admin.paymentTypes.edit', 'uses' => 'PaymentTypeController@edit']);
-
-
-
+    Route::get('paymentTypes', ['as' => 'admin.paymentTypes.index', 'uses' => 'PaymentTypeController@index']);
+    Route::post('paymentTypes', ['as' => 'admin.paymentTypes.store', 'uses' => 'PaymentTypeController@store']);
+    Route::get('paymentTypes/create', ['as' => 'admin.paymentTypes.create', 'uses' => 'PaymentTypeController@create']);
+    Route::put('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
+    Route::patch('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
+    Route::delete('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.destroy', 'uses' => 'PaymentTypeController@destroy']);
+    Route::get('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.show', 'uses' => 'PaymentTypeController@show']);
+    Route::get('paymentTypes/{paymentTypes}/edit', ['as' => 'admin.paymentTypes.edit', 'uses' => 'PaymentTypeController@edit']);
+});
 
 
 
