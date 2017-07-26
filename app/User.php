@@ -31,6 +31,7 @@ class User extends Authenticatable {
 		'date_of_birth',
 		'lastName',
 		'firstName',
+        'username',
 		'gender',
 		'address',
 		'postcode',
@@ -40,12 +41,14 @@ class User extends Authenticatable {
 		'member_since',
 		'is_public',
 		'is_active',
-		'transactions'
+		'transactions',
+        'quote',
+        'skills_tags',
+        'social'
 	];
 
 	protected $hidden = [
 		'id',
-		'username',
 		'email',
 		'password',
 		'remember_token',

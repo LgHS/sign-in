@@ -18,13 +18,28 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller {
-	public function index() {
-		$member = Auth::user();
+	public function index()
+    {
+        $member = Auth::user();
+        return view('app.profil')->width(compact('member'));
+    }
 
-		return view('app.profil', ['member' => $member]);
+    public function edit()
+    {
+		$member = Auth::user();
+		return view('app.profil-edit', ['member' => $member]);
 	}
 
-	public function update(Request $request) {
+    public function editMore()
+    {
+        $member = Auth::user();
+
+        $mac_addresses = $this->getMacAddresses();
+        return view('app.profil-edit-more', compact('member', 'mac_addresses'));
+    }
+
+    public function update(Request $request)
+    {
 		/** @var User $member */
 		$member = Auth::user();
 
@@ -95,4 +110,121 @@ class ProfileController extends Controller {
 			'status' => 'success'
 		]);
 	}
+
+    public function updateMore(Request $request)
+    {
+        /** @var User $member */
+        $member = Auth::user();
+
+//        $request->all()['social'] = $this->parseSocial($request->all());
+        $newRequest = $request->all();
+
+        $newRequest['social'] = $this->parseSocial($request->all());
+
+
+        $validator = Validator::make($newRequest, [
+            'quote' => 'max:240'
+        ]);
+
+        // validate
+        if($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $member->update($newRequest);
+
+        return back()->with([
+            'message' => 'Votre profil a été mis à jour.',
+            'status' => 'success'
+        ]);
+    }
+
+    private function parseSocial($request)
+    {
+        $response =
+            [
+                'facebook'  => $request['social_facebook'],
+                'twitter'   => $request['social_twitter'],
+                'instagram' => $request['social_instagram'],
+                'github'    => $request['social_github'],
+                'bitbucket' => $request['social_bitbucket'],
+                'dribbble'  => $request['social_dribbble'],
+                'mastodon'  => $request['social_mastodon'],
+                'behance'   => $request['social_behance'],
+                'codepen'   => $request['social_codepen'],
+                'jsfiddle'  => $request['social_jsfiddle'],
+                'diaspora'  => $request['social_diaspora'],
+                'tumblr'    => $request['social_tumblr'],
+            ];
+
+        unset($request['social_facebook']);
+        unset($request['social_twitter']);
+        unset($request['social_instagram']);
+        unset($request['social_github']);
+        unset($request['social_bitbucket']);
+        unset($request['social_dribbble']);
+        unset($request['social_mastodon']);
+        unset($request['social_behance']);
+        unset($request['social_codepen']);
+        unset($request['social_jsfiddle']);
+        unset($request['social_diaspora']);
+        unset($request['social_tumblr']);
+
+        $response = json_encode($response);
+        return $response;
+    }
+
+    private function getLogs()
+    {
+        $logs = $this->getUrlContent('http://wiki.lghs.be/feed.php');
+        $logs = simplexml_load_string($logs);
+//        $logs = json_encode($logs);
+
+        dd($logs);
+    }
+    private function getMacAddresses()
+    {
+	    $addresses =
+            ['15:42:BE:D5:AE:E9',
+            '5D:1B:40:4D:98:E1',
+            '54:6A:0B:13:BA:F2',
+            'F1:39:4B:A8:E3:D2',
+            'C3:48:1A:E0:3B:7B',
+            '78:81:B1:36:90:34',
+            'ED:6D:55:F6:07:9D',
+            '19:00:98:13:A9:65',
+            'EE:8B:6F:21:57:87',
+            'AA:C7:3E:87:CC:C9',
+            '88:88:42:E3:FC:B7',
+            '66:95:0A:DE:46:6A',
+            '1D:6B:93:45:D7:69',
+            '55:60:C6:F2:11:4C',
+            '1C:F8:72:20:01:D5',
+            '2A:23:3E:78:20:52',
+            'CA:A6:0C:0B:19:75',
+            '70:E2:50:44:17:5C',
+            '55:DE:82:59:5B:05',
+            '7F:E3:07:36:1A:DD',
+            '00:CC:43:F2:B0:91',
+            '1E:A8:FE:60:83:DD',
+            '9A:39:9B:1E:2B:69',
+            '9F:D5:D9:91:99:1D',
+            'D7:BD:F3:1D:4A:33',
+            ];
+	    return $addresses;
+    }
+    private function getUrlContent($url)
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        $data = curl_exec($ch);
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+        return ($httpcode>=200 && $httpcode<300) ? $data : false;
+    }
+
 }

@@ -12,7 +12,6 @@ Route::get('/services', function() {
    return view('app.services');
 })->middleware(['permission:manage-account'])->name('services');
 
-
 Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members']], function() {
     Route::get('', 'Admin\MembersController@index')->name('members.index');
     Route::get('{member}/edit', 'Admin\MembersController@edit')->name('members.edit');
@@ -25,19 +24,12 @@ Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account']], function() {
-   Route::get('', 'ProfileController@index')->name('profile.index');
+    Route::get('', 'ProfileController@index')->name('profile.index');
+    Route::get('edit', 'ProfileController@edit')->name('profile.edit');
+    Route::get('edit/more', 'ProfileController@editMore')->name('profile.edit.more');
+
     Route::put('', 'ProfileController@update')->name('profile.update');
+    Route::put('', 'ProfileController@updateMore')->name('profile.update.more');
 });
 
 Route::get('/api/me', 'ApiController@me')->name('api.me');
-
-//Route::group(['prefix' => 'admin', 'middleware' => ['permission:manage-members']], function() {
-//    Route::get('paymentTypes', ['as' => 'admin.paymentTypes.index', 'uses' => 'PaymentTypeController@index']);
-//    Route::post('paymentTypes', ['as' => 'admin.paymentTypes.store', 'uses' => 'PaymentTypeController@store']);
-//    Route::get('paymentTypes/create', ['as' => 'admin.paymentTypes.create', 'uses' => 'PaymentTypeController@create']);
-//    Route::put('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
-//    Route::patch('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
-//    Route::delete('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.destroy', 'uses' => 'PaymentTypeController@destroy']);
-//    Route::get('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.show', 'uses' => 'PaymentTypeController@show']);
-//    Route::get('paymentTypes/{paymentTypes}/edit', ['as' => 'admin.paymentTypes.edit', 'uses' => 'PaymentTypeController@edit']);
-//});

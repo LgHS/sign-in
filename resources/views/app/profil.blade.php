@@ -5,54 +5,117 @@
 @endsection
 
 @section('content')
-    <h3>Mon compte</h3>
-    {!! BootForm::open(['model' => $member ?: null, 'update' => 'profile.update']) !!}
+    <h3>Mon Profil</h3>
     <div class="row">
-        <div class="col-sm-6">
-            {!! BootForm::text('username', 'Nom d\'utilisateur', null) !!}
+        <div class="col-md-3">
+            <div class="panel text-center">
+                <div class="panel-body">
+                    <img src="http://lorempixel.com/150/150/cats" alt="">
+                    <p>
+                        {{$member->username}}
+                    </p>
+                </div>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item disabled">Modifier</li>
+                <li class="list-group-item"><a href="{{route('profile.edit')}}">Informations générales</a></li>
+                <li class="list-group-item"><a href="{{route('profile.edit.more')}}">Informations complémentaires</a></li>
+            </ul>
         </div>
-        <div class="clearfix"></div>
-        <div class="col-sm-6">
-            {!! BootForm::email('email', 'Adresse e-mail', null) !!}
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-sm-6">
-            {!! BootForm::password('old_password', 'Mot de passe actuel', array()) !!}
-        </div>
-        <div class="clearfix"></div>
-        <div class="col-sm-6">
-            {!! BootForm::password('new_password', 'Nouveau mot de passe', array(
-            'help_text' => trans('validation.secure'))) !!}
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-sm-12">
+                        <blockquote>
+                            {{$member->quote}}
+                        </blockquote>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Skills</div>
+                        <div class="panel-body">
+                            @foreach(explode(',',$member->skills_tags) as $skill)
+                            <span class="badge">{{ $skill }}</span>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Social</div>
+                        <div class="panel-body">
+                            @if(isset(json_decode($member->social)->facebook))
+                                <p>
+                                    <span class="fa fa-fw fa-facebook"></span>{!! json_decode($member->social)->facebook !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->twitter))
+                                <p>
+                                    <span class="fa fa-fw fa-twitter"></span>{!! json_decode($member->social)->twitter !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->instagram))
+                                <p>
+                                    <span class="fa fa-fw fa-instagram"></span>{!! json_decode($member->social)->instagram !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->github))
+                                <p>
+                                    <span class="fa fa-fw fa-github"></span>{!! json_decode($member->social)->github !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->bitbucket))
+                                <p>
+                                    <span class="fa fa-fw fa-bitbucket"></span>{!! json_decode($member->social)->bitbucket !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->dribbble))
+                                <p>
+                                    <span class="fa fa-fw fa-dribbble"></span>{!! json_decode($member->social)->dribbble !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->mastodon))
+                                <p>
+                                    <span class="fa fa-fw fa-hand-spock-o"></span>{!! json_decode($member->social)->mastodon !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->behance))
+                                <p>
+                                    <span class="fa fa-fw fa-behance"></span>{!! json_decode($member->social)->behance !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->codepen))
+                                <p>
+                                    <span class="fa fa-fw fa-codepen"></span>{!! json_decode($member->social)->codepen !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->jsfiddle))
+                                <p>
+                                    <span class="fa fa-fw fa-jsfiddle"></span>{!! json_decode($member->social)->jsfiddle !!}
+                                </p>
+                                @endif
+                            @if(isset(json_decode($member->social)->diaspora))
+                                <p>
+                                    <span class="fa fa-fw fa-hand-spock-o"></span>{!! json_decode($member->social)->diaspora !!}
+                                </p>
+                                @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Mac addresses</div>
+                        <div class="panel-body">Liste tes adresses MAC pour que ta mère sache quand t'es co au HS</div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Logs</div>
+                        <div class="panel-body">Logs des merdes que tu fais au HS (édits wiki, arrive/quitte le HS, troll Iooner, pushs/pushs request sur le git,...) </div>
+                        {{logs}}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-
-
-    <hr>
-
-    <h3>Mon profil</h3>
-    <div class="row">
-        <div class="col-sm-6">
-            {!! BootForm::text('firstName', 'Prénom') !!}
-        </div>
-        <div class="col-sm-6">
-            {!! BootForm::text('lastName', 'Nom') !!}
-        </div>
-    </div>
-    {!! BootForm::text('date_of_birth', 'Date de naissance', null, ['help_text' => 'dd/mm/YYYY']) !!}
-    {!! BootForm::text('address', 'Adresse') !!}
-    <div class="row">
-        <div class="col-sm-4">
-            {!! BootForm::text('postcode', 'Code postal') !!}
-        </div>
-        <div class="col-sm-8">
-            {!! BootForm::text('city', 'Ville') !!}
-        </div>
-    </div>
-    {!! BootForm::text('country', 'Pays', $member ? null : 'Belgium') !!}
-    {!! BootForm::text('phone', 'Numéro de téléphone') !!}
-
-    {!! BootForm::submit('Modifier mon profil') !!}
-
-    {!! BootForm::close() !!}
 @endsection
