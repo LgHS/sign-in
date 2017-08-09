@@ -28,6 +28,8 @@ Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account
     Route::get('edit', 'ProfileController@edit')->name('profile.edit');
     Route::get('edit/more', 'ProfileController@editMore')->name('profile.edit.more');
 
+    Route::get('edit/more/mac_address/{macAddress}', 'MacAddressesController@removeMacAddress')->name('profile.edit.remove.macaddress');
+
     Route::put('', 'ProfileController@update')->name('profile.update');
     Route::put('', 'ProfileController@updateMore')->name('profile.update.more');
 });

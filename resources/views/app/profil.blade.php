@@ -111,7 +111,6 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Logs</div>
                         <div class="panel-body">Logs des merdes que tu fais au HS (édits wiki, arrive/quitte le HS, troll Iooner, pushs/pushs request sur le git,...) </div>
-                        {{logs}}
                     </div>
                 </div>
             </div>

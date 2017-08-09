@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\MacAddresses;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class ProfileController extends Controller {
 	public function index()
     {
         $member = Auth::user();
-        return view('app.profil')->width(compact('member'));
+        return view('app.profil', compact('member'));
     }
 
     public function edit()
@@ -30,12 +31,15 @@ class ProfileController extends Controller {
 		return view('app.profil-edit', ['member' => $member]);
 	}
 
-    public function editMore()
+    public function editMore(Request $request)
     {
         $member = Auth::user();
 
-        $mac_addresses = $this->getMacAddresses();
-        return view('app.profil-edit-more', compact('member', 'mac_addresses'));
+        $mac_addresses = MacAddressesController::getAvailableMacAddresses($request);
+        $my_mac_addresses = MacAddressesController::getMyMacAddresses($request);
+        $mac_addresses = array_diff($mac_addresses, $my_mac_addresses);
+
+        return view('app.profil-edit-more', compact('member', 'mac_addresses', 'my_mac_addresses'));
     }
 
     public function update(Request $request)
@@ -121,7 +125,6 @@ class ProfileController extends Controller {
 
         $newRequest['social'] = $this->parseSocial($request->all());
 
-
         $validator = Validator::make($newRequest, [
             'quote' => 'max:240'
         ]);
@@ -131,7 +134,10 @@ class ProfileController extends Controller {
             return back()->withErrors($validator)->withInput();
         }
 
+
         $member->update($newRequest);
+
+        MacAddressesController::claimMacAddresses($request, $newRequest['mac_addresses']);
 
         return back()->with([
             'message' => 'Votre profil a été mis à jour.',
@@ -182,37 +188,39 @@ class ProfileController extends Controller {
 
         dd($logs);
     }
-    private function getMacAddresses()
-    {
-	    $addresses =
-            ['15:42:BE:D5:AE:E9',
-            '5D:1B:40:4D:98:E1',
-            '54:6A:0B:13:BA:F2',
-            'F1:39:4B:A8:E3:D2',
-            'C3:48:1A:E0:3B:7B',
-            '78:81:B1:36:90:34',
-            'ED:6D:55:F6:07:9D',
-            '19:00:98:13:A9:65',
-            'EE:8B:6F:21:57:87',
-            'AA:C7:3E:87:CC:C9',
-            '88:88:42:E3:FC:B7',
-            '66:95:0A:DE:46:6A',
-            '1D:6B:93:45:D7:69',
-            '55:60:C6:F2:11:4C',
-            '1C:F8:72:20:01:D5',
-            '2A:23:3E:78:20:52',
-            'CA:A6:0C:0B:19:75',
-            '70:E2:50:44:17:5C',
-            '55:DE:82:59:5B:05',
-            '7F:E3:07:36:1A:DD',
-            '00:CC:43:F2:B0:91',
-            '1E:A8:FE:60:83:DD',
-            '9A:39:9B:1E:2B:69',
-            '9F:D5:D9:91:99:1D',
-            'D7:BD:F3:1D:4A:33',
-            ];
-	    return $addresses;
-    }
+
+//    private function getMacAddresses()
+//    {
+//	    $addresses =
+//            ['15:42:BE:D5:AE:E9',
+//            '5D:1B:40:4D:98:E1',
+//            '54:6A:0B:13:BA:F2',
+//            'F1:39:4B:A8:E3:D2',
+//            'C3:48:1A:E0:3B:7B',
+//            '78:81:B1:36:90:34',
+//            'ED:6D:55:F6:07:9D',
+//            '19:00:98:13:A9:65',
+//            'EE:8B:6F:21:57:87',
+//            'AA:C7:3E:87:CC:C9',
+//            '88:88:42:E3:FC:B7',
+//            '66:95:0A:DE:46:6A',
+//            '1D:6B:93:45:D7:69',
+//            '55:60:C6:F2:11:4C',
+//            '1C:F8:72:20:01:D5',
+//            '2A:23:3E:78:20:52',
+//            'CA:A6:0C:0B:19:75',
+//            '70:E2:50:44:17:5C',
+//            '55:DE:82:59:5B:05',
+//            '7F:E3:07:36:1A:DD',
+//            '00:CC:43:F2:B0:91',
+//            '1E:A8:FE:60:83:DD',
+//            '9A:39:9B:1E:2B:69',
+//            '9F:D5:D9:91:99:1D',
+//            'D7:BD:F3:1D:4A:33',
+//            ];
+//	    return $addresses;
+//    }
+
     private function getUrlContent($url)
     {
         $ch = curl_init();
@@ -226,5 +234,6 @@ class ProfileController extends Controller {
         curl_close($ch);
         return ($httpcode>=200 && $httpcode<300) ? $data : false;
     }
+
 
 }
