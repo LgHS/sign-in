@@ -25,13 +25,14 @@ Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members
 
 Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account']], function() {
     Route::get('', 'ProfileController@index')->name('profile.index');
-    Route::get('edit', 'ProfileController@edit')->name('profile.edit');
-    Route::get('edit/more', 'ProfileController@editMore')->name('profile.edit.more');
+    Route::get('edit', 'ProfileController@edit')->name('profile.update');
+    Route::get('edit/advanced', 'ProfileController@editMore')->name('profile.update.advanced');
 
-    Route::get('edit/more/mac_address/{macAddress}', 'MacAddressesController@removeMacAddress')->name('profile.edit.remove.macaddress');
+    Route::get('edit/remove/mac_address/{macAddress}', 'MacAddressesController@removeMacAddress')->name('profile.edit.remove.macaddress');
+    Route::get('edit/add/mac_address/{macAddress}', 'MacAddressesController@removeMacAddress')->name('profile.edit.remove.macaddress');
 
-    Route::put('', 'ProfileController@update')->name('profile.update');
-    Route::put('', 'ProfileController@updateMore')->name('profile.update.more');
+    Route::put('edit', 'ProfileController@update')->name('profile.update');
+    Route::put('edit/advanced', 'ProfileController@updateMore')->name('profile.update.advanced');
 });
 
 Route::get('/api/me', 'ApiController@me')->name('api.me');

@@ -19,10 +19,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller {
-	public function index()
+	public function index(Request $request)
     {
         $member = Auth::user();
-        return view('app.profil', compact('member'));
+        $mac_addresses = MacAddressesController::getMyMacAddresses($request);
+        return view('app.profil', compact('member', 'mac_addresses'));
     }
 
     public function edit()
@@ -35,9 +36,8 @@ class ProfileController extends Controller {
     {
         $member = Auth::user();
 
-        $mac_addresses = MacAddressesController::getAvailableMacAddresses($request);
+        $mac_addresses = MacAddressesController::getAvailableMacAddresses();
         $my_mac_addresses = MacAddressesController::getMyMacAddresses($request);
-        $mac_addresses = array_diff($mac_addresses, $my_mac_addresses);
 
         return view('app.profil-edit-more', compact('member', 'mac_addresses', 'my_mac_addresses'));
     }
@@ -136,8 +136,7 @@ class ProfileController extends Controller {
 
 
         $member->update($newRequest);
-
-        MacAddressesController::claimMacAddresses($request, $newRequest['mac_addresses']);
+        MacAddressesController::claimMacAddresses($request);
 
         return back()->with([
             'message' => 'Votre profil a été mis à jour.',

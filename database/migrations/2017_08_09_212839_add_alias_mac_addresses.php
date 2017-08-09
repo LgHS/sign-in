@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMacAddressesTable extends Migration
+class AddAliasMacAddresses extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,8 @@ class CreateMacAddressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mac_addresses', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')
-                    ->references('id')
-                    ->on('users');
-            $table->string('mac_address');
-            $table->timestamps();
+        Schema::table('mac_addresses', function (Blueprint $table) {
+            $table->string('alias', 255); // I assume you misspelled it in your example
         });
     }
 

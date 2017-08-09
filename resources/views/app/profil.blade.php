@@ -18,8 +18,8 @@
             </div>
             <ul class="list-group">
                 <li class="list-group-item disabled">Modifier</li>
-                <li class="list-group-item"><a href="{{route('profile.edit')}}">Informations générales</a></li>
-                <li class="list-group-item"><a href="{{route('profile.edit.more')}}">Informations complémentaires</a></li>
+                <li class="list-group-item"><a href="{{route('profile.update')}}">Informations générales</a></li>
+                <li class="list-group-item"><a href="{{route('profile.update.advanced')}}">Informations complémentaires</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -104,7 +104,13 @@
                 <div class="col-sm-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">Mac addresses</div>
-                        <div class="panel-body">Liste tes adresses MAC pour que ta mère sache quand t'es co au HS</div>
+                        <div class="panel-body">
+                            <ul>
+                                @foreach($mac_addresses as $mac_address)
+                                    <li>{{$mac_address["mac_address"] }}: {{ $mac_address["alias"] }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
