@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SetMacAddressesUnique extends Migration
+class AddPublicSshKey extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class SetMacAddressesUnique extends Migration
      */
     public function up()
     {
-//        Schema::table('mac_addresses', function (Blueprint $table) {
-//            $table->string('mac_address')->unique()->change();
-//        });
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('ssh_key')->unique()->nullable();
+        });
     }
 
     /**

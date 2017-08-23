@@ -44,7 +44,8 @@ class User extends Authenticatable {
 		'transactions',
         'quote',
         'skills_tags',
-        'social'
+        'social',
+        'ssh_key'
 	];
 
 	protected $hidden = [
