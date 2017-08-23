@@ -35,4 +35,6 @@ Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account
     Route::put('edit/advanced', 'ProfileController@updateMore')->name('profile.update.advanced');
 });
 
+Route::post('pamela', 'MacAddressesController@storeMacAddresses')->name('post.pamela');
+
 Route::get('/api/me', 'ApiController@me')->name('api.me');

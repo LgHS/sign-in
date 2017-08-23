@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\MacAddresses;
+use App\User;
 use Illuminate\Http\Request;
 
 class MacAddressesController extends Controller
 {
+    public function storeMacAddresses(Request $request)
+    {
+        $data = $request->get('data');
+        $newAddresses = explode(";", $data);
+        foreach ($newAddresses as $key => $newAddress){
+            $newEntry = MacAddresses::firstOrNew(['mac_address' => $newAddress]);
+            $newEntry->save();
+        }
+        return response()->json('', 204);
+
+    }
+
     public static function getMacAddresses()
     {
         $macAddresses = MacAddresses::get(['mac_address', 'alias', 'user_id'])->toArray();
@@ -62,4 +75,7 @@ class MacAddressesController extends Controller
         return redirect()->route('profile.update.advanced');
 
     }
+
+
+
 }

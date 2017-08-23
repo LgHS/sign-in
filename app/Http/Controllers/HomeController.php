@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Admin\MembersController;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,11 @@ class HomeController extends Controller
     
     public function index()
     {
-        return view('app.home');
+        $members = new MembersController();
+        $countMembers = $members->countMembersInSpace();
+        $members = $members->getMembersInSpace();
+
+        return view('app.home', compact("members", "countMembers"));
     }
 
     public function apps()

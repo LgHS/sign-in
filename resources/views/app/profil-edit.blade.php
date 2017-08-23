@@ -52,6 +52,8 @@
     {!! BootForm::text('country', 'Pays', $member ? null : 'Belgium') !!}
     {!! BootForm::text('phone', 'Numéro de téléphone') !!}
 
+    {!! BootForm::checkbox('is_public', "Profil public") !!}
+
     {!! BootForm::submit('Modifier mon profil') !!}
 
     {!! BootForm::close() !!}

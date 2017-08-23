@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2017-04-21.
+    * Generated on 2017-08-12.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -72,6 +72,14 @@ namespace PHPSTORM_META {
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
+            'excel.identifier' instanceof \Maatwebsite\Excel\Classes\FormatIdentifier,
+            'excel.parsers.css' instanceof \Maatwebsite\Excel\Parsers\CssParser,
+            'excel.reader' instanceof \Maatwebsite\Excel\Readers\LaravelExcelReader,
+            'excel.readers.html' instanceof \Maatwebsite\Excel\Readers\Html,
+            'excel.parsers.view' instanceof \Maatwebsite\Excel\Parsers\ViewParser,
+            'phpexcel' instanceof \Maatwebsite\Excel\Classes\PHPExcel,
+            'excel.writer' instanceof \Maatwebsite\Excel\Writers\LaravelExcelWriter,
+            'excel' instanceof \Maatwebsite\Excel\Excel,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -222,6 +230,14 @@ namespace PHPSTORM_META {
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
+            'excel.identifier' instanceof \Maatwebsite\Excel\Classes\FormatIdentifier,
+            'excel.parsers.css' instanceof \Maatwebsite\Excel\Parsers\CssParser,
+            'excel.reader' instanceof \Maatwebsite\Excel\Readers\LaravelExcelReader,
+            'excel.readers.html' instanceof \Maatwebsite\Excel\Readers\Html,
+            'excel.parsers.view' instanceof \Maatwebsite\Excel\Parsers\ViewParser,
+            'phpexcel' instanceof \Maatwebsite\Excel\Classes\PHPExcel,
+            'excel.writer' instanceof \Maatwebsite\Excel\Writers\LaravelExcelWriter,
+            'excel' instanceof \Maatwebsite\Excel\Excel,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -372,6 +388,14 @@ namespace PHPSTORM_META {
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
+            'excel.identifier' instanceof \Maatwebsite\Excel\Classes\FormatIdentifier,
+            'excel.parsers.css' instanceof \Maatwebsite\Excel\Parsers\CssParser,
+            'excel.reader' instanceof \Maatwebsite\Excel\Readers\LaravelExcelReader,
+            'excel.readers.html' instanceof \Maatwebsite\Excel\Readers\Html,
+            'excel.parsers.view' instanceof \Maatwebsite\Excel\Parsers\ViewParser,
+            'phpexcel' instanceof \Maatwebsite\Excel\Classes\PHPExcel,
+            'excel.writer' instanceof \Maatwebsite\Excel\Writers\LaravelExcelWriter,
+            'excel' instanceof \Maatwebsite\Excel\Excel,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,
@@ -522,6 +546,14 @@ namespace PHPSTORM_META {
             'command.backup:list' instanceof \Spatie\Backup\Commands\ListCommand,
             'command.backup:monitor' instanceof \Spatie\Backup\Commands\MonitorCommand,
             'Spatie\Backup\Helpers\ConsoleOutput' instanceof \Spatie\Backup\Helpers\ConsoleOutput,
+            'excel.identifier' instanceof \Maatwebsite\Excel\Classes\FormatIdentifier,
+            'excel.parsers.css' instanceof \Maatwebsite\Excel\Parsers\CssParser,
+            'excel.reader' instanceof \Maatwebsite\Excel\Readers\LaravelExcelReader,
+            'excel.readers.html' instanceof \Maatwebsite\Excel\Readers\Html,
+            'excel.parsers.view' instanceof \Maatwebsite\Excel\Parsers\ViewParser,
+            'phpexcel' instanceof \Maatwebsite\Excel\Classes\PHPExcel,
+            'excel.writer' instanceof \Maatwebsite\Excel\Writers\LaravelExcelWriter,
+            'excel' instanceof \Maatwebsite\Excel\Excel,
             'blade.compiler' instanceof \Illuminate\View\Compilers\BladeCompiler,
             'validation.presence' instanceof \Illuminate\Validation\DatabasePresenceVerifier,
             'translation.loader' instanceof \Overtrue\LaravelLang\FileLoader,

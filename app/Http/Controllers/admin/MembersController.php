@@ -185,4 +185,27 @@ class MembersController extends Controller {
 
 		return back();
 	}
+
+    /**
+     * Get all present members
+     */
+    public function getMembersInSpace()
+    {
+        $onlineUsers = User
+            ::where('in_space', '1')
+            ->where('is_public', '1')
+            ->get(["username", "firstname"]);
+        return $onlineUsers;
+    }
+    /**
+     * Count all present members
+     */
+    public function countMembersInSpace()
+    {
+        $countUsers = User
+            ::where('in_space', '1')
+            ->count();
+        return $countUsers;
+    }
+
 }
