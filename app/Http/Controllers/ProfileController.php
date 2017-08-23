@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\MacAddresses;
+use App\SocialTags;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -123,7 +124,7 @@ class ProfileController extends Controller {
 //        $request->all()['social'] = $this->parseSocial($request->all());
         $newRequest = $request->all();
 
-        $newRequest['social'] = $this->parseSocial($request->all());
+//        $newRequest['social'] = $this->parseSocial($request->all());
 
         $validator = Validator::make($newRequest, [
             'quote' => 'max:240'
@@ -134,8 +135,9 @@ class ProfileController extends Controller {
             return back()->withErrors($validator)->withInput();
         }
 
-
         $member->update($newRequest);
+        $socialController = new SocialTagsController;
+        $socialController->store($request);
         MacAddressesController::claimMacAddresses($request);
 
         return back()->with([

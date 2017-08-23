@@ -17,7 +17,6 @@ class MacAddressesController extends Controller
             $newEntry->save();
         }
         return response()->json('', 204);
-
     }
 
     public static function getMacAddresses()

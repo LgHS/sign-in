@@ -17,6 +17,20 @@
             {!! BootForm::text('skills_tags', 'Skills', null, array(
             'help_text' => 'séparés par des virgules (,)')) !!}
         </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <select id="tag_name" name="tag_name" class="form-control">
+                @foreach($mac_addresses as $mac_address)
+                    <option value="facebook">facebook</option>
+                    <option value="twitter">twitter</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-sm-6">
+            {!! BootForm::text('social_tag', 'Tag') !!}
+        </div>
+    </div>
         {{--<h3>Social</h3>--}}
         {{--<div class="col-sm-12">--}}
             {{--<label>Adresses mac</label>--}}
@@ -57,42 +71,42 @@
             {{--</table>--}}
         {{--</div>--}}
 
-        <div class="col-sm-2">
-            {!! BootForm::text('social_facebook', 'Facebook', json_decode($member->social)->facebook) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_twitter', 'Twitter', json_decode($member->social)->twitter) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_instagram', 'Instagram', json_decode($member->social)->instagram) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_github', 'Github', json_decode($member->social)->github) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_bitbucket', 'Bitbucket', json_decode($member->social)->bitbucket) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_dribbble', 'Dribbble', json_decode($member->social)->dribbble) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_mastodon', 'Mastodon', json_decode($member->social)->mastodon) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_behance', 'Behance', json_decode($member->social)->behance) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_codepen', 'Codepen', json_decode($member->social)->codepen) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_jsfiddle', 'JSFiddle', json_decode($member->social)->jsfiddle) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_diaspora', 'Diaspora', json_decode($member->social)->diaspora) !!}
-        </div>
-        <div class="col-sm-2">
-            {!! BootForm::text('social_tumblr', 'Tumblr', json_decode($member->social)->tumblr) !!}
-        </div>
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_facebook', 'Facebook', json_decode($member->social)->facebook) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_twitter', 'Twitter', json_decode($member->social)->twitter) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_instagram', 'Instagram', json_decode($member->social)->instagram) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_github', 'Github', json_decode($member->social)->github) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_bitbucket', 'Bitbucket', json_decode($member->social)->bitbucket) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_dribbble', 'Dribbble', json_decode($member->social)->dribbble) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_mastodon', 'Mastodon', json_decode($member->social)->mastodon) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_behance', 'Behance', json_decode($member->social)->behance) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_codepen', 'Codepen', json_decode($member->social)->codepen) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_jsfiddle', 'JSFiddle', json_decode($member->social)->jsfiddle) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_diaspora', 'Diaspora', json_decode($member->social)->diaspora) !!}--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2">--}}
+            {{--{!! BootForm::text('social_tumblr', 'Tumblr', json_decode($member->social)->tumblr) !!}--}}
+        {{--</div>--}}
     </div>
 
     <div class="row">
