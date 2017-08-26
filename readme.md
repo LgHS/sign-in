@@ -7,6 +7,9 @@ Management interface for our Hackerspace members.
   * `composer install`
   * create a mysql database
   * copy `.env.example` to `.env` and adapt to your configuration
+  * `php artisan key:generate`
+  * `php artisan config:cache`
+  * `php artisan optimize`
   * `php artisan migrate --seed`
   * `php artisan passport:install` to create keys for Oauth
   * check that laravel can write to `storage/` and `bootstrap/cache`
