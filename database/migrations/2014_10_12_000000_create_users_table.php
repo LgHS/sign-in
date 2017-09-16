@@ -27,11 +27,11 @@ class CreateUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->dateTime('member_since')->nullable();
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('rfid', 60)->nullable();
             $table->boolean('is_public')->nullable();
             $table->boolean('is_active')->nullable();
-            $table->string('totp')->default(null);
+            $table->string('totp')->nullable()->default(null);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
