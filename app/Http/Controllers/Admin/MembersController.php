@@ -39,7 +39,7 @@ class MembersController extends Controller {
 	}
 
 	public function index() {
-		$members          = User::orderBy('firstname')->get();
+		$members          = User::orderBy('firstName')->get();
 		$transactionTypes = TransactionType::all();
 
 		return view('admin.members.index', compact('members', 'transactionTypes'));
