@@ -42,3 +42,47 @@ location ~ \.php$ { ##merge##
    fastcgi_buffers 4 16k;
 }
 ```
+
+### Migrating mysql to postgresql
+
+If you are using an old database, you can use [pgloader](http://pgloader.io/) to migrate it to postgres.
+
+First things first, install postgresql and create a database and a user.
+
+```sql
+create database lghs_members;
+create user lghs_members_root with password '<password>';
+grant all on database lghs_members to lghs_members_root;
+```
+
+Then run the below script using pgloader.
+
+```lisp
+load database
+     from mysql://<user>:<password>@localhost/lghs-sign-in
+     into pgsql://lghs_members_root:<password>@localhost/lghs_members
+-- FIXME translate sequences
+ WITH include drop, create tables, no truncate,
+      create indexes, reset sequences, foreign keys
+
+ SET maintenance_work_mem to '128MB', work_mem to '12MB', search_path to '"lghs-sign-in", public'
+
+ CAST type datetime to timestamp
+                drop default drop not null using zero-dates-to-null,
+      type timestamp to timestamp
+                drop default drop not null using zero-dates-to-null,
+      type date drop not null drop default using zero-dates-to-null,
+      type tinyint to boolean drop typemod using tinyint-to-boolean
+
+ ALTER SCHEMA 'lghs-sign-in' RENAME TO 'public'
+;
+```
+
+After the migration, make sure your the schema imported is correctly named public.
+To do so, open a psql console (`psql lghs_members`) and type `\dn`.
+
+If you have two schemas:
+```sql
+drop schema public;
+alter schema <name> rename to public;
+```
