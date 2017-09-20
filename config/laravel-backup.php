@@ -43,7 +43,7 @@ return [
              * Currently only MySQL and PostgreSQL databases are supported.
              */
             'databases' => [
-                'mysql',
+                env('DB_CONNECTION', 'mysql'),
             ],
         ],
 
@@ -151,8 +151,8 @@ return [
          * Here you can specify how emails should be sent.
          */
         'mail' => [
-            'from' => 'your@email.com',
-            'to' => 'your@email.com',
+            'from' => env('EMAIL_ADDRESS'),
+            'to' => env('EMAIL_ADDRESS'),
         ],
 
         /*
