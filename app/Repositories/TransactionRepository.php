@@ -22,10 +22,13 @@ class TransactionRepository extends BaseRepository
         'comments'
     ];
 
+    /**
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
     public function boot() {
 	    $this
 		    //->with(['user', 'transactionType'])
-		    ->pushCriteria(new OrderByCriteria('started_at', 'DESC'));
+		    ->pushCriteria(new OrderByCriteria('registered_at', 'DESC'));
     }
 
 	/**

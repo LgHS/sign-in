@@ -3,10 +3,7 @@
     <a href="{!! route('members.index') !!}"><i class="fa fa-user"></i><span>Membres</span></a>
 </li>
 <li class="{{ Request::is('admin/transactions*') ? 'active' : '' }}">
-    <a href="{!! route('admin.transactions.index', array('orderBy' => 'started_at', 'sortedBy' => 'desc')) !!}">
-        <i class="fa fa-dollar"></i>
-        <span>Cotisations</span>
-    </a>
+    <a href="{!! route('admin.transactions.index') !!}"><i class="fa fa-dollar"></i><span>Cotisations</span></a>
 </li>
 <li class="{{ active('admin.services') }}">
     <a href="{!! route('admin.services') !!}"><i class="fa fa-cloud"></i><span>Services oauth</span></a>
