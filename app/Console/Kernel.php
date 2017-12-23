@@ -27,10 +27,15 @@ class Kernel extends ConsoleKernel {
 	 * @return void
 	 */
 	protected function schedule(Schedule $schedule) {
-		$schedule->command('reminders:send')
-		         ->timezone('Europe/Brussels')
-		         ->dailyAt('12:00')
-		         ->appendOutputTo('./storage/logs/scheduler.log');
+        /**
+         * Removed, lots of complaints.
+         * Should be reimplemented when tere'll be a way
+         * to get payments in real time.
+         */
+//		$schedule->command('reminders:send')
+//		         ->timezone('Europe/Brussels')
+//		         ->dailyAt('12:00')
+//		         ->appendOutputTo('./storage/logs/scheduler.log');
 
 		$schedule->command('backup:clean')
 				->timezone('Europe/Brussels')
