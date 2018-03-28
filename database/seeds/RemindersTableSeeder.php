@@ -35,13 +35,13 @@ class RemindersTableSeeder extends Seeder {
 		$reminder->save();
 
 		// Monthly late
-		$reminder = new Reminder();
-		$reminder->title = "Rappel: abonnement expiré";
-		$reminder->name = "Monthly late";
-		$reminder->text = "Ton abonnement est expiré depuis %days% jours. N'oublie pas de renouveller !";
-		$reminder->days = 7;
-		$reminder->transactionType()->associate($monthly);
-		$reminder->save();
+//		$reminder = new Reminder();
+//		$reminder->title = "Rappel: abonnement expiré";
+//		$reminder->name = "Monthly late";
+//		$reminder->text = "Ton abonnement est expiré depuis %days% jours. N'oublie pas de renouveller !";
+//		$reminder->days = 7;
+//		$reminder->transactionType()->associate($monthly);
+//		$reminder->save();
 
 		// Annual before
 		$reminder        = new Reminder();
@@ -62,13 +62,13 @@ class RemindersTableSeeder extends Seeder {
 		$reminder->save();
 
 		// Annual 7 days late
-		$reminder        = new Reminder();
-		$reminder->title = "Rappel: cotisation annuelle";
-		$reminder->name  = "Annual after";
-		$reminder->text  = "Ta cotisation annuelle est expirée depuis %days% jours. N'oublie pas de renouveller !";
-		$reminder->days  = 7;
-		$reminder->transactionType()->associate($annual);
-		$reminder->save();
+//		$reminder        = new Reminder();
+//		$reminder->title = "Rappel: cotisation annuelle";
+//		$reminder->name  = "Annual after";
+//		$reminder->text  = "Ta cotisation annuelle est expirée depuis %days% jours. N'oublie pas de renouveller !";
+//		$reminder->days  = 7;
+//		$reminder->transactionType()->associate($annual);
+//		$reminder->save();
 
 		// Annual 30 days late
 		$reminder        = new Reminder();
