@@ -17,22 +17,25 @@
         <div class="box box-primary">
             <div class="box-body">
                 @foreach($notifications as $notification)
-                    <p>
-                        <strong>
-                            {{$notification->created_at->format('d/m/Y')}}
-                            {{$notification->created_at->format('H:i')}}
-                        </strong>
+                    @if($notification->notifiable)
+                        <p>
+                            <strong>
+                                {{$notification->created_at->format('d/m/Y')}}
+                                {{$notification->created_at->format('H:i')}}
+                            </strong>
 
-                        {{$notification->notifiable->fullName}}
+                            {{$notification->notifiable ? $notification->notifiable->fullName : ""}}
 
-                        @if($notification->type == \App\Notifications\InitPasswordNotification::class)
-                            a reçu le mail d'init du mot de passe
-                        @elseif($notification->type == \App\Notifications\ResetPasswordNotification::class)
-                            a fait une demande de reset du mot de passe
-                        @elseif($notification->type == \App\Notifications\ReminderNotification::class)
-                            a reçu un rappel pour la transaction <i>{{isset($notification->data['transaction_type']) ? $notification->data['transaction_type'] : ''}}</i>
-                        @endif
-                    </p>
+                            @if($notification->type == \App\Notifications\InitPasswordNotification::class)
+                                a reçu le mail d'init du mot de passe
+                            @elseif($notification->type == \App\Notifications\ResetPasswordNotification::class)
+                                a fait une demande de reset du mot de passe
+                            @elseif($notification->type == \App\Notifications\ReminderNotification::class)
+                                a reçu un rappel pour la transaction
+                                <i>{{isset($notification->data['transaction_type']) ? $notification->data['transaction_type'] : ''}}</i>
+                            @endif
+                        </p>
+                    @endif
                 @endforeach
             </div>
         </div>
