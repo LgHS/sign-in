@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                         @foreach($members as $member)
-                            <tr>
+                            <tr @if($member->roles()->first()->name == 'member_old')class="old"@endif>
                                 <td>
                                     {{$member->id}}
                                 </td>
@@ -56,17 +56,22 @@
                                 @foreach($transactionTypes as $transactionType)
                                     @php ($daysRemaining = $member->getRemainingDays($transactionType))
                                     <td>
-                                        @if($daysRemaining)
-                                            <span class="label label-{{$daysRemaining >= 0 ? 'success' : 'danger' }}">
+                                        @if($member->roles()->first()->name == 'member_old' or
+                                                $member->roles()->first()->name == 'member_honorary')
+                                            —
+                                        @else
+                                            @if($daysRemaining)
+                                                <span class="label label-{{$daysRemaining >= 0 ? 'success' : 'danger' }}">
                                                 {{$transactionType->name}}
-                                                @if($daysRemaining > 0)
-                                                    {{$daysRemaining}} jours restants
-                                                @elseif($daysRemaining == 0)
-                                                    Dernier jour !
-                                                @else
-                                                    En retard de {{abs($daysRemaining)}} jours
-                                                @endif
+                                                    @if($daysRemaining > 0)
+                                                        {{$daysRemaining}} jours restants
+                                                    @else
+                                                        En retard de {{abs($daysRemaining)}} jours
+                                                    @endif
                                             </span>
+                                            @elseif($daysRemaining === 0)
+                                                <span class="label label-default">Dernier jour</span>
+                                            @endif
                                         @endif
                                     </td>
                                 @endforeach
