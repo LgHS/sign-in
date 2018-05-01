@@ -40,7 +40,7 @@ class User extends Authenticatable {
 		'member_since',
 		'is_public',
 		'is_active',
-		'transactions'
+		'transactions',
 	];
 
 	protected $hidden = [
@@ -48,11 +48,16 @@ class User extends Authenticatable {
 		'username',
 		'email',
 		'password',
+        'pin',
 		'remember_token',
 		'token_valid',
 		'totp',
 		'uuid'
 	];
+
+	public static $rules = [
+	    'pin' => 'min:4|max:4'
+    ];
 
 	public function getFullNameAttribute() {
 		return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);

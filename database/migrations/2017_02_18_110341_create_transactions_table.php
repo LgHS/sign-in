@@ -20,7 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->float('amount');
             $table->integer('payment_type_id')->unsigned();
             $table->integer('duration')->unsigned();
-            $table->longText('comments');
+            $table->longText('comments')->nullable();
             $table->softDeletes();
 	        $table->timestamps();
 	        $table->timestamp('registered_at');

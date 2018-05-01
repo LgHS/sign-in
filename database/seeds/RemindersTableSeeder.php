@@ -80,12 +80,12 @@ class RemindersTableSeeder extends Seeder {
 		$reminder->save();
 
 		// Annual cancelling
-		$reminder        = new Reminder();
-		$reminder->title = "Résiliation de ton affiliation";
-		$reminder->name  = "Annual cancelling";
-		$reminder->text  = "Cela fait deux mois que ta cotisation annuelle est expirée, tu es maintenant considéré comme un ancien membre et n'a plus accès à nos différents services. Si c'est une erreur, contacte-nous. Sinon so long, reste en contact !";
-		$reminder->days  = 60;
-		$reminder->transactionType()->associate($annual);
-		$reminder->save();
+//		$reminder        = new Reminder();
+//		$reminder->title = "Résiliation de ton affiliation";
+//		$reminder->name  = "Annual cancelling";
+//		$reminder->text  = "Cela fait deux mois que ta cotisation annuelle est expirée, tu es maintenant considéré comme un ancien membre et n'a plus accès à nos différents services. Si c'est une erreur, contacte-nous. Sinon so long, reste en contact !";
+//		$reminder->days  = 60;
+//		$reminder->transactionType()->associate($annual);
+//		$reminder->save();
 	}
 }
