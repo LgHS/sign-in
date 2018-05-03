@@ -56,7 +56,7 @@ class User extends Authenticatable {
 	];
 
 	public static $rules = [
-	    'pin' => 'min:4|max:4'
+	    'pin' => 'required|digits:4'
     ];
 
 	public function getFullNameAttribute() {

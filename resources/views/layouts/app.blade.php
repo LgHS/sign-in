@@ -50,6 +50,11 @@
                             Mon profil
                         </a>
                     </li>
+                    <li class="{{ active('pin.index') }}">
+                        <a href="/pin">
+                            Mon code PIN
+                        </a>
+                    </li>
                     <li class="{{ active('services') }}">
                         <a href="{{ route('services') }}">Mes Services</a>
                     </li>
