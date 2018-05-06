@@ -35,7 +35,7 @@ class PinController extends Controller {
             return back()->withErrors($validator)->withInput();
         }
 
-        $member->pin = $request->get('pin');
+        $member->pin = Hash::make($request->get('pin'));
         $member->save();
 
         return back()->with([
@@ -50,16 +50,35 @@ class PinController extends Controller {
 
         $validator = Validator::make($request->all(), User::$rules);
 
+        // pin validation
+        $validator->after(function($validator) use ($request, $member) {
+            // one field is filled but not the other
+            if($request->get('old_pin') && ! $request->get('pin')) {
+                $validator->errors()->add('pin', 'Si vous voulez changer de PIN, il faut le définir');
+            }
+            // one field is filled but not the other
+            if( ! $request->get('old_pin') && $request->get('pin')) {
+                $validator->errors()->add('old_pin', 'Entrez votre PIN actuel');
+            }
+
+            if($request->get('old_pin') && $request->get('pin')) {
+                // Old pin don't match
+                if( ! Hash::check($request->get('old_pin'), $member->pin)) {
+                    $validator->errors()->add('old_pin', 'Ce code PIN ne correspond pas à votre code PIN actuel');
+                }
+            }
+        });
+
         // validate
         if($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
 
-        $member->pin = $request->get('pin');
+        $member->pin = Hash::make($request->get('pin'));
         $member->save();
 
         return back()->with([
-            'message' => 'Votre PIN a bien été modifié.',
+            'message' => 'Votre code PIN a bien été modifié.',
             'status' => 'success'
         ]);
     }

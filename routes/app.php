@@ -22,6 +22,8 @@ Route::group(['prefix' => 'members', 'middleware' => ['permission:manage-members
     Route::delete('{member}', 'Admin\MembersController@delete')->name('members.delete');
     Route::post('{member}/sendResetMail', 'Admin\MembersController@resendMail');
     Route::post('{member}/sendReminder/{transactionType}', 'Admin\MembersController@sendReminder');
+    Route::get('{member}/pin', 'Admin\MemberPinController@index')->name('members.pin.index');
+    Route::put('{member}/pin', 'Admin\MemberPinController@update')->name('members.pin.update');
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => ['permission:manage-account']], function () {
