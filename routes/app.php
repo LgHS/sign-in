@@ -37,15 +37,9 @@ Route::group(['prefix' => 'pin', 'middleware' => ['permission:manage-account']],
     Route::put('', 'PinController@update')->name('pin.update');
 });
 
+
+Route::get('/rfid', 'HomeController@rfid_cards')->name('app.rfid');
+Route::resource('rfid_cards', 'RfidCardController');
+
 Route::get('/api/me', 'ApiController@me')->name('api.me');
 
-//Route::group(['prefix' => 'admin', 'middleware' => ['permission:manage-members']], function() {
-//    Route::get('paymentTypes', ['as' => 'admin.paymentTypes.index', 'uses' => 'PaymentTypeController@index']);
-//    Route::post('paymentTypes', ['as' => 'admin.paymentTypes.store', 'uses' => 'PaymentTypeController@store']);
-//    Route::get('paymentTypes/create', ['as' => 'admin.paymentTypes.create', 'uses' => 'PaymentTypeController@create']);
-//    Route::put('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
-//    Route::patch('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.update', 'uses' => 'PaymentTypeController@update']);
-//    Route::delete('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.destroy', 'uses' => 'PaymentTypeController@destroy']);
-//    Route::get('paymentTypes/{paymentTypes}', ['as' => 'admin.paymentTypes.show', 'uses' => 'PaymentTypeController@show']);
-//    Route::get('paymentTypes/{paymentTypes}/edit', ['as' => 'admin.paymentTypes.edit', 'uses' => 'PaymentTypeController@edit']);
-//});

@@ -17,7 +17,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    
+
     public function index()
     {
         return view('app.home');
@@ -28,4 +28,7 @@ class HomeController extends Controller
         return view('app.home');
     }
 
+    public function rfid_cards() {
+        return view('app.rfid');
+    }
 }

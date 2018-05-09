@@ -128,6 +128,10 @@ class User extends Authenticatable {
 		return $this->hasMany(Transaction::class);
 	}
 
+	public function rfidCards() {
+		return $this->hasMany(RfidCard::class);
+	}
+
 	public function formDateOfBirthAttribute($value) {
 		if( ! $value) {
 			return '';

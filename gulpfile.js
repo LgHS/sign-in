@@ -17,5 +17,5 @@ elixir((mix) => {
   mix.sass('app.scss')
   .sass('admin.scss')
   .webpack('app.js');
-  mix.phpUnit(null, 'phpunit');
+  // mix.phpUnit(null, 'phpunit'); FIXME not working with local phpunit ?
 });
