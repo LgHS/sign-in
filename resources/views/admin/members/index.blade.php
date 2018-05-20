@@ -33,10 +33,10 @@
                             Statut
                         </th>
                         <th>
-                            Abonnement mensuel
+                            Cotisation annuelle
                         </th>
                         <th>
-                            Cotisation annuelle
+                            Abonnement mensuel
                         </th>
                         <th class="actions">Actions</th>
                     </tr>
