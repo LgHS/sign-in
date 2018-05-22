@@ -115,6 +115,14 @@ class MembersController extends Controller {
 			$member->email = $request->get('email');
 		}
 
+		if($request->get('is_active') != $member->is_active) {
+			$member->is_active = $request->get('is_active');
+		}
+
+		if($request->get('is_public') != $member->is_public) {
+			$member->is_public = $request->get('is_public');
+		}
+
 		$member->update($request->all());
 		$member->detachRoles($member->roles);
 		$member->attachRole(Role::where('name', $request->get('member_roles')[0])->first());
