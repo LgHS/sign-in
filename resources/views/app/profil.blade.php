@@ -10,7 +10,7 @@
     {!! BootForm::open(['model' => $member ?: null, 'update' => 'profile.update']) !!}
 
     {!! BootForm::text('username', 'Nom d\'utilisateur', null) !!}
-    {!! BootForm::email('email', 'Adresse e-mail', null) !!}
+    {!! BootForm::email('email', 'Adresse e-mail', null, ['disabled' => 'disabled']) !!}
 
     {!! BootForm::password('old_password', 'Mot de passe actuel', array()) !!}
     {!! BootForm::password('new_password', 'Nouveau mot de passe', array(
