@@ -2,6 +2,7 @@
 Route::group(['prefix' => 'admin', 'middleware' => ['permission:manage-members']], function() {
     Route::get('', 'AdminController@index')->name('admin.index');
     Route::get('services', 'AdminController@services')->name('admin.services');
+    Route::get('stats', 'AdminController@stats')->name('admin.stats');
     Route::get('notifications', 'NotificationsController@index')->name('admin.notifications.index');
 
     Route::get('paymentTypes', ['as' => 'admin.paymentTypes.index', 'uses' => 'PaymentTypeController@index']);

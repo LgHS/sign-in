@@ -18,6 +18,7 @@ use Carbon\Carbon;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
+        'uuid' => Uuid::generate(),
         'username' => $faker->userName,
         'email' => $faker->safeEmail,
         'password' => bcrypt(str_random(10)),

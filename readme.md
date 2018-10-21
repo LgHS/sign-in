@@ -18,6 +18,21 @@ Management interface for our Hackerspace members.
     change those credentials to something different and robust.
     
     
+## Run
+
+Run `php artisan serve` to run locally.
+
+## Test
+
+`./vendor/bin/phpunit` to run tests.
+
+`./vendor/bin/phpunit-watcher watch` to run tests each
+time a file is saved.
+
+`./vendor/bin/phpunit --filter=MyTest` to run a single test 
+(also works for phpunit-watcher).
+
+## Other
 ### Nginx
 
 Add this to your nginx config :

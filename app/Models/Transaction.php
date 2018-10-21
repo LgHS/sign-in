@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Events\TransactionCreated;
+use App\Services\TransactionStatService;
 use Carbon\Carbon;
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class Transaction
@@ -14,9 +18,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Transaction extends Model
 {
     use SoftDeletes;
+    use Notifiable;
 
     public $table = 'transactions';
-    
+
 
     protected $dates = ['started_at', 'registered_at', 'deleted_at'];
 
@@ -60,7 +65,15 @@ class Transaction extends Model
         'duration' => 'required'
     ];
 
-	/**
+//    protected $events = [
+//        'created' => TransactionCreated::class,
+//    ];
+//
+//    protected $dispatchesEvents = [
+//        'created' => TransactionCreated::class,
+//    ];
+
+    /**
 	 * @return Carbon Transaction end date
 	 */
     public function getEndDateAttribute() {

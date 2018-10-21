@@ -21,13 +21,15 @@
         "infyomlabs/laravel-generator": "5.5.x-dev",
         "infyomlabs/adminlte-templates": "5.5.x-dev",
         "maatwebsite/excel": "^2.1",
-        "laracasts/flash": "^3.0"
+        "laracasts/flash": "^3.0",
+        "phpunit/phpunit": "^7.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "symfony/css-selector": "3.3.*",
-        "symfony/dom-crawler": "3.3.*"
+        "symfony/dom-crawler": "3.3.*",
+        "spatie/phpunit-watcher": "^1.7"
     },
     "autoload": {
         "classmap": [
