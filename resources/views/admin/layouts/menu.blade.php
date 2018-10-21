@@ -11,9 +11,6 @@
 <li class="{{ active('admin.notifications.index') }}">
     <a href="{!! route('admin.notifications.index') !!}"><i class="fa fa-dot-circle-o"></i><span>Log des Notifications</span></a>
 </li>
-<li class="{{ active('admin.stats') }}">
-    <a href="{!! route('admin.stats') !!}"><i class="fa fa-dollar"></i><span>Statistiques</span></a>
-</li>
 
 <li class="header">Configuration</li>
 

@@ -54,6 +54,9 @@
                         <a href="{{ route('services') }}">Mes Services</a>
                     </li>
                     @endpermission
+                    <li class="{{ active('app.stats') }}">
+                        <a href="{{ route('app.stats') }}">Statistiques</a>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @permission(('manage-members'))

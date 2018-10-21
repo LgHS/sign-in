@@ -23,11 +23,4 @@ class AdminController extends Controller
     {
         return view('admin.services');
     }
-
-    public function stats() {
-        $stats = TransactionStat::orderBy('month', 'desc')->get();
-        return view('admin.stats', [
-            'stats' => $stats
-        ]);
-    }
 }
