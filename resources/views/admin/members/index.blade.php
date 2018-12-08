@@ -48,7 +48,12 @@
                                 {{$member->id}}
                             </td>
                             <td>
-                                {{$member->fullName}}
+                                <a href="/members/{{$member->id}}/edit">
+                                    {{$member->fullName}}
+                                </a>
+                                @if ($member->is_keyholder)
+                                    🔑
+                                @endif
                             </td>
                             <td>
                                 {{$member->roles()->first()->display_name}}
