@@ -34,6 +34,7 @@
 ], $member ? $member->roles[0]->name : 'member_active', true) !!}
 {!! BootForm::checkbox('is_public', 'Profil public', '1', $member ? null : false) !!}
 {!! BootForm::checkbox('is_active', 'Compte actif', '1', $member ? null : true) !!}
+{!! BootForm::checkbox('is_keyholder', 'Keyholder', '1', $member ? null : false) !!}
 
 {!! BootForm::submit($action_label) !!}
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Models\TransactionStat;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,23 +13,26 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth');
     }
 
 
-    public function index()
-    {
+    public function index() {
         return view('app.home');
     }
 
-    public function apps()
-    {
+    public function apps() {
         return view('app.home');
     }
 
     public function rfid_cards() {
         return view('app.rfid');
+    }
+    public function stats() {
+        $stats = TransactionStat::orderBy('month', 'desc')->get();
+        return view('app.stats', [
+            'stats' => $stats
+        ]);
     }
 }

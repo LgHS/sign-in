@@ -56,17 +56,17 @@ class RemindersTest extends TestCase {
 	/**
 	 * Monthly last day
 	 */
-	public function testMonthlyLastDay() {
-		$user = factory(User::class)->create();
-		$monthly = factory(Transaction::class)->make([
-			'started_at' => Carbon::now()->subMonth()->toDateTimeString()
-		]);
-		$monthly->user()->associate($user);
-		$monthly->save();
-
-		$this->assertTrue(Reminder::where('name', 'Monthly last day')->first()->shouldSendTo($user));
-		$this->assertFalse(Reminder::where('name', 'Annual last day')->first()->shouldSendTo($user));
-	}
+//	public function testMonthlyLastDay() {
+//		$user = factory(User::class)->create();
+//		$monthly = factory(Transaction::class)->make([
+//			'started_at' => Carbon::now()->subMonth()->toDateTimeString()
+//		]);
+//		$monthly->user()->associate($user);
+//		$monthly->save();
+//
+//		$this->assertTrue(Reminder::where('name', 'Monthly last day')->first()->shouldSendTo($user));
+//		$this->assertFalse(Reminder::where('name', 'Annual last day')->first()->shouldSendTo($user));
+//	}
 
 	/**
 	 * Monthly late
@@ -86,30 +86,30 @@ class RemindersTest extends TestCase {
 	/**
 	 * Annual before
 	 */
-	public function testAnnualBefore() {
-		$user = factory(User::class)->create();
-		$annual = factory(Transaction::class)->states('annual')->make([
-			'started_at' => Carbon::now()->subYear()->addDays(7)->toDateTimeString()
-		]);
-		$annual->user()->associate($user);
-		$annual->save();
-
-		$this->assertTrue(Reminder::where('name', 'Annual before')->first()->shouldSendTo($user));
-	}
+//	public function testAnnualBefore() {
+//		$user = factory(User::class)->create();
+//		$annual = factory(Transaction::class)->states('annual')->make([
+//			'started_at' => Carbon::now()->subYear()->addDays(7)->toDateTimeString()
+//		]);
+//		$annual->user()->associate($user);
+//		$annual->save();
+//
+//		$this->assertTrue(Reminder::where('name', 'Annual before')->first()->shouldSendTo($user));
+//	}
 
 	/**
 	 * Annual last day for annual
 	 */
-	public function testAnnualLastDay() {
-		$user = factory(User::class)->create();
-		$annual = factory(Transaction::class)->states('annual')->make([
-			'started_at' => Carbon::now()->subYear()->toDateTimeString()
-		]);
-		$annual->user()->associate($user);
-		$annual->save();
-
-		$this->assertTrue(Reminder::where('name', 'Annual last day')->first()->shouldSendTo($user));
-	}
+//	public function testAnnualLastDay() {
+//		$user = factory(User::class)->create();
+//		$annual = factory(Transaction::class)->states('annual')->make([
+//			'started_at' => Carbon::now()->subYear()->toDateTimeString()
+//		]);
+//		$annual->user()->associate($user);
+//		$annual->save();
+//
+//		$this->assertTrue(Reminder::where('name', 'Annual last day')->first()->shouldSendTo($user));
+//	}
 
 	/**
 	 * Annual after

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
+use App\Models\TransactionStat;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller

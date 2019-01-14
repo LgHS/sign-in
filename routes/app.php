@@ -6,6 +6,7 @@ Route::auth();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::get('/', 'HomeController@index')->name('app.home');
+Route::get('/stats', 'HomeController@stats')->name('app.stats');
 Route::get('/password/init/{token}', 'Auth\ResetPasswordController@initPassword')->name('password-init');
 
 Route::get('/services', function () {
@@ -42,4 +43,3 @@ Route::get('/rfid', 'HomeController@rfid_cards')->name('app.rfid');
 Route::resource('rfid_cards', 'RfidCardController');
 
 Route::get('/api/me', 'ApiController@me')->name('api.me');
-

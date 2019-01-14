@@ -13,6 +13,7 @@
 </li>
 
 <li class="header">Configuration</li>
+
 <li class="{{ Request::is('admin/paymentTypes*') ? 'active' : '' }}">
     <a href="{!! route('admin.paymentTypes.index') !!}"><i class="fa fa-edit"></i><span>Types de paiement</span></a>
 </li>
@@ -20,4 +21,3 @@
 <li class="{{ Request::is('admin/transactionTypes*') ? 'active' : '' }}">
     <a href="{!! route('admin.transactionTypes.index') !!}"><i class="fa fa-edit"></i><span>Types de transaction</span></a>
 </li>
-

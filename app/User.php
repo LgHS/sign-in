@@ -40,6 +40,7 @@ class User extends Authenticatable {
 		'member_since',
 		'is_public',
 		'is_active',
+		'is_keyholder',
 		'transactions',
 	];
 

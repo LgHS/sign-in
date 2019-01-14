@@ -41,44 +41,46 @@
             <a class="navbar-brand" href="{{ url('/') }}">LgHS</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-navbar-collapse">
-            <ul class="nav navbar-nav">
-                @permission(('manage-account'))
-                <li class="{{ active('profile.index') }}">
-                    <a href="/profile">
-                        Mon profil
-                    </a>
-                </li>
-                <li class="{{ active('pin.index') }}">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    @permission(('manage-account'))
+                    <li class="{{ active('profile.index') }}">
+                        <a href="/profile">
+                            Mon profil
+                        </a>
+                    </li>
+                    <li class="{{ active('pin.index') }}">
                     <a href="/pin">
                         Mon code PIN
                     </a>
                 </li>
-                <li class="{{ active('services') }}">
-                    <a href="{{ route('services') }}">Mes Services</a>
-                </li>
+                <li class="{{active('services') }}">
+                        <a href="{{ route('services') }}">Mes Services</a></li>
                 <li class="{{ active('app.rfid') }}">
                     <a href="{{ route('app.rfid') }}">Cartes RFID</a>
-                </li>
-                @endpermission
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @permission(('manage-members'))
-                <li class="{{ active('admin.index') }}">
-                    <a href="{{ route('admin.index') }}">Admin</a>
-                </li>
-                @endpermission
-                <li>
-                    <a href="{{ url('/logout') }}" title="Déconnectez-vous">
-                        <i class="fa fa-sign-out"></i>
-                        Déconnexion
-                        ({{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}})
-                    </a>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
+                    </li>
+                    @endpermission
+                <li class="{{ active('app.stats') }}">
+                        <a href="{{ route('app.stats') }}">Statistiques</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @permission(('manage-members'))
+                        <li class="{{ active('admin.index') }}">
+                            <a href="{{ route('admin.index') }}">Admin</a>
+                        </li>
+                    @endpermission
+                    <li>
+                        <a href="{{ url('/logout') }}" title="Déconnectez-vous">
+                            <i class="fa fa-sign-out"></i>
+                            Déconnexion
+                            ({{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}})
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
 
     <main id="content">
         <div class="container">

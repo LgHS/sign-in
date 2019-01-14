@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel {
 		Commands\SendReminders::class,
 		Commands\ImportMemberships::class,
 		Commands\AddMembership::class,
+		Commands\AddTransactionStats::class,
 	];
 
 	/**
