@@ -1,0 +1,1 @@
+{"version":3,"sources":["admin.scss"],"names":[],"mappings":"AAAA;EAEI,YAAY;CACb","file":"admin.css","sourcesContent":[".members-index {\n  .old {\n    opacity: .3;\n  }\n}\n"]}
