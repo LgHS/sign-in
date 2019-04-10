@@ -31,3 +31,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['permission:manage-members']
     Route::get('admin/transactions/{transactions}', ['as'=> 'admin.transactions.show', 'uses' => 'TransactionController@show']);
     Route::get('admin/transactions/{transactions}/edit', ['as'=> 'admin.transactions.edit', 'uses' => 'TransactionController@edit']);
 });
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('rfidCards', 'RfidCardController', ["as" => 'admin']);
+});
