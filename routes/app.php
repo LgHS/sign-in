@@ -42,4 +42,3 @@ Route::group(['prefix' => 'pin', 'middleware' => ['permission:manage-account']],
 Route::get('/rfid', 'HomeController@rfid_cards')->name('app.rfid');
 Route::resource('rfid_cards', 'RfidCardController');
 
-Route::get('/api/me', 'ApiController@me')->name('api.me');
