@@ -18,7 +18,10 @@
                 {!! BootForm::password('pin', 'Code PIN', array(
                     'help_text' => 'Choisissez 4 chiffres'
                 )) !!}
-                {!! BootForm::submit('Modifier le code PIN') !!}
+
+                <button type="submit" class="btn btn-primary" confirm="Le code PIN du membre va être modifié, êtes-vous sûr-e ?">
+                    Modifier le code PIN
+                </button>
                 {!! BootForm::close() !!}
             </div>
         </div>

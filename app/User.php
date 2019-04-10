@@ -44,17 +44,12 @@ class User extends Authenticatable {
 		'transactions',
 	];
 
-	protected $hidden = [
-		'id',
-		'username',
-		'email',
-		'password',
-        'pin',
-		'remember_token',
-		'token_valid',
-		'totp',
-		'uuid'
-	];
+	protected $visible = [
+	    "id",
+        "username",
+        "pin",
+        "rfidCards"
+    ];
 
 	public static $rules = [
 	    'pin' => 'required|digits:4'

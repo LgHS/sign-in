@@ -15,14 +15,14 @@
         "watson/active": "^2.0",
         "zizaco/entrust": "1.9.0-beta1",
         "laravelcollective/html": "^5.2.0",
-        "watson/bootstrap-form": "^1.0",
         "laravel/passport": "^7.0",
         "spatie/laravel-backup": "^5.0",
         "infyomlabs/laravel-generator": "5.8.x-dev",
         "infyomlabs/adminlte-templates": "5.8.x-dev",
         "maatwebsite/excel": "^2.1",
         "laracasts/flash": "^3.0",
-        "phpunit/phpunit": "^7.4"
+        "phpunit/phpunit": "^7.4",
+        "watson/bootstrap-form": "^1.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

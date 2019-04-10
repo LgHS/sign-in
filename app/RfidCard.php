@@ -13,8 +13,11 @@ class RfidCard extends Model
         "user_id"
     ];
 
-    protected $hidden = [
 
+    protected $visible = [
+        "id",
+        "uid",
+        "token"
     ];
 
     public static $rules = [

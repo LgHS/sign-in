@@ -39,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
     public function map(Router $router)
     {
         $this->mapAppRoutes($router);
+        $this->mapApiRoutes($router);
         $this->mapAdminRoutes($router);
     }
 
@@ -68,14 +69,14 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
-//    protected function mapApiRoutes(Router $router) {
-//        Route::group([
-//            'middleware' => 'api',
-//            'namespace' => $this->namespace."\\API",
-//            'prefix' => 'api',
-//            'as' => 'api.',
-//        ], function ($router) {
-//            require base_path('routes/api.php');
-//        });
-//    }
+    protected function mapApiRoutes(Router $router) {
+        Route::group([
+            'middleware' => 'api',
+            'namespace' => $this->namespace."\\API",
+            'prefix' => 'api',
+            'as' => 'api.',
+        ], function ($router) {
+            require base_path('routes/api.php');
+        });
+    }
 }

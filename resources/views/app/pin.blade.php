@@ -11,14 +11,12 @@
     </p>
 
     @if($member->pin)
-        {!! BootForm::open(['model' => $member, 'post' => 'pin.update']) !!}
+        {!! BootForm::open(['model' => $member, 'update' => 'pin.update']) !!}
 
         {!! BootForm::password('old_pin', 'Code PIN actuel', array()) !!}
         {!! BootForm::password('pin', 'Nouveau code PIN', array()) !!}
 
-        <button type="submit" confirm="Le code PIN du membre va être modifié, êtes-vous sûr-e ?">
-            Modifier le code PIN
-        </button>
+        {!! BootForm::submit('Modifier le PIN') !!}
 
         {!! BootForm::close() !!}
     @else
