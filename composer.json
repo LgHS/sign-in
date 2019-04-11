@@ -22,7 +22,8 @@
         "maatwebsite/excel": "^2.1",
         "laracasts/flash": "^3.0",
         "phpunit/phpunit": "^7.4",
-        "watson/bootstrap-form": "^1.2"
+        "watson/bootstrap-form": "^1.2",
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

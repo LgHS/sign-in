@@ -29,6 +29,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::tokensCan([
             'openid' => 'Nécessaire pour Rocket.Chat mais pas utilisé',
+            'list-users' => 'Récupérer la liste de tous les utilisateurs'
         ]);
 
         Passport::routes();
