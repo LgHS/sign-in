@@ -1,10 +1,13 @@
-<li class="header">Administration</li>
+    <li class="header">Administration</li>
 <li class="{{ Request::is('members*') ? 'active' : '' }}">
     <a href="{!! route('members.index') !!}"><i class="fa fa-user"></i><span>Membres</span></a>
 </li>
 <li class="{{ Request::is('admin/transactions*') ? 'active' : '' }}">
     <a href="{!! route('admin.transactions.index') !!}"><i class="fa fa-dollar"></i><span>Cotisations</span></a>
 </li>
+{{--<li class="{{ Request::is('admin/rfid_cards*') ? 'active' : '' }}">--}}
+{{--    <a href="{!! route('admin.rfid_cards.index') !!}"><i class="fa fa-id-card"></i><span>Cartes RFID</span></a>--}}
+{{--</li>--}}
 <li class="{{ active('admin.services') }}">
     <a href="{!! route('admin.services') !!}"><i class="fa fa-cloud"></i><span>Services oauth</span></a>
 </li>

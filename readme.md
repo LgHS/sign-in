@@ -5,7 +5,7 @@ Management interface for our Hackerspace members.
 ## Install
 
   * `composer install`
-  * create a mysql database
+  * create a pgsql database (See below)
   * copy `.env.example` to `.env` and adapt to your configuration
   * `php artisan key:generate`
   * `php artisan config:cache`
@@ -33,6 +33,16 @@ time a file is saved.
 (also works for phpunit-watcher).
 
 ## Other
+### Create a PGSQL Database
+
+Install Postgresql, create a user and a database: 
+
+```sql
+create database lghs_members;
+create user lghs_members_root with password '<password>';
+grant all on database lghs_members to lghs_members_root;
+````
+
 ### Nginx
 
 Add this to your nginx config :
@@ -58,7 +68,19 @@ location ~ \.php$ { ##merge##
 }
 ```
 
-### Migrating mysql to postgresql
+## Testing
+
+Add a pgsql user and a database :
+```sql
+create database lghs_members_test;
+grant all on database lghs_members_test to lghs_members_root;
+```
+
+Make sure you have installed dependencies with `composer install`.
+
+Then run `./vendor/bin/phpunit`.
+
+## Migrating mysql to postgresql
 
 If you are using an old database, you can use [pgloader](http://pgloader.io/) to migrate it to postgres.
 
@@ -93,7 +115,7 @@ load database
 ;
 ```
 
-After the migration, make sure your the schema imported is correctly named public.
+After the migration, make sure the schema imported is correctly named public.
 To do so, open a psql console (`psql lghs_members`) and type `\dn`.
 
 If you have two schemas:

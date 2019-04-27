@@ -41,19 +41,19 @@ class User extends Authenticatable {
 		'is_public',
 		'is_active',
 		'is_keyholder',
-		'transactions'
+		'transactions',
 	];
 
-	protected $hidden = [
-		'id',
-		'username',
-		'email',
-		'password',
-		'remember_token',
-		'token_valid',
-		'totp',
-		'uuid'
-	];
+	protected $visible = [
+	    "id",
+        "username",
+        "pin",
+        "rfidCards"
+    ];
+
+	public static $rules = [
+	    'pin' => 'required|digits:4'
+    ];
 
 	public function getFullNameAttribute() {
 		return ucfirst($this->firstName) . ' ' . ucfirst($this->lastName);
@@ -122,6 +122,10 @@ class User extends Authenticatable {
 
 	public function transactions() {
 		return $this->hasMany(Transaction::class);
+	}
+
+	public function rfidCards() {
+		return $this->hasMany(RfidCard::class);
 	}
 
 	public function formDateOfBirthAttribute($value) {

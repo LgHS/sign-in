@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use App\Models\TransactionType;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -14,6 +15,7 @@ use Tests\TestCase;
 
 class TransactionsTest extends TestCase {
 	use DatabaseMigrations;
+    use RefreshDatabase;
 
 	/** @var User $user */
 	private $user;

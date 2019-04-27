@@ -92,6 +92,11 @@
                                         </button>
                                     </form>
 
+                                    <a href="{{route('members.pin.index', ['member' => $member])}}" class="btn btn-xs">
+                                        <i class="fa fa-lock"></i>
+                                        Force PIN
+                                    </a>
+
                                     @foreach($transactionTypes as $transactionType)
                                         @if($member->isLate($transactionType))
                                             <form class="form-inline" style="display: inline;"

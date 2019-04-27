@@ -16,30 +16,30 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body class="app {{str_replace('.', '-', Route::currentRouteName())}}">
-    @if (session('message'))
-        <div class="alert alert-{{session('status') ? session('status') : 'default'}}">
-            {{ session('message') }}
+@if (session('message'))
+    <div class="alert alert-{{session('status') ? session('status') : 'default'}}">
+        {{ session('message') }}
+    </div>
+@endif
+
+<div class="container">
+    <header id="page-header">
+        <a href="{{ url('/') }}" title="Accueil">
+            <img src="{{ asset('svg/logo.svg') }}" alt="Liege Hackerspace">
+        </a>
+    </header>
+
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#main-navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ url('/') }}">LgHS</a>
         </div>
-    @endif
-
-    <div class="container">
-        <header id="page-header">
-            <a href="{{ url('/') }}" title="Accueil">
-                <img src="{{ asset('svg/logo.svg') }}" alt="Liege Hackerspace">
-            </a>
-        </header>
-
-        <nav class="navbar navbar-default">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#main-navbar-collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="{{ url('/') }}">LgHS</a>
-            </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="main-navbar-collapse">
@@ -50,11 +50,18 @@
                             Mon profil
                         </a>
                     </li>
-                    <li class="{{ active('services') }}">
-                        <a href="{{ route('services') }}">Mes Services</a>
+                    <li class="{{ active('pin.index') }}">
+                    <a href="/pin">
+                        Mon code PIN
+                    </a>
+                </li>
+                <li class="{{active('services') }}">
+                        <a href="{{ route('services') }}">Mes Services</a></li>
+                <li class="{{ active('app.rfid') }}">
+                    <a href="{{ route('app.rfid') }}">Cartes RFID</a>
                     </li>
                     @endpermission
-                    <li class="{{ active('app.stats') }}">
+                <li class="{{ active('app.stats') }}">
                         <a href="{{ route('app.stats') }}">Statistiques</a>
                     </li>
                 </ul>
@@ -75,51 +82,51 @@
             </div><!-- /.navbar-collapse -->
         </nav>
 
-        <main id="content">
-            <div class="container">
-                @yield('content')
-            </div>
-        </main>
+    <main id="content">
+        <div class="container">
+            @yield('content')
+        </div>
+    </main>
 
-        <footer id="page-footer">
-            <p>
-                MAIL: ping[at]lghs.be
-            </p>
-            <p>
-                IRC: #LgHS @ Freenode
-            </p>
-            <ul>
-                <li>
-                    <a href="https://github.com/LgHS" title="Our Github repos">
-                        <i class="fa fa-github"></i>
-                        Github
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.facebook.com/liegehackerspace/" title="Our Facebook page">
-                        <i class="fa fa-facebook"></i>
-                        Facebook
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/LgHackerSpace" title="Our Twitter feed">
-                        <i class="fa fa-twitter"></i>
-                        Twitter
-                    </a>
-                </li>
-                <li>
-                    <a href="https://chat.lghs.be" title="Our Chat">
-                        <i class="fa fa-comment"></i>
-                        Chat
-                    </a>
-                </li>
-            </ul>
-        </footer>
-    </div>
+    <footer id="page-footer">
+        <p>
+            MAIL: ping[at]lghs.be
+        </p>
+        <p>
+            IRC: #LgHS @ Freenode
+        </p>
+        <ul>
+            <li>
+                <a href="https://github.com/LgHS" title="Our Github repos">
+                    <i class="fa fa-github"></i>
+                    Github
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/liegehackerspace/" title="Our Facebook page">
+                    <i class="fa fa-facebook"></i>
+                    Facebook
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/LgHackerSpace" title="Our Twitter feed">
+                    <i class="fa fa-twitter"></i>
+                    Twitter
+                </a>
+            </li>
+            <li>
+                <a href="https://chat.lghs.be" title="Our Chat">
+                    <i class="fa fa-comment"></i>
+                    Chat
+                </a>
+            </li>
+        </ul>
+    </footer>
+</div>
 
-    <script>
-        window.Laravel = { csrfToken: '{{ csrf_token() }}' };
-    </script>
-    <script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
+<script>
+  window.Laravel = Object.freeze({csrfToken: '{{ csrf_token() }}'});
+</script>
+<script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
 </body>
 </html>

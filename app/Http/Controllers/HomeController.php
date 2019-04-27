@@ -26,6 +26,9 @@ class HomeController extends Controller
         return view('app.home');
     }
 
+    public function rfid_cards() {
+        return view('app.rfid');
+    }
     public function stats() {
         $stats = TransactionStat::orderBy('month', 'desc')->get();
         return view('app.stats', [

@@ -12,8 +12,9 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api');
+//        $this->middleware('auth:api');
     }
+
     public function me()
     {
         $user = Auth::user();
@@ -27,4 +28,9 @@ class ApiController extends Controller
 
         return  $data;
     }
+
+    public function users() {
+        return User::orderBy("id")->with('rfidCards')->get();
+    }
+
 }

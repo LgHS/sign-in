@@ -8,7 +8,7 @@
         <label for="email" class="hide">Adresse e-mail</label>
 
         <input id="email" type="email" class="form-control" name="email"
-               value="{{ $email or old('email') }}" placeholder="Adresse e-mail">
+               value="{{ $email ?? old('email') }}" placeholder="Adresse e-mail">
 
         @if ($errors->has('email'))
             <span class="help-block">

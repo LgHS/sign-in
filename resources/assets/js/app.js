@@ -1,5 +1,8 @@
 require('./bootstrap');
 
+/**
+ * Passport
+ */
 Vue.component(
   'passport-clients',
   require('./components/passport/Clients.vue')
@@ -15,6 +18,14 @@ Vue.component(
   require('./components/passport/PersonalAccessTokens.vue')
 );
 
+
+/**
+ * Rfid
+ */
+Vue.component(
+    'rfid-card',
+    require('./components/rfid/RfidCard.vue')
+);
 
 $('[confirm]').on('click', function(e) {
   var message = $(this).attr('confirm');

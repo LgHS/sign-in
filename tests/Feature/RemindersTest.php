@@ -8,6 +8,7 @@ use App\Models\TransactionType;
 use App\Reminder;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -15,6 +16,7 @@ use Tests\TestCase;
 
 class RemindersTest extends TestCase {
 	use DatabaseMigrations;
+    use RefreshDatabase;
 
 	public function setUp() {
 		parent::setUp();
@@ -68,6 +70,7 @@ class RemindersTest extends TestCase {
 
 	/**
 	 * Monthly late
+     * Removed because of member complaints.
 	 */
 //	public function testMonthlyLate() {
 //		$user = factory(User::class)->create();
@@ -110,6 +113,7 @@ class RemindersTest extends TestCase {
 
 	/**
 	 * Annual after
+     * Removed because of member complaints.
 	 */
 //	public function testAnnualAfter() {
 //		$user = factory(User::class)->create();
@@ -124,6 +128,7 @@ class RemindersTest extends TestCase {
 
 	/**
 	 * Annual cancelling
+     * Removed because of member complaints.
 	 */
 //	public function testAnnualCancelling() {
 //		$user = factory(User::class)->create();
