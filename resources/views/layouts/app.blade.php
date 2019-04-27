@@ -125,7 +125,7 @@
 </div>
 
 <script>
-  window.Laravel = {csrfToken: '{{ csrf_token() }}'};
+  window.Laravel = Object.freeze({csrfToken: '{{ csrf_token() }}'});
 </script>
 <script type="text/javascript" src="{{asset('/js/app.js')}}"></script>
 </body>

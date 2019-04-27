@@ -22,7 +22,7 @@ class RfidCard extends Model
 
     public static $rules = [
         'name' => 'max:255',
-        'uid' => 'required'
+        'uid' => 'required|numeric'
     ];
 
     public function user() {
