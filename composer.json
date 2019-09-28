@@ -23,7 +23,8 @@
         "laracasts/flash": "^3.0",
         "phpunit/phpunit": "^7.4",
         "watson/bootstrap-form": "^1.2",
-        "doctrine/dbal": "^2.9"
+        "doctrine/dbal": "^2.9",
+        "dnoegel/php-xdg-base-dir": "^0.1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
