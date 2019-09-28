@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  web:
+    container_name: "lghs-signin"
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./.nginx.conf:/etc/nginx/conf.d/site.conf
+      - .:/code
+    links:
+      - php
+      - pgsql
+
+  php:
+    container_name: "lghs-signin_php"
+    build: .
+    volumes:
+      - ./.php.ini:/usr/local/etc/php/php.ini
+      - .:/code
+  pgsql:
+    container_name: "lghs-signin_pgsql"
+    image: postgres:latest
+    environment:
+      POSTGRES_PASSWORD: example
