@@ -40,7 +40,7 @@
     "laravel-elixir-vue-2": "^0.2.0",
     "laravel-elixir-webpack-official": "^1.0.2",
     "lodash": "^4.16.2",
-    "node-sass": "^3.4.2",
+    "node-sass": "^4.13.1",
     "onchange": "^2.0.0",
     "parallelshell": "^2.0.0",
     "svgo": "^0.6.1",
